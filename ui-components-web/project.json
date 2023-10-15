@@ -1,0 +1,24 @@
+{
+  "name": "ui-components-web",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "./ui-components-web/src",
+  "projectType": "library",
+  "generators": {
+    "@nxext/stencil:component": {
+      "style": "scss"
+    }
+  },
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nxext/stencil:test",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "projectType": "library",
+        "tsConfig": "./ui-components-web/tsconfig.lib.json",
+        "configPath": "./ui-components-web/stencil.config.ts",
+        "outputPath": "dist/./ui-components-web"
+      }
+    }
+  }
+}
