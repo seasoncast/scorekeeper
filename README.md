@@ -1,5 +1,5 @@
 # [WIP] scorekeeper
-Open Source Score Keeper for All Sports
+Open Source Stats & Score Keeper for All Sports
 
 Mono-repo of all the tools needed to build good sport-scoring applications
 
