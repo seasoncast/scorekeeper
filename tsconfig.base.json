@@ -15,11 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/core-library": ["core-library/src/index.ts"],
-      "@org/ui-components-react-native": [
-        "ui-components-react-native/src/index.ts"
-      ],
-      "@undefined/web-components": ["./web-components/src/index.ts"]
+      "@org/core-library": ["core-library/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

@@ -52,4 +52,4 @@ npm-debug.*
 *.orig.*
 web-build/
 cache/
-
+example-rn-app-e2e/artifacts
