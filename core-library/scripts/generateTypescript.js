@@ -11,17 +11,18 @@ function generateTypescript(jsonFilePath) {
   // Generate actions
   tsContent += `  actions: { [key: string]: IAction } = ${JSON.stringify(jsonContent.actions, null, 2)};\n\n`;
   
-  // Generate functions
-  jsonContent.functions.forEach(func => {
-    const argsList = Object.entries(func.args)
-      .map(([key, type]) => `${key}${func.optional.includes(key) ? '?' : ''}: ${type}`)
+  // Generate functions automatically from actions
+  Object.entries(jsonContent.actions).forEach(([actionName, action]) => {
+    const functionName = actionName.toLowerCase().replace(/_(.)/g, (match, group1) => group1.toUpperCase());
+    const argsList = action.args
+      .map(arg => `${arg.id}${arg.optional ? '?' : ''}: ${arg.type}`)
       .join(', ');
     
-    tsContent += `  ${func.name}(args: { ${argsList} }) {\n`;
+    tsContent += `  ${functionName}(args: { ${argsList} }) {\n`;
     tsContent += `    this.sportEvent.updateStats((stats) => {\n`;
     tsContent += `      return this.parseAction(\n`;
     tsContent += `        stats,\n`;
-    tsContent += `        this.actions['${func.action}'],\n`;
+    tsContent += `        this.actions['${actionName}'],\n`;
     tsContent += `        args\n`;
     tsContent += `      );\n`;
     tsContent += `    });\n`;

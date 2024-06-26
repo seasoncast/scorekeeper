@@ -5,8 +5,11 @@
       "description": "2 point shot missed",
       "args": [
         { "id": "teamShooting", "type": "Team" },
+        { "id": "teamDefending", "type": "Team" },
         { "id": "position", "type": "Position", "optional": true },
-        { "id": "shooter", "type": "Player", "optional": true }
+        { "id": "shooter", "type": "Player", "optional": true },
+        { "id": "was_blocked", "type": "boolean", "optional": true },
+        { "id": "blocked_by", "type": "Player", "optional": true }
       ],
       "result": [
         {
@@ -32,6 +35,7 @@
       "description": "2 point shot made",
       "args": [
         { "id": "teamShooting", "type": "Team" },
+        { "id": "teamDefending", "type": "Team" },
         { "id": "position", "type": "Position", "optional": true },
         { "id": "shooter", "type": "Player", "optional": true }
       ],
@@ -57,31 +61,5 @@
         }
       ]
     }
-  },
-  "functions": [
-    {
-      "name": "shotMissed",
-      "action": "BASKETBALL_SHOT_MISSED",
-      "args": {
-        "teamShooting": "string",
-        "teamDefending": "string",
-        "position": "[number, number]",
-        "shooter": "string",
-        "was_blocked": "boolean",
-        "blocked_by": "string"
-      },
-      "optional": ["position", "shooter", "was_blocked", "blocked_by"]
-    },
-    {
-      "name": "shotMade",
-      "action": "BASKETBALL_SHOT_MADE",
-      "args": {
-        "teamShooting": "string",
-        "teamDefending": "string",
-        "position": "[number, number]",
-        "shooter": "string"
-      },
-      "optional": ["position", "shooter"]
-    }
-  ]
+  }
 }
