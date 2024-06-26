@@ -1,0 +1,22 @@
+- [ ] Server Backend connection
+- [ ] easy to use customer api
+
+
+
+
+======
+
+Ideas:
+GraphQL subscriptions
+PlanetScale
+Open Sourced Sports core 
+Open Events close after a hour, or push notifcation to close. States for Scheduled, Delayed, Live, Ended, Final, TBD (date optional, no time) 
+CRON jobs to check open and push a close if no update after certain time
+Timeline offset / paging
+push by 3rd party libraies, can push real scoreboard data. easy to use API. felxibile in incoming data
+
+
+
+
+Bad Ideas:
+No Sql serverless

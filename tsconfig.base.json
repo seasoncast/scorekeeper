@@ -15,7 +15,8 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@org/core-library": ["core-library/src/index.ts"]
+      "@org/core-library": ["core-library/src/index.ts"],
+      "@org/ui-library-react-native": ["ui-library-react-native/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

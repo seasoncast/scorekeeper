@@ -3,14 +3,25 @@ import ISportEvent from '../types/ISportEvent';
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
 import Team from './Team';
+
 class SportEvent {
   public sport_data: ISportEvent;
   public team_max?: number;
   public team_min?: number;
+  public callback_change?: (sport_data: ISportEvent) => void;
 
-  constructor() {
+  public constructor({
+    scheduled_date,
+    sport_type,
+  }: {
+    scheduled_date: Date;
+    sport_type: string;
+  });
+  public constructor({ id }: { id: string });
+  constructor(args: any) {
     this.sport_data = {
-      id: 'event-1',
+      id: args.id ? args.id : 'id_unknown',
+      scheduled_date: args.scheduled_date ? args.scheduled_date : new Date(),
       stats: {
         team_data: [],
         global_data: {},
@@ -24,6 +35,9 @@ class SportEvent {
 
       timeline: [],
     };
+  }
+  public setCallbackChange(callback_change: (sport_data: ISportEvent) => void) {
+    this.callback_change = callback_change;
   }
 
   public getEventTitle(): string {
@@ -56,6 +70,7 @@ class SportEvent {
       diff: patches,
       ...timeline_inital,
     });
+    this.callback_change?.(this.sport_data);
   }
 
   // build stats to a index in the timeline by applying the diff from the start_data to the current_data
@@ -92,8 +107,13 @@ class SportEvent {
     }
     return new Team(team_data['name'], team_data['id']);
   }
+  public getTeams(): Team[] {
+    return this.sport_data.stats.team_data.map((team_data) => {
+      return new Team(team_data['name'], team_data['id']);
+    });
+  }
 
-  public getCurrentStats(): IStats {
+  public getStats(): IStats {
     return this.sport_data.stats;
   }
 }

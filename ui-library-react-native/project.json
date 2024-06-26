@@ -1,0 +1,16 @@
+{
+  "name": "ui-library-react-native",
+  "$schema": "../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "ui-library-react-native/src",
+  "projectType": "library",
+  "tags": [],
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "ui-library-react-native/jest.config.ts"
+      }
+    }
+  }
+}

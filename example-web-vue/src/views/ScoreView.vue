@@ -3,9 +3,13 @@ import { Basketball, Player, SportEvent, Team } from '@org/core-library';
 import { onMounted, reactive, ref } from 'vue';
 const score = ref(0);
 const Team1 = new Team('Team 1');
-Team1.addPlayer(new Player('Player 1'));
+const player1 = new Player('Player 1');
+Team1.addPlayer(player1);
 const Team2 = new Team('Team 2');
-const sportEvent = new SportEvent();
+const sportEvent = new SportEvent({
+  sport_type: 'basketball',
+  scheduled_date: new Date('2021-01-01'),
+});
 sportEvent.addTeam(Team1);
 sportEvent.addTeam(Team2);
 
@@ -69,6 +73,7 @@ const placeShot = (evt: MouseEvent) => {
   state.editor.shotMissed({
     teamShooting: Team1.id,
     teamDefending: Team2.id,
+    shooter: player1.id,
     position: [xPercent, yPercent],
   });
   drawCourt();
@@ -76,7 +81,7 @@ const placeShot = (evt: MouseEvent) => {
 const drawShotsOnCourt = () => {
   const canvas = document.getElementById('shotTracker') as HTMLCanvasElement;
   const ctx = canvas.getContext('2d');
-  const shots = state.sportEvent.sport_data.stats.team_data[0].shot_position;
+  const shots = state.sportEvent.getStats().team_data[0].shot_position;
   if (!shots) return;
   for (let i = 0; i < shots.length; i++) {
     const x = shots[i][0] * canvas.width;
@@ -99,10 +104,7 @@ const drawShotsOnCourt = () => {
       ref="shotTracker"
     ></canvas>
     <p>All Event Data {{ state.sportEvent.sport_data }}</p>
-    <div
-      v-for="team in state.sportEvent.sport_data.stats.team_data"
-      :key="team.id"
-    >
+    <div v-for="team in state.sportEvent.getStats().team_data" :key="team.id">
       <p>{{ team.name }}: {{ team.score }}</p>
       <button @click="addScore(Team1, 1)">Increment</button>
       <button @click="missedFG()">Missed FG</button>
