@@ -36,9 +36,11 @@ function generateTypescript(jsonFilePath) {
 }
 
 // Usage
-const jsonFilePath = process.argv[2];
-if (!jsonFilePath) {
-  console.error('Please provide a JSON file path as an argument.');
+const defaultJsonPath = path.join(__dirname, '..', 'src', 'lib', 'sports', 'Basketball.json');
+const jsonFilePath = process.argv[2] || defaultJsonPath;
+
+if (!fs.existsSync(jsonFilePath)) {
+  console.error(`File not found: ${jsonFilePath}`);
   process.exit(1);
 }
 
