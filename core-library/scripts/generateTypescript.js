@@ -35,13 +35,16 @@ function generateTypescript(jsonFilePath) {
   console.log(`Generated ${tsFilePath}`);
 }
 
-// Usage
-const defaultJsonPath = path.join(__dirname, '..', 'src', 'lib', 'sports', 'Basketball.json');
-const jsonFilePath = process.argv[2] || defaultJsonPath;
-
-if (!fs.existsSync(jsonFilePath)) {
-  console.error(`File not found: ${jsonFilePath}`);
-  process.exit(1);
+function processAllJsonFiles() {
+  const sportsFolder = path.join(__dirname, '..', 'src', 'lib', 'sports');
+  
+  fs.readdirSync(sportsFolder).forEach(file => {
+    if (path.extname(file) === '.json') {
+      const jsonFilePath = path.join(sportsFolder, file);
+      generateTypescript(jsonFilePath);
+    }
+  });
 }
 
-generateTypescript(jsonFilePath);
+// Usage
+processAllJsonFiles();
