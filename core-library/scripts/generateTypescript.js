@@ -9,6 +9,16 @@ function generateTypescript(jsonFilePath) {
   tsContent += `import { Team, Player, Position } from '../../types';\n\n`;
   tsContent += `export default class ${className} extends Editor {\n`;
   
+  // Generate config
+  if (jsonContent.config) {
+    tsContent += `  config = ${JSON.stringify(jsonContent.config, null, 2)};\n\n`;
+  }
+  
+  // Generate rules
+  if (jsonContent.rules) {
+    tsContent += `  rules = ${JSON.stringify(jsonContent.rules, null, 2)};\n\n`;
+  }
+  
   // Generate actions
   tsContent += `  actions: { [key: string]: IAction } = {\n`;
   Object.entries(jsonContent.actions).forEach(([actionName, action]) => {
