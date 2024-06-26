@@ -5,8 +5,8 @@ function generateTypescript(jsonFilePath) {
   const jsonContent = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
   const className = path.basename(jsonFilePath, '.json');
   
-  let tsContent = `import Editor, { IAction } from '../Editor';\n`;
-  tsContent += `import { Team, Player, Position } from '../types';\n\n`;
+  let tsContent = `import Editor, { IAction } from '../../Editor';\n`;
+  tsContent += `import { Team, Player, Position } from '../../types';\n\n`;
   tsContent += `export default class ${className} extends Editor {\n`;
   
   // Generate actions
@@ -44,7 +44,12 @@ function generateTypescript(jsonFilePath) {
   
   tsContent += `}\n`;
   
-  const tsFilePath = jsonFilePath.replace('.json', '.ts');
+  const generatedFolder = path.join(path.dirname(jsonFilePath), 'generated');
+  if (!fs.existsSync(generatedFolder)) {
+    fs.mkdirSync(generatedFolder);
+  }
+  
+  const tsFilePath = path.join(generatedFolder, `${className}.ts`);
   fs.writeFileSync(tsFilePath, tsContent);
   console.log(`Generated ${tsFilePath}`);
 }
