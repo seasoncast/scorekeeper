@@ -5,7 +5,8 @@ function generateTypescript(jsonFilePath) {
   const jsonContent = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
   const className = path.basename(jsonFilePath, '.json');
   
-  let tsContent = `import Editor, { IAction } from '../Editor';\n\n`;
+  let tsContent = `import Editor, { IAction } from '../Editor';\n`;
+  tsContent += `import { Team, Player, Position } from '../types';\n\n`;
   tsContent += `export default class ${className} extends Editor {\n`;
   
   // Generate actions
