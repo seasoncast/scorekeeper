@@ -54,6 +54,21 @@ function generateTypescript(jsonFilePath) {
   console.log(`Generated ${tsFilePath}`);
 }
 
+function generateIndex(sportsFolder) {
+  const generatedFolder = path.join(sportsFolder, 'generated');
+  const files = fs.readdirSync(generatedFolder).filter(file => file.endsWith('.ts') && file !== 'index.ts');
+  
+  let indexContent = '';
+  files.forEach(file => {
+    const className = path.basename(file, '.ts');
+    indexContent += `export { default as ${className} } from './${className}';\n`;
+  });
+  
+  const indexPath = path.join(generatedFolder, 'index.ts');
+  fs.writeFileSync(indexPath, indexContent);
+  console.log(`Generated ${indexPath}`);
+}
+
 function processAllJsonFiles() {
   const sportsFolder = path.join(__dirname, '..', 'src', 'lib', 'sports');
   
@@ -63,6 +78,8 @@ function processAllJsonFiles() {
       generateTypescript(jsonFilePath);
     }
   });
+  
+  generateIndex(sportsFolder);
 }
 
 // Usage
