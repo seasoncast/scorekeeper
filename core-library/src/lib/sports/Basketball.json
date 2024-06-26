@@ -1,6 +1,7 @@
 {
   "actions": {
     "BASKETBALL_SHOT_MISSED": {
+      "name": "BASKETBALL_SHOT_MISSED",
       "description": "2 point shot missed",
       "args": [
         { "id": "teamShooting", "type": "Team" },
@@ -27,6 +28,7 @@
       ]
     },
     "BASKETBALL_SHOT_MADE": {
+      "name": "BASKETBALL_SHOT_MADE",
       "description": "2 point shot made",
       "args": [
         { "id": "teamShooting", "type": "Team" },
@@ -59,6 +61,7 @@
   "functions": [
     {
       "name": "shotMissed",
+      "action": "BASKETBALL_SHOT_MISSED",
       "args": {
         "teamShooting": "string",
         "teamDefending": "string",
@@ -68,6 +71,17 @@
         "blocked_by": "string"
       },
       "optional": ["position", "shooter", "was_blocked", "blocked_by"]
+    },
+    {
+      "name": "shotMade",
+      "action": "BASKETBALL_SHOT_MADE",
+      "args": {
+        "teamShooting": "string",
+        "teamDefending": "string",
+        "position": "[number, number]",
+        "shooter": "string"
+      },
+      "optional": ["position", "shooter"]
     }
   ]
 }

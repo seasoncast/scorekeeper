@@ -21,7 +21,7 @@ function generateTypescript(jsonFilePath) {
     tsContent += `    this.sportEvent.updateStats((stats) => {\n`;
     tsContent += `      return this.parseAction(\n`;
     tsContent += `        stats,\n`;
-    tsContent += `        this.actions['${className.toUpperCase()}_${func.name.toUpperCase()}'],\n`;
+    tsContent += `        this.actions['${func.action}'],\n`;
     tsContent += `        args\n`;
     tsContent += `      );\n`;
     tsContent += `    });\n`;
