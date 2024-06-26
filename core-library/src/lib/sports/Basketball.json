@@ -18,8 +18,8 @@
           "player_id": "$shooter",
           "team_id": "$teamShooting",
           "data_change": {
-            "shot_attempts": 1,
-            "shot_2_attempts": 1,
+            "shot_attempts": { "type": "increment", "value": 1 },
+            "shot_2_attempts": { "type": "increment", "value": 1 },
             "shot_position": { "type": "push", "value": "$position", "requires": ["$position"] }
           }
         }
@@ -41,11 +41,11 @@
           "player_id": "$shooter",
           "team_id": "$teamShooting",
           "data_change": {
-            "shot_attempts": 1,
-            "shot_made": 1,
-            "shot_2_attempts": 1,
-            "shot_2_made": 1,
-            "points": 2,
+            "shot_attempts": { "type": "increment", "value": 1 },
+            "shot_made": { "type": "increment", "value": 1 },
+            "shot_2_attempts": { "type": "increment", "value": 1 },
+            "shot_2_made": { "type": "increment", "value": 1 },
+            "points": { "type": "increment", "value": 2 },
             "shot_position": { "type": "push", "value": "$position", "requires": ["$position"] }
           }
         }
