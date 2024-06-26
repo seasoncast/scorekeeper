@@ -1,7 +1,6 @@
 {
   "actions": {
-    "BASKETBALL_SHOT_MISSED": {
-      "name": "BASKETBALL_SHOT_MISSED",
+    "SHOT_MISSED": {
       "description": "2 point shot missed",
       "args": [
         { "id": "teamShooting", "type": "Team" },
@@ -19,19 +18,14 @@
           "player_id": "$shooter",
           "team_id": "$teamShooting",
           "data_change": {
-            "shot_attempts": { "type": "increment", "value": 1 },
-            "shot_2_attempts": { "type": "increment", "value": 1 },
-            "shot_position": {
-              "type": "push",
-              "value": "$position",
-              "requires": ["$position"]
-            }
+            "shot_attempts": 1,
+            "shot_2_attempts": 1,
+            "shot_position": { "type": "push", "value": "$position", "requires": ["$position"] }
           }
         }
       ]
     },
-    "BASKETBALL_SHOT_MADE": {
-      "name": "BASKETBALL_SHOT_MADE",
+    "SHOT_MADE": {
       "description": "2 point shot made",
       "args": [
         { "id": "teamShooting", "type": "Team" },
@@ -47,16 +41,12 @@
           "player_id": "$shooter",
           "team_id": "$teamShooting",
           "data_change": {
-            "shot_attempts": { "type": "increment", "value": 1 },
-            "shot_made": { "type": "increment", "value": 1 },
-            "shot_2_attempts": { "type": "increment", "value": 1 },
-            "shot_2_made": { "type": "increment", "value": 1 },
-            "points": { "type": "increment", "value": 2 },
-            "shot_position": {
-              "type": "push",
-              "value": "$position",
-              "requires": ["$position"]
-            }
+            "shot_attempts": 1,
+            "shot_made": 1,
+            "shot_2_attempts": 1,
+            "shot_2_made": 1,
+            "points": 2,
+            "shot_position": { "type": "push", "value": "$position", "requires": ["$position"] }
           }
         }
       ]

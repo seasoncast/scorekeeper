@@ -9,11 +9,23 @@ function generateTypescript(jsonFilePath) {
   tsContent += `export default class ${className} extends Editor {\n`;
   
   // Generate actions
-  tsContent += `  actions: { [key: string]: IAction } = ${JSON.stringify(jsonContent.actions, null, 2)};\n\n`;
+  tsContent += `  actions: { [key: string]: IAction } = {\n`;
+  Object.entries(jsonContent.actions).forEach(([actionName, action]) => {
+    tsContent += `    ${actionName}: {\n`;
+    tsContent += `      name: "${actionName}",\n`;
+    Object.entries(action).forEach(([key, value]) => {
+      if (key !== 'name') {
+        tsContent += `      ${key}: ${JSON.stringify(value)},\n`;
+      }
+    });
+    tsContent += `    },\n`;
+  });
+  tsContent += `  };\n\n`;
   
   // Generate functions automatically from actions
-  Object.entries(jsonContent.actions).forEach(([actionName, action]) => {
+  Object.keys(jsonContent.actions).forEach((actionName) => {
     const functionName = actionName.toLowerCase().replace(/_(.)/g, (match, group1) => group1.toUpperCase());
+    const action = jsonContent.actions[actionName];
     const argsList = action.args
       .map(arg => `${arg.id}${arg.optional ? '?' : ''}: ${arg.type}`)
       .join(', ');
