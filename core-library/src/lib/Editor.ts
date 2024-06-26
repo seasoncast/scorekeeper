@@ -2,6 +2,7 @@ import IStats from '../types/IStats';
 import SportEvent from './SportEvent';
 import Team from './Team';
 export interface IAction {
+  name: string;
   description: string;
   args: any[];
   result: IResult[];

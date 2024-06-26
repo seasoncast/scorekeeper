@@ -4,21 +4,25 @@ const path = require('path');
 function generateTypescript(jsonFilePath) {
   const jsonContent = JSON.parse(fs.readFileSync(jsonFilePath, 'utf8'));
   const className = path.basename(jsonFilePath, '.json');
-  
+
   let tsContent = `import Editor, { IAction } from '../../Editor';\n`;
-  tsContent += `import { Team, Player, Position } from '../../types';\n\n`;
+  tsContent += `import { Team, Player, Position } from '../../../types';\n\n`;
   tsContent += `export default class ${className} extends Editor {\n`;
-  
+
   // Generate config
   if (jsonContent.config) {
-    tsContent += `  config = ${JSON.stringify(jsonContent.config, null, 2)};\n\n`;
+    tsContent += `  config = ${JSON.stringify(
+      jsonContent.config,
+      null,
+      2
+    )};\n\n`;
   }
-  
+
   // Generate rules
   if (jsonContent.rules) {
     tsContent += `  rules = ${JSON.stringify(jsonContent.rules, null, 2)};\n\n`;
   }
-  
+
   // Generate actions
   tsContent += `  actions: { [key: string]: IAction } = {\n`;
   Object.entries(jsonContent.actions).forEach(([actionName, action]) => {
@@ -32,15 +36,17 @@ function generateTypescript(jsonFilePath) {
     tsContent += `    },\n`;
   });
   tsContent += `  };\n\n`;
-  
+
   // Generate functions automatically from actions
   Object.keys(jsonContent.actions).forEach((actionName) => {
-    const functionName = actionName.toLowerCase().replace(/_(.)/g, (match, group1) => group1.toUpperCase());
+    const functionName = actionName
+      .toLowerCase()
+      .replace(/_(.)/g, (match, group1) => group1.toUpperCase());
     const action = jsonContent.actions[actionName];
     const argsList = action.args
-      .map(arg => `${arg.id}${arg.optional ? '?' : ''}: ${arg.type}`)
+      .map((arg) => `${arg.id}${arg.optional ? '?' : ''}: ${arg.type}`)
       .join(', ');
-    
+
     tsContent += `  ${functionName}(args: { ${argsList} }) {\n`;
     tsContent += `    this.sportEvent.updateStats((stats) => {\n`;
     tsContent += `      return this.parseAction(\n`;
@@ -51,14 +57,14 @@ function generateTypescript(jsonFilePath) {
     tsContent += `    });\n`;
     tsContent += `  }\n\n`;
   });
-  
+
   tsContent += `}\n`;
-  
+
   const generatedFolder = path.join(path.dirname(jsonFilePath), 'generated');
   if (!fs.existsSync(generatedFolder)) {
     fs.mkdirSync(generatedFolder);
   }
-  
+
   const tsFilePath = path.join(generatedFolder, `${className}.ts`);
   fs.writeFileSync(tsFilePath, tsContent);
   console.log(`Generated ${tsFilePath}`);
@@ -66,14 +72,16 @@ function generateTypescript(jsonFilePath) {
 
 function generateIndex(sportsFolder) {
   const generatedFolder = path.join(sportsFolder, 'generated');
-  const files = fs.readdirSync(generatedFolder).filter(file => file.endsWith('.ts') && file !== 'index.ts');
-  
+  const files = fs
+    .readdirSync(generatedFolder)
+    .filter((file) => file.endsWith('.ts') && file !== 'index.ts');
+
   let indexContent = '';
-  files.forEach(file => {
+  files.forEach((file) => {
     const className = path.basename(file, '.ts');
     indexContent += `export { default as ${className} } from './${className}';\n`;
   });
-  
+
   const indexPath = path.join(generatedFolder, 'index.ts');
   fs.writeFileSync(indexPath, indexContent);
   console.log(`Generated ${indexPath}`);
@@ -81,14 +89,14 @@ function generateIndex(sportsFolder) {
 
 function processAllJsonFiles() {
   const sportsFolder = path.join(__dirname, '..', 'src', 'lib', 'sports');
-  
-  fs.readdirSync(sportsFolder).forEach(file => {
+
+  fs.readdirSync(sportsFolder).forEach((file) => {
     if (path.extname(file) === '.json') {
       const jsonFilePath = path.join(sportsFolder, file);
       generateTypescript(jsonFilePath);
     }
   });
-  
+
   generateIndex(sportsFolder);
 }
 
