@@ -29,6 +29,8 @@ export default class Editor {
   constructor(sportEvent: SportEvent) {
     this.sportEvent = sportEvent;
   }
+
+  getID;
   parseAction(stats: IStats, action: IAction, passed_args: any): IStats {
     //  passed args are an object with the keys being the id of the arg and the value being the value of the arg
 
@@ -135,6 +137,10 @@ export default class Editor {
         typeof value.value === 'string' && value.value.startsWith('$')
           ? passed_args[value.value.replace('$', '')]
           : value.value;
+
+      if (parsedValue == null) {
+        continue;
+      }
 
       if (value.type === 'increment') {
         if (!stats[key]) {
