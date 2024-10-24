@@ -43,7 +43,8 @@ export const App = () => {
     
     const newShots = [...shots, [xPercent, yPercent]];
     setShots(newShots);
-  };
+  });
+  }
 
 
 
