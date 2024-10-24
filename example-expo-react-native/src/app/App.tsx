@@ -25,9 +25,25 @@ export const App = () => {
   const COURT_WIDTH = COURT_HEIGHT * 1.8666937614;
 
   const handleCourtPress = (event: any) => {
-    const { locationX, locationY } = event.nativeEvent;
-    const xPercent = locationX / COURT_WIDTH;
-    const yPercent = locationY / COURT_HEIGHT;
+    const { pageX, pageY } = event.nativeEvent;
+    const target = event.target;
+    // Get the element's position on screen
+    target.measure((x: number, y: number, width: number, height: number, pageXOffset: number, pageYOffset: number) => {
+      // Calculate relative position
+      const xPercent = (pageX - pageXOffset) / COURT_WIDTH;
+      const yPercent = (pageY - pageYOffset) / COURT_HEIGHT;
+      
+      editorBasketball?.shotMissed({
+        teamShooting: sportEvent.getTeamAtIndex(0)!.id,
+        teamDefending: sportEvent.getTeamAtIndex(1)!.id,
+        position: [xPercent, yPercent],
+      });
+  
+      console.log('shot missed', xPercent, yPercent);
+  
+      const newShots = [...shots, [xPercent, yPercent]];
+      setShots(newShots);
+    });
     
     editorBasketball?.shotMissed({
       teamShooting: sportEvent.getTeamAtIndex(0)!.id,
