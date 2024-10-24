@@ -10,15 +10,15 @@ import {
 import { useSportData } from '@org/ui-library-react-native';
 
 export const BasketballCourt: React.FC = () => {
-  const { sportEventData } = useSportData();
+  const { sportEventData, sportEvent } = useSportData();
 
-  if (!sportEventData) {
+  if (!sportEventData || !sportEvent) {
     return null;
   }
-
-  const editorBasketball = new Basketball(sportEventData);
-  const teamShooting = sportEventData.getTeamAtIndex(0);
-  const teamDefending = sportEventData.getTeamAtIndex(1);
+  
+  const editorBasketball = new Basketball(sportEvent);
+  const teamShooting = sportEvent.getTeamAtIndex(0);
+  const teamDefending = sportEvent.getTeamAtIndex(1);
 
   if (!teamShooting || !teamDefending) {
     return null;

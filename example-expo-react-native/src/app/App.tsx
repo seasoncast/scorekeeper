@@ -21,6 +21,7 @@ export const App = () => {
   }));
   const [editorBasketball, setEditorBasketball] = useState<Basketball | null>(new Basketball(sportEvent));
 
+  
 
   const setupEvent = () => {
 const Team1 = new Team('Team 1');
