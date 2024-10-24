@@ -21,29 +21,16 @@ export const App = () => {
   }));
   const [editorBasketball, setEditorBasketball] = useState<Basketball | null>(new Basketball(sportEvent));
   const [shots, setShots] = useState<Array<[number, number]>>([]);
+  const [courtLayout, setCourtLayout] = useState({ x: 0, y: 0, width: 0, height: 0 });
   const COURT_HEIGHT = 400;
   const COURT_WIDTH = COURT_HEIGHT * 1.8666937614;
 
   const handleCourtPress = (event: any) => {
     const { pageX, pageY } = event.nativeEvent;
-    const target = event.target;
-    // Get the element's position on screen
-    target.measure((x: number, y: number, width: number, height: number, pageXOffset: number, pageYOffset: number) => {
-      // Calculate relative position
-      const xPercent = (pageX - pageXOffset) / COURT_WIDTH;
-      const yPercent = (pageY - pageYOffset) / COURT_HEIGHT;
-      
-      editorBasketball?.shotMissed({
-        teamShooting: sportEvent.getTeamAtIndex(0)!.id,
-        teamDefending: sportEvent.getTeamAtIndex(1)!.id,
-        position: [xPercent, yPercent],
-      });
-  
-      console.log('shot missed', xPercent, yPercent);
-  
-      const newShots = [...shots, [xPercent, yPercent]];
-      setShots(newShots);
-    });
+    
+    // Calculate relative position using the stored layout
+    const xPercent = (pageX - courtLayout.x) / courtLayout.width;
+    const yPercent = (pageY - courtLayout.y) / courtLayout.height;
     
     editorBasketball?.shotMissed({
       teamShooting: sportEvent.getTeamAtIndex(0)!.id,
@@ -52,7 +39,7 @@ export const App = () => {
     });
 
     console.log('shot missed', xPercent, yPercent);
-
+    
     const newShots = [...shots, [xPercent, yPercent]];
     setShots(newShots);
   };
@@ -109,6 +96,10 @@ sportEvent.addTeam(Team2);
                   style={{
                     width: COURT_WIDTH,
                     height: COURT_HEIGHT,
+                  }}
+                  onLayout={(event) => {
+                    const layout = event.nativeEvent.layout;
+                    setCourtLayout(layout);
                   }}
                 >
                   {shots.map((shot, index) => (
