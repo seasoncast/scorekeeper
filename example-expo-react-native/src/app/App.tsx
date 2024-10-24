@@ -11,9 +11,8 @@ import {
   TouchableOpacity,
   View,
   Image,
-  Dimensions
+  ImageBackground
 } from 'react-native';
-import Canvas from 'react-native-canvas';
 
 export const App = () => {
   const scrollViewRef = useRef<null | ScrollView>(null);
@@ -22,40 +21,14 @@ export const App = () => {
     scheduled_date: new Date('2021-01-01'),
   }));
   const [editorBasketball, setEditorBasketball] = useState<Basketball | null>(new Basketball(sportEvent));
-  const canvasRef = useRef<Canvas>(null);
-  const [canvasHeight] = useState(400);
-  const [canvasWidth] = useState(400 * 1.8666937614);
+  const [shots, setShots] = useState<Array<[number, number]>>([]);
+  const COURT_HEIGHT = 400;
+  const COURT_WIDTH = COURT_HEIGHT * 1.8666937614;
 
-  const drawCourt = (canvas: Canvas) => {
-    const ctx = canvas.getContext('2d');
-    const img = new Image();
-    img.src = '../assets/basketball.jpeg';
-    
-    img.onload = () => {
-      ctx.drawImage(img, 0, 0, canvasWidth, canvasHeight);
-      drawShotsOnCourt(canvas);
-    };
-  };
-
-  const drawShotsOnCourt = (canvas: Canvas) => {
-    const ctx = canvas.getContext('2d');
-    const shots = sportEvent.getStats().team_data[0]?.shot_position;
-    if (!shots) return;
-    
-    for (let i = 0; i < shots.length; i++) {
-      const x = shots[i][0] * canvasWidth;
-      const y = shots[i][1] * canvasHeight;
-      ctx.beginPath();
-      ctx.arc(x, y, 5, 0, 2 * Math.PI);
-      ctx.fillStyle = 'blue';
-      ctx.fill();
-    }
-  };
-
-  const handleCanvasPress = (event: any) => {
+  const handleCourtPress = (event: any) => {
     const { locationX, locationY } = event.nativeEvent;
-    const xPercent = locationX / canvasWidth;
-    const yPercent = locationY / canvasHeight;
+    const xPercent = locationX / COURT_WIDTH;
+    const yPercent = locationY / COURT_HEIGHT;
     
     editorBasketball?.shotMissed({
       teamShooting: sportEvent.getTeamAtIndex(0)!.id,
@@ -63,9 +36,8 @@ export const App = () => {
       position: [xPercent, yPercent],
     });
 
-    if (canvasRef.current) {
-      drawCourt(canvasRef.current);
-    }
+    const newShots = [...shots, [xPercent, yPercent]];
+    setShots(newShots);
   };
 
 
@@ -114,14 +86,30 @@ sportEvent.addTeam(Team2);
             <TimelineDisplay />
             
             <View style={styles.courtContainer}>
-              <Canvas
-                ref={canvasRef}
-                style={{
-                  width: canvasWidth,
-                  height: canvasHeight,
-                }}
-                onTouchStart={handleCanvasPress}
-              />
+              <TouchableOpacity onPress={handleCourtPress}>
+                <ImageBackground
+                  source={require('../assets/basketball.jpeg')}
+                  style={{
+                    width: COURT_WIDTH,
+                    height: COURT_HEIGHT,
+                  }}
+                >
+                  {shots.map((shot, index) => (
+                    <View
+                      key={index}
+                      style={{
+                        position: 'absolute',
+                        left: shot[0] * COURT_WIDTH - 5,
+                        top: shot[1] * COURT_HEIGHT - 5,
+                        width: 10,
+                        height: 10,
+                        borderRadius: 5,
+                        backgroundColor: 'blue',
+                      }}
+                    />
+                  ))}
+                </ImageBackground>
+              </TouchableOpacity>
             </View>
 
             </SportEventProvider>
