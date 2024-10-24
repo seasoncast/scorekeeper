@@ -11,9 +11,21 @@ import { useSportData } from '@org/ui-library-react-native';
 
 export const BasketballCourt: React.FC = () => {
   const { sportEventData } = useSportData();
+
+  if (!sportEventData) {
+    return null;
+  }
+
   const editorBasketball = new Basketball(sportEventData);
-  const teamShootingId = sportEventData.getTeamAtIndex(0)!.id;
-  const teamDefendingId = sportEventData.getTeamAtIndex(1)!.id;
+  const teamShooting = sportEventData.getTeamAtIndex(0);
+  const teamDefending = sportEventData.getTeamAtIndex(1);
+
+  if (!teamShooting || !teamDefending) {
+    return null;
+  }
+
+  const teamShootingId = teamShooting.id;
+  const teamDefendingId = teamDefending.id;
   const [shots, setShots] = useState<Array<[number, number]>>([]);
   const courtRef = useRef(null);
   const COURT_HEIGHT = 400;
