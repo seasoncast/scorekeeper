@@ -3,15 +3,14 @@ import { Basketball, Player, SportEvent, Team } from '@org/core-library';
 import { ScoreDisplayCard, SportEventProvider, TimelineDisplay } from '@org/ui-library-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
+  ImageBackground,
   SafeAreaView,
   ScrollView,
   StatusBar,
   StyleSheet,
   Text,
   TouchableOpacity,
-  View,
-  Image,
-  ImageBackground
+  View
 } from 'react-native';
 
 export const App = () => {
@@ -35,6 +34,8 @@ export const App = () => {
       teamDefending: sportEvent.getTeamAtIndex(1)!.id,
       position: [xPercent, yPercent],
     });
+
+    console.log('shot missed', xPercent, yPercent);
 
     const newShots = [...shots, [xPercent, yPercent]];
     setShots(newShots);
@@ -88,7 +89,7 @@ sportEvent.addTeam(Team2);
             <View style={styles.courtContainer}>
               <TouchableOpacity onPress={handleCourtPress}>
                 <ImageBackground
-                  source={require('../assets/basketball.jpeg')}
+                  source={require('./../../assets/basketball.jpeg')}
                   style={{
                     width: COURT_WIDTH,
                     height: COURT_HEIGHT,
