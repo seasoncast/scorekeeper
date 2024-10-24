@@ -57,11 +57,7 @@ sportEvent.addTeam(Team2);
         >
          <View>
           <SportEventProvider sportEvent={sportEvent}>
-            <BasketballCourt 
-              editorBasketball={editorBasketball}
-              teamShootingId={sportEvent.getTeamAtIndex(0)!.id}
-              teamDefendingId={sportEvent.getTeamAtIndex(1)!.id}
-            />
+            <BasketballCourt />
             <ScoreDisplayCard />
             
             <TouchableOpacity

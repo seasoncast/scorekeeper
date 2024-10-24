@@ -7,17 +7,13 @@ import {
   View,
 } from 'react-native';
 
-interface BasketballCourtProps {
-  editorBasketball: Basketball | null;
-  teamShootingId: string;
-  teamDefendingId: string;
-}
+import { useSportData } from '@org/ui-library-react-native';
 
-export const BasketballCourt: React.FC<BasketballCourtProps> = ({
-  editorBasketball,
-  teamShootingId,
-  teamDefendingId,
-}) => {
+export const BasketballCourt: React.FC = () => {
+  const { sportEventData } = useSportData();
+  const editorBasketball = new Basketball(sportEventData);
+  const teamShootingId = sportEventData.getTeamAtIndex(0)!.id;
+  const teamDefendingId = sportEventData.getTeamAtIndex(1)!.id;
   const [shots, setShots] = useState<Array<[number, number]>>([]);
   const courtRef = useRef(null);
   const COURT_HEIGHT = 400;
