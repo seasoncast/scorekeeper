@@ -30,7 +30,6 @@ export default class Editor {
     this.sportEvent = sportEvent;
   }
 
-  getID;
   parseAction(stats: IStats, action: IAction, passed_args: any): IStats {
     //  passed args are an object with the keys being the id of the arg and the value being the value of the arg
 
