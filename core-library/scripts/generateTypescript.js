@@ -44,12 +44,12 @@ function generateTypescript(jsonFilePath) {
       .replace(/_(.)/g, (match, group1) => group1.toUpperCase());
     const action = jsonContent.actions[actionName];
     const argsList = action.args
-      .map((arg) => `${arg.id}${arg.optional ? '?' : ''}: ${arg.type}`)
+      .map((arg) => `${arg.id}?: ${arg.type}`)
       .join(', ');
 
-    tsContent += `  ${functionName}(args: { ${argsList} }) {\n`;
-    tsContent += `    this.sportEvent.updateStats((stats) => {\n`;
-    tsContent += `      return this.parseAction(\n`;
+    tsContent += `  async ${functionName}(args: { ${argsList} }) {\n`;
+    tsContent += `    this.sportEvent.updateStats(async (stats) => {\n`;
+    tsContent += `      return await this.parseAction(\n`;
     tsContent += `        stats,\n`;
     tsContent += `        this.actions['${actionName}'],\n`;
     tsContent += `        args\n`;

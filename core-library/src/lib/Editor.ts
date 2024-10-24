@@ -11,10 +11,21 @@ export interface IPromptOptions {
 export interface IPromptCallback {
   (options: IPromptOptions): Promise<string>;
 }
+export interface IActionArg {
+  id: string;
+  type: string;
+  optional?: boolean;
+  prompt?: {
+    title: string;
+    required?: boolean;
+    options?: { label: string; value: string }[];
+  };
+}
+
 export interface IAction {
   name: string;
   description: string;
-  args: any[];
+  args: IActionArg[];
   result: IResult[];
 }
 export interface IResult {
@@ -43,8 +54,23 @@ export default class Editor {
     this.promptCallback = promptCallback;
   }
 
-  parseAction(stats: IStats, action: IAction, passed_args: any): IStats {
-    //  passed args are an object with the keys being the id of the arg and the value being the value of the arg
+  async parseAction(stats: IStats, action: IAction, passed_args: any): Promise<IStats> {
+    // Handle prompts for missing arguments
+    const args = { ...passed_args };
+    
+    for (const arg of action.args) {
+      if (!args[arg.id] && arg.prompt && this.promptCallback) {
+        if (arg.prompt.required || !arg.optional) {
+          const promptType = arg.prompt.options ? 'select' : 'text';
+          const response = await this.promptCallback({
+            type: promptType,
+            title: arg.prompt.title,
+            options: arg.prompt.options
+          });
+          args[arg.id] = response;
+        }
+      }
+    }
 
     // process the results on stats
     // return the stats
