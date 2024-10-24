@@ -1,6 +1,16 @@
 import IStats from '../types/IStats';
 import SportEvent from './SportEvent';
 import Team from './Team';
+
+export interface IPromptOptions {
+  type: 'text' | 'select';
+  title: string;
+  options?: { label: string; value: string }[];
+}
+
+export interface IPromptCallback {
+  (options: IPromptOptions): Promise<string>;
+}
 export interface IAction {
   name: string;
   description: string;
@@ -26,8 +36,11 @@ export interface IDataChange {
 }
 export default class Editor {
   protected sportEvent: SportEvent;
-  constructor(sportEvent: SportEvent) {
+  protected promptCallback?: IPromptCallback;
+
+  constructor(sportEvent: SportEvent, promptCallback?: IPromptCallback) {
     this.sportEvent = sportEvent;
+    this.promptCallback = promptCallback;
   }
 
   parseAction(stats: IStats, action: IAction, passed_args: any): IStats {
