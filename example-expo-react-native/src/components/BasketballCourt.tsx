@@ -1,11 +1,11 @@
+import { Basketball } from '@org/core-library';
 import React, { useRef, useState } from 'react';
 import {
   ImageBackground,
+  StyleSheet,
   TouchableOpacity,
   View,
-  StyleSheet,
 } from 'react-native';
-import { Basketball } from '@org/core-library';
 
 interface BasketballCourtProps {
   editorBasketball: Basketball | null;
