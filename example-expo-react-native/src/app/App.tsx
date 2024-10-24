@@ -31,7 +31,7 @@ export const App = () => {
     // Calculate relative position using the stored layout
     const xPercent = (pageX - courtLayout.x) / courtLayout.width;
     const yPercent = (pageY - courtLayout.y) / courtLayout.height;
-    
+      console.log(pageX, pageY, courtLayout.x, courtLayout.y, courtLayout.width, courtLayout.height);
     editorBasketball?.shotMissed({
       teamShooting: sportEvent.getTeamAtIndex(0)!.id,
       teamDefending: sportEvent.getTeamAtIndex(1)!.id,
@@ -81,15 +81,7 @@ sportEvent.addTeam(Team2);
         >
          <View>
           <SportEventProvider sportEvent={sportEvent}>
-            <ScoreDisplayCard />
-            <TouchableOpacity
-              onPress={() => {
-                editorBasketball?.addScore(sportEvent.getTeamAtIndex(0)!, 2);
-              }}><Text>Team 1 +2</Text>
-            </TouchableOpacity>
-            <TimelineDisplay />
-            
-            <View style={styles.courtContainer}>
+          <View style={styles.courtContainer}>
               <TouchableOpacity onPress={handleCourtPress}>
                 <ImageBackground
                   source={require('./../../assets/basketball.jpeg')}
@@ -119,6 +111,16 @@ sportEvent.addTeam(Team2);
                 </ImageBackground>
               </TouchableOpacity>
             </View>
+            <ScoreDisplayCard />
+            
+            <TouchableOpacity
+              onPress={() => {
+                editorBasketball?.addScore(sportEvent.getTeamAtIndex(0)!, 2);
+              }}><Text>Team 1 +2</Text>
+            </TouchableOpacity>
+            <TimelineDisplay />
+            
+     
 
             </SportEventProvider>
          </View>
