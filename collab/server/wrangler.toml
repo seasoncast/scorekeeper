@@ -3,4 +3,13 @@ compatibility_date = "2024-01-01"
 compatibility_flags = ["nodejs_compat"]
 main = "src/index.ts"
 
+[durable_objects]
+bindings = [
+  { name = "COLLAB_ROOM", class_name = "CollaborationRoom" }
+]
+
+[[migrations]]
+tag = "v1"
+new_classes = ["CollaborationRoom"]
+
 
