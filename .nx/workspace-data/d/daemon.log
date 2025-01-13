@@ -209,3 +209,64 @@
 [NX Daemon Server] - 2025-01-13T23:52:02.386Z - Established a connection. Number of open connections: 3
 [NX Daemon Server] - 2025-01-13T23:52:02.518Z - [SYNC]: collect registered sync generators
 [NX Daemon Server] - 2025-01-13T23:52:02.518Z - Time taken for 'total execution time for createProjectGraph()' 163.54458299999988ms
+[NX Daemon Server] - 2025-01-13T23:52:24.271Z - Established a connection. Number of open connections: 4
+[NX Daemon Server] - 2025-01-13T23:52:24.271Z - Closed a connection. Number of open connections: 3
+[NX Daemon Server] - 2025-01-13T23:52:24.271Z - Established a connection. Number of open connections: 4
+[NX Daemon Server] - 2025-01-13T23:52:24.272Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2025-01-13T23:52:24.272Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2025-01-13T23:52:24.273Z - Time taken for 'total for creating and serializing project graph' 0.21408299999893643ms
+[NX Daemon Server] - 2025-01-13T23:52:24.275Z - Done responding to the client project-graph
+[NX Daemon Server] - 2025-01-13T23:52:24.275Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2025-01-13T23:52:35.009Z - Established a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-13T23:52:35.009Z - Established a connection. Number of open connections: 6
+[NX Daemon Server] - 2025-01-13T23:52:35.009Z - Closed a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-13T23:52:35.009Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2025-01-13T23:52:35.009Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2025-01-13T23:52:35.010Z - Time taken for 'total for creating and serializing project graph' 0.09491700000216952ms
+[NX Daemon Server] - 2025-01-13T23:52:35.012Z - Done responding to the client project-graph
+[NX Daemon Server] - 2025-01-13T23:52:35.012Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 3.
+[NX Daemon Server] - 2025-01-13T23:52:35.036Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2025-01-13T23:52:35.036Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2025-01-13T23:52:35.037Z - Time taken for 'total for creating and serializing project graph' 0.16262499999720603ms
+[NX Daemon Server] - 2025-01-13T23:52:35.038Z - Done responding to the client project-graph
+[NX Daemon Server] - 2025-01-13T23:52:35.038Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 0. Response time: 2.
+[NX Daemon Server] - 2025-01-13T23:52:35.365Z - [WATCHER]: 15 file(s) created or restored, 1 file(s) modified, 0 file(s) deleted
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - [REQUEST]: Responding to the client. File watch changed
+Error [ERR_STREAM_DESTROYED]: Cannot call write after a stream was destroyed
+    at _write (node:internal/streams/writable:489:11)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at /Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/@nx/eslint/node_modules/nx/src/daemon/server/shutdown-utils.js:73:16
+    at new Promise (<anonymous>)
+    at respondToClient (/Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/@nx/eslint/node_modules/nx/src/daemon/server/shutdown-utils.js:69:12)
+    at handleResult (/Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/@nx/eslint/node_modules/nx/src/daemon/server/server.js:178:52)
+    at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
+    at async Promise.all (index 0)
+    at async /Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/@nx/eslint/node_modules/nx/src/daemon/server/file-watching/file-watcher-sockets.js:27:9
+    at async /Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/@nx/eslint/node_modules/nx/src/utils/promised-based-queue.js:19:21 {
+  code: 'ERR_STREAM_DESTROYED'
+}
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Done responding to the client File watch changed
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Handled FILE-WATCH-CHANGED. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Time taken for 'changed-projects' 0.14595900000131223ms
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Closed a connection. Number of open connections: 4
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Closed a connection. Number of open connections: 3
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Closed a connection. Number of open connections: 2
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - [WATCHER]: Stopping the watcher for /Users/maxsmith/Documents/GitHub/scorekeeper (sources)
+[NX Daemon Server] - 2025-01-13T23:52:35.366Z - [WATCHER]: Stopping the watcher for /Users/maxsmith/Documents/GitHub/scorekeeper (outputs)
+(node:45784) ExperimentalWarning: CommonJS module /Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/ora/index.js is loading ES Module /Users/maxsmith/Documents/GitHub/scorekeeper/node_modules/strip-ansi/index.js using require().
+Support for loading ES Module in require() is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+[NX Daemon Server] - 2025-01-13T23:53:13.134Z - Started listening on: /var/folders/3r/8rw6lvcn187_65_cwk829ym40000gn/T/e45c465e3b493a4209a6/d.sock
+[NX Daemon Server] - 2025-01-13T23:53:13.136Z - [WATCHER]: Subscribed to changes within: /Users/maxsmith/Documents/GitHub/scorekeeper (native)
+[NX Daemon Server] - 2025-01-13T23:53:13.137Z - Established a connection. Number of open connections: 1
+[NX Daemon Server] - 2025-01-13T23:53:13.138Z - Established a connection. Number of open connections: 2
+[NX Daemon Server] - 2025-01-13T23:53:13.138Z - Closed a connection. Number of open connections: 1
+[NX Daemon Server] - 2025-01-13T23:53:13.139Z - [REQUEST]: Responding to the client. Shutdown initiated
+[NX Daemon Server] - 2025-01-13T23:53:13.139Z - Done responding to the client Shutdown initiated
+[NX Daemon Server] - 2025-01-13T23:53:13.139Z - Handled FORCE_SHUTDOWN. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-13T23:53:13.141Z - [WATCHER]: Stopping the watcher for /Users/maxsmith/Documents/GitHub/scorekeeper (sources)
+[NX Daemon Server] - 2025-01-13T23:53:13.141Z - Closed a connection. Number of open connections: 0
+[NX Daemon Server] - 2025-01-13T23:53:13.141Z - [WATCHER]: Stopping the watcher for /Users/maxsmith/Documents/GitHub/scorekeeper (outputs)

@@ -46,17 +46,17 @@
             "parallelism": true
           },
           "start": {
-            "options": {
-              "cwd": "example-expo-react-native",
-              "command": "expo start"
-            },
-            "executor": "nx:run-commands",
+            "executor": "@nx/expo:start",
             "configurations": {},
+            "options": {},
             "parallelism": true
           },
           "serve": {
             "options": {
               "cwd": "example-expo-react-native",
+              "args": [
+                "--clear"
+              ],
               "command": "expo start --web"
             },
             "executor": "nx:run-commands",
@@ -84,6 +84,9 @@
           "export": {
             "options": {
               "cwd": "example-expo-react-native",
+              "args": [
+                "--clear"
+              ],
               "command": "expo export"
             },
             "cache": true,
@@ -107,12 +110,9 @@
             "parallelism": true
           },
           "install": {
-            "options": {
-              "cwd": "/Users/maxsmith/Documents/GitHub/scorekeeper",
-              "command": "expo install"
-            },
-            "executor": "nx:run-commands",
+            "executor": "@nx/expo:install",
             "configurations": {},
+            "options": {},
             "parallelism": true
           },
           "prebuild": {
@@ -122,12 +122,9 @@
             "parallelism": true
           },
           "build": {
-            "options": {
-              "cwd": "example-expo-react-native",
-              "command": "eas build"
-            },
-            "executor": "nx:run-commands",
+            "executor": "@nx/expo:build",
             "configurations": {},
+            "options": {},
             "parallelism": true,
             "dependsOn": [
               "^build"
@@ -378,6 +375,21 @@
             "outputs": [
               "{workspaceRoot}/dist/example-web-vue"
             ],
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Run Vite build",
+              "help": {
+                "command": "yarn vite build --help",
+                "example": {
+                  "options": {
+                    "sourcemap": true,
+                    "manifest": "manifest.json"
+                  }
+                }
+              }
+            },
             "executor": "nx:run-commands",
             "configurations": {},
             "parallelism": true
@@ -387,14 +399,45 @@
               "cwd": "example-web-vue",
               "command": "vite serve"
             },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Starts Vite dev server",
+              "help": {
+                "command": "yarn vite --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
+            },
             "executor": "nx:run-commands",
             "configurations": {},
             "parallelism": true
           },
           "preview": {
+            "dependsOn": [
+              "build"
+            ],
             "options": {
               "cwd": "example-web-vue",
               "command": "vite preview"
+            },
+            "metadata": {
+              "technologies": [
+                "vite"
+              ],
+              "description": "Locally preview Vite production build",
+              "help": {
+                "command": "yarn vite preview --help",
+                "example": {
+                  "options": {
+                    "port": 3000
+                  }
+                }
+              }
             },
             "executor": "nx:run-commands",
             "configurations": {},
@@ -408,11 +451,42 @@
             },
             "configurations": {},
             "parallelism": true
+          },
+          "typecheck": {
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "options": {
+              "cwd": "example-web-vue",
+              "command": "tsc --noEmit -p tsconfig.app.json"
+            },
+            "metadata": {
+              "description": "Run Typechecking",
+              "help": {
+                "command": "yarn tsc --help -p tsconfig.app.json",
+                "example": {
+                  "options": {
+                    "noEmit": true
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
           }
         },
+        "projectType": "application",
+        "metadata": {},
         "name": "example-web-vue",
         "$schema": "../node_modules/nx/schemas/project-schema.json",
-        "projectType": "application",
         "sourceRoot": "example-web-vue/src",
         "implicitDependencies": [],
         "tags": []
@@ -517,6 +591,146 @@
         },
         "$schema": "../node_modules/nx/schemas/project-schema.json",
         "projectType": "library",
+        "implicitDependencies": []
+      }
+    },
+    "collab-server": {
+      "name": "collab-server",
+      "type": "app",
+      "data": {
+        "root": "collab/server",
+        "targets": {
+          "eslint:lint": {
+            "cache": true,
+            "options": {
+              "cwd": "collab/server",
+              "command": "eslint ."
+            },
+            "inputs": [
+              "default",
+              "^default",
+              "{workspaceRoot}/.eslintrc.json",
+              "{projectRoot}/.eslintrc.json",
+              "{workspaceRoot}/tools/eslint-rules/**/*",
+              {
+                "externalDependencies": [
+                  "eslint"
+                ]
+              }
+            ],
+            "outputs": [
+              "{options.outputFile}"
+            ],
+            "metadata": {
+              "technologies": [
+                "eslint"
+              ],
+              "description": "Runs ESLint on project",
+              "help": {
+                "command": "yarn eslint --help",
+                "example": {
+                  "options": {
+                    "max-warnings": 0
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "configurations": {},
+            "parallelism": true
+          },
+          "typecheck": {
+            "cache": true,
+            "inputs": [
+              "production",
+              "^production",
+              {
+                "externalDependencies": [
+                  "typescript"
+                ]
+              }
+            ],
+            "metadata": {
+              "description": "Run Typechecking",
+              "help": {
+                "command": "yarn tsc --help -p tsconfig.app.json",
+                "example": {
+                  "options": {
+                    "noEmit": true
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "collab/server",
+              "command": "tsc --noEmit -p tsconfig.app.json"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "test": {
+            "cache": true,
+            "inputs": [
+              "default",
+              "^production",
+              "{workspaceRoot}/jest.preset.js"
+            ],
+            "outputs": [
+              "{workspaceRoot}/coverage/collab/server"
+            ],
+            "metadata": {
+              "technologies": [
+                "vite",
+                "vite"
+              ],
+              "description": "Run Vite tests",
+              "help": {
+                "command": "yarn vitest --help",
+                "example": {
+                  "options": {
+                    "bail": 1,
+                    "coverage": true
+                  }
+                }
+              }
+            },
+            "executor": "nx:run-commands",
+            "options": {
+              "cwd": "collab/server",
+              "command": "vitest"
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "serve": {
+            "executor": "@naxodev/nx-cloudflare:serve",
+            "options": {
+              "port": 8787
+            },
+            "configurations": {},
+            "parallelism": true
+          },
+          "deploy": {
+            "executor": "@naxodev/nx-cloudflare:deploy",
+            "configurations": {},
+            "options": {},
+            "parallelism": true
+          }
+        },
+        "metadata": {
+          "targetGroups": {},
+          "js": {
+            "packageName": "collab-server"
+          }
+        },
+        "sourceRoot": "collab/server/src",
+        "name": "collab-server",
+        "tags": [
+          "npm:private"
+        ],
+        "$schema": "../../node_modules/nx/schemas/project-schema.json",
+        "projectType": "application",
         "implicitDependencies": []
       }
     },
@@ -22373,6 +22587,23 @@
       {
         "source": "library-client",
         "target": "npm:tslib",
+        "type": "static"
+      }
+    ],
+    "collab-server": [
+      {
+        "source": "collab-server",
+        "target": "npm:vitest",
+        "type": "static"
+      },
+      {
+        "source": "collab-server",
+        "target": "npm:vite",
+        "type": "static"
+      },
+      {
+        "source": "collab-server",
+        "target": "npm:@nx/vite",
         "type": "static"
       }
     ],
