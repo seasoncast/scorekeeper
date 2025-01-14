@@ -55,20 +55,24 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": ".editorconfig",
-        "hash": "5443105041930014821"
+        "file": "tsconfig.base.json",
+        "hash": "2158205243400342746"
       },
       {
         "file": ".eslintignore",
         "hash": "7663861978715868291"
       },
       {
-        "file": ".eslintrc.json",
-        "hash": "6603393952729308428"
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
       },
       {
-        "file": ".gitignore",
-        "hash": "16466317737724113701"
+        "file": "yarn.lock",
+        "hash": "9974665799350968562"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "6603393952729308428"
       },
       {
         "file": ".prettierignore",
@@ -79,417 +83,59 @@
         "hash": "16267754514737964994"
       },
       {
-        "file": ".vscode/extensions.json",
-        "hash": "235626400633494639"
-      },
-      {
-        "file": "LICENSE",
-        "hash": "8753450313959232189"
-      },
-      {
-        "file": "README.md",
-        "hash": "14473342048778074289"
-      },
-      {
-        "file": "babel.config.json",
-        "hash": "5546405625092116747"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "12333515226966617182"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "migrations.json",
-        "hash": "17527757946522167007"
-      },
-      {
-        "file": "nx.json",
-        "hash": "4949160431580471671"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "18278736432110185859"
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
       },
       {
         "file": "package.json",
-        "hash": "5495666227406506013"
+        "hash": "13063584758104179516"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16651001040734071701"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
       },
       {
         "file": "tools/scripts/eas-build-post-install.mjs",
         "hash": "18390423807559123090"
       },
       {
+        "file": "jest.config.ts",
+        "hash": "12333515226966617182"
+      },
+      {
+        "file": "README.md",
+        "hash": "14473342048778074289"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "8753450313959232189"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4949160431580471671"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "17527757946522167007"
+      },
+      {
         "file": "tools/scripts/eas-build-pre-install.mjs",
         "hash": "12536024410529632909"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "2158205243400342746"
+        "file": "babel.config.json",
+        "hash": "5546405625092116747"
       },
       {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "18220756446302936918"
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
       }
     ],
     "projectFileMap": {
-      "example-web-vue": [
-        {
-          "file": "example-web-vue/.eslintrc.json",
-          "hash": "7309598769689397343"
-        },
-        {
-          "file": "example-web-vue/index.html",
-          "hash": "6633114284422498396"
-        },
-        {
-          "file": "example-web-vue/project.json",
-          "hash": "4233505831200696166"
-        },
-        {
-          "file": "example-web-vue/public/assets/basketball.jpeg",
-          "hash": "18395553210349704694"
-        },
-        {
-          "file": "example-web-vue/src/app/App.spec.ts",
-          "hash": "10611630957883797359",
-          "deps": [
-            "npm:@vue/test-utils"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/app/App.vue",
-          "hash": "13711524085917720759",
-          "deps": [
-            "npm:vue-router"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/app/NxWelcome.vue",
-          "hash": "14576822820710724813"
-        },
-        {
-          "file": "example-web-vue/src/main.ts",
-          "hash": "3088894322703592061",
-          "deps": [
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/router/index.ts",
-          "hash": "14307912965442850989",
-          "deps": [
-            "npm:vue-router"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/styles.css",
-          "hash": "97131783897646283"
-        },
-        {
-          "file": "example-web-vue/src/views/AboutView.vue",
-          "hash": "16824834101219002222"
-        },
-        {
-          "file": "example-web-vue/src/views/CollabView.vue",
-          "hash": "407902293507678258",
-          "deps": [
-            "library-client",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/views/ScoreView.vue",
-          "hash": "2820183634061954202",
-          "deps": [
-            "core-library",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/tsconfig.app.json",
-          "hash": "11088132585234755447"
-        },
-        {
-          "file": "example-web-vue/tsconfig.json",
-          "hash": "18037995839136760424"
-        },
-        {
-          "file": "example-web-vue/vite.config.ts",
-          "hash": "8104925680029115810",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-vue",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "ui-components-web": [
-        {
-          "file": "ui-components-web/LICENSE",
-          "hash": "9166610457620822902"
-        },
-        {
-          "file": "ui-components-web/project.json",
-          "hash": "5596866223631790933"
-        },
-        {
-          "file": "ui-components-web/src/components.d.ts",
-          "hash": "8740253890178631845"
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
-          "hash": "9663520868158654038",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.scss",
-          "hash": "13027103444035360129"
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
-          "hash": "1281587495833565775",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.tsx",
-          "hash": "947446126832191696",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/readme.md",
-          "hash": "4904437418275924086"
-        },
-        {
-          "file": "ui-components-web/src/index.ts",
-          "hash": "1595832445444187531"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.spec.ts",
-          "hash": "1631795040635553820"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.ts",
-          "hash": "6155896121786761435"
-        },
-        {
-          "file": "ui-components-web/stencil.config.ts",
-          "hash": "4195795114994466677",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/tsconfig.json",
-          "hash": "16011561984293723868"
-        },
-        {
-          "file": "ui-components-web/tsconfig.lib.json",
-          "hash": "16302667982367987405"
-        }
-      ],
-      "library-client": [
-        {
-          "file": "library-client/.eslintrc.json",
-          "hash": "13365499647183331872"
-        },
-        {
-          "file": "library-client/README.md",
-          "hash": "3131065715213361611"
-        },
-        {
-          "file": "library-client/jest.config.ts",
-          "hash": "8848747651314784684"
-        },
-        {
-          "file": "library-client/package.json",
-          "hash": "1802096670873638757",
-          "deps": [
-            "npm:tslib"
-          ]
-        },
-        {
-          "file": "library-client/project.json",
-          "hash": "14021430279628584588"
-        },
-        {
-          "file": "library-client/src/index.ts",
-          "hash": "9236390187554257649"
-        },
-        {
-          "file": "library-client/src/lib/library-client.spec.ts",
-          "hash": "15489871656285694653"
-        },
-        {
-          "file": "library-client/src/lib/library-client.ts",
-          "hash": "10217151365130801691"
-        },
-        {
-          "file": "library-client/tsconfig.json",
-          "hash": "18330180151193889737"
-        },
-        {
-          "file": "library-client/tsconfig.lib.json",
-          "hash": "14539327243516648733"
-        },
-        {
-          "file": "library-client/tsconfig.spec.json",
-          "hash": "17313551537729802733"
-        }
-      ],
-      "example-expo-react-native": [
-        {
-          "file": "example-expo-react-native/.babelrc.js",
-          "hash": "231774045518377938"
-        },
-        {
-          "file": "example-expo-react-native/.eslintrc.json",
-          "hash": "3176994869890929307"
-        },
-        {
-          "file": "example-expo-react-native/app.json",
-          "hash": "9378422714889311867"
-        },
-        {
-          "file": "example-expo-react-native/assets/adaptive-icon.png",
-          "hash": "16102135492459408350"
-        },
-        {
-          "file": "example-expo-react-native/assets/basketball.jpeg",
-          "hash": "18395553210349704694"
-        },
-        {
-          "file": "example-expo-react-native/assets/favicon.png",
-          "hash": "10556792184362654649"
-        },
-        {
-          "file": "example-expo-react-native/assets/icon.png",
-          "hash": "14252482080276080187"
-        },
-        {
-          "file": "example-expo-react-native/assets/splash.png",
-          "hash": "16493559885079032523"
-        },
-        {
-          "file": "example-expo-react-native/eas.json",
-          "hash": "6330161018993400891"
-        },
-        {
-          "file": "example-expo-react-native/index.js",
-          "hash": "1184010334168630581",
-          "deps": [
-            "npm:expo"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/jest.config.ts",
-          "hash": "4937979995339313091",
-          "deps": [
-            [
-              "npm:jest-expo",
-              "dynamic"
-            ]
-          ]
-        },
-        {
-          "file": "example-expo-react-native/metro.config.js",
-          "hash": "13327264194800145282",
-          "deps": [
-            "npm:@nx/expo",
-            "npm:@expo/metro-config",
-            "npm:metro-config",
-            "npm:react-native-svg-transformer"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/package.json",
-          "hash": "2442456674418592210",
-          "deps": [
-            "npm:@testing-library/jest-native",
-            "npm:@testing-library/react-native",
-            "npm:metro-config",
-            "npm:react-native",
-            "npm:expo",
-            "npm:react-native-svg",
-            "npm:react-native-web"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/project.json",
-          "hash": "6712578868996555677"
-        },
-        {
-          "file": "example-expo-react-native/src/app/App.spec.tsx",
-          "hash": "5072730789784802033",
-          "deps": [
-            "npm:react",
-            "npm:@testing-library/react-native"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/src/app/App.tsx",
-          "hash": "5645127282102994205",
-          "deps": [
-            "core-library",
-            "ui-library-react-native",
-            "npm:react",
-            "npm:react-native"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/src/components/BasketballCourt.tsx",
-          "hash": "1378148723454749351",
-          "deps": [
-            "core-library",
-            "npm:react",
-            "npm:react-native",
-            "ui-library-react-native"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/test-setup.ts",
-          "hash": "9919311210714806624",
-          "deps": [
-            "npm:@testing-library/jest-native"
-          ]
-        },
-        {
-          "file": "example-expo-react-native/tsconfig.app.json",
-          "hash": "11819785145011170362"
-        },
-        {
-          "file": "example-expo-react-native/tsconfig.json",
-          "hash": "9343647008721687335"
-        },
-        {
-          "file": "example-expo-react-native/tsconfig.spec.json",
-          "hash": "13369031804221838106"
-        },
-        {
-          "file": "example-expo-react-native/webpack.config.js",
-          "hash": "13839480306489668334",
-          "deps": [
-            "npm:tsconfig-paths-webpack-plugin",
-            [
-              "npm:@nx/webpack",
-              "dynamic"
-            ]
-          ]
-        }
-      ],
       "server": [
         {
           "file": "server/.eslintrc.json",
@@ -518,6 +164,86 @@
         {
           "file": "server/tsconfig.json",
           "hash": "4276712839166217253"
+        }
+      ],
+      "ui-library-react-native": [
+        {
+          "file": "ui-library-react-native/.babelrc.js",
+          "hash": "2473225887943671958"
+        },
+        {
+          "file": "ui-library-react-native/.eslintrc.json",
+          "hash": "3176994869890929307"
+        },
+        {
+          "file": "ui-library-react-native/README.md",
+          "hash": "17471551573795368215"
+        },
+        {
+          "file": "ui-library-react-native/jest.config.ts",
+          "hash": "6333084579985764044",
+          "deps": [
+            [
+              "npm:jest-expo",
+              "dynamic"
+            ]
+          ]
+        },
+        {
+          "file": "ui-library-react-native/project.json",
+          "hash": "7062118866171062840"
+        },
+        {
+          "file": "ui-library-react-native/src/PlayingSurfaceDisplay.tsx",
+          "hash": "12301891237614883487",
+          "deps": [
+            "npm:react-native"
+          ]
+        },
+        {
+          "file": "ui-library-react-native/src/ScoreDisplayCard.tsx",
+          "hash": "8617879274599979811",
+          "deps": [
+            "npm:react-native"
+          ]
+        },
+        {
+          "file": "ui-library-react-native/src/SportEventProvider.tsx",
+          "hash": "13671988393649833539",
+          "deps": [
+            "core-library",
+            "npm:react"
+          ]
+        },
+        {
+          "file": "ui-library-react-native/src/TimelineDisplay.tsx",
+          "hash": "5376981539924314543",
+          "deps": [
+            "npm:react-native"
+          ]
+        },
+        {
+          "file": "ui-library-react-native/src/index.ts",
+          "hash": "922409437402039604"
+        },
+        {
+          "file": "ui-library-react-native/test-setup.ts",
+          "hash": "9919311210714806624",
+          "deps": [
+            "npm:@testing-library/jest-native"
+          ]
+        },
+        {
+          "file": "ui-library-react-native/tsconfig.json",
+          "hash": "12894053802776272486"
+        },
+        {
+          "file": "ui-library-react-native/tsconfig.lib.json",
+          "hash": "10605994143068938498"
+        },
+        {
+          "file": "ui-library-react-native/tsconfig.spec.json",
+          "hash": "13369031804221838106"
         }
       ],
       "collab-server": [
@@ -557,7 +283,10 @@
         },
         {
           "file": "collab/server/src/index.ts",
-          "hash": "9949865500977471390"
+          "hash": "3424886223370346626",
+          "deps": [
+            "npm:fast-json-patch"
+          ]
         },
         {
           "file": "collab/server/tsconfig.app.json",
@@ -715,22 +444,144 @@
           "hash": "12638394678519115349"
         }
       ],
-      "ui-library-react-native": [
+      "example-web-vue": [
         {
-          "file": "ui-library-react-native/.babelrc.js",
-          "hash": "2473225887943671958"
+          "file": "example-web-vue/.eslintrc.json",
+          "hash": "7309598769689397343"
         },
         {
-          "file": "ui-library-react-native/.eslintrc.json",
+          "file": "example-web-vue/index.html",
+          "hash": "6633114284422498396"
+        },
+        {
+          "file": "example-web-vue/project.json",
+          "hash": "4233505831200696166"
+        },
+        {
+          "file": "example-web-vue/public/assets/basketball.jpeg",
+          "hash": "18395553210349704694"
+        },
+        {
+          "file": "example-web-vue/src/app/App.spec.ts",
+          "hash": "10611630957883797359",
+          "deps": [
+            "npm:@vue/test-utils"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/App.vue",
+          "hash": "13711524085917720759",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/NxWelcome.vue",
+          "hash": "14576822820710724813"
+        },
+        {
+          "file": "example-web-vue/src/main.ts",
+          "hash": "3088894322703592061",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/router/index.ts",
+          "hash": "14307912965442850989",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/styles.css",
+          "hash": "97131783897646283"
+        },
+        {
+          "file": "example-web-vue/src/views/AboutView.vue",
+          "hash": "16824834101219002222"
+        },
+        {
+          "file": "example-web-vue/src/views/CollabView.vue",
+          "hash": "16999743131065052796",
+          "deps": [
+            "library-client",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/views/ScoreView.vue",
+          "hash": "2820183634061954202",
+          "deps": [
+            "core-library",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/tsconfig.app.json",
+          "hash": "11088132585234755447"
+        },
+        {
+          "file": "example-web-vue/tsconfig.json",
+          "hash": "18037995839136760424"
+        },
+        {
+          "file": "example-web-vue/vite.config.ts",
+          "hash": "8104925680029115810",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
+      "example-expo-react-native": [
+        {
+          "file": "example-expo-react-native/.babelrc.js",
+          "hash": "231774045518377938"
+        },
+        {
+          "file": "example-expo-react-native/.eslintrc.json",
           "hash": "3176994869890929307"
         },
         {
-          "file": "ui-library-react-native/README.md",
-          "hash": "17471551573795368215"
+          "file": "example-expo-react-native/app.json",
+          "hash": "9378422714889311867"
         },
         {
-          "file": "ui-library-react-native/jest.config.ts",
-          "hash": "6333084579985764044",
+          "file": "example-expo-react-native/assets/adaptive-icon.png",
+          "hash": "16102135492459408350"
+        },
+        {
+          "file": "example-expo-react-native/assets/basketball.jpeg",
+          "hash": "18395553210349704694"
+        },
+        {
+          "file": "example-expo-react-native/assets/favicon.png",
+          "hash": "10556792184362654649"
+        },
+        {
+          "file": "example-expo-react-native/assets/icon.png",
+          "hash": "14252482080276080187"
+        },
+        {
+          "file": "example-expo-react-native/assets/splash.png",
+          "hash": "16493559885079032523"
+        },
+        {
+          "file": "example-expo-react-native/eas.json",
+          "hash": "6330161018993400891"
+        },
+        {
+          "file": "example-expo-react-native/index.js",
+          "hash": "1184010334168630581",
+          "deps": [
+            "npm:expo"
+          ]
+        },
+        {
+          "file": "example-expo-react-native/jest.config.ts",
+          "hash": "4937979995339313091",
           "deps": [
             [
               "npm:jest-expo",
@@ -739,60 +590,211 @@
           ]
         },
         {
-          "file": "ui-library-react-native/project.json",
-          "hash": "7062118866171062840"
-        },
-        {
-          "file": "ui-library-react-native/src/PlayingSurfaceDisplay.tsx",
-          "hash": "12301891237614883487",
+          "file": "example-expo-react-native/metro.config.js",
+          "hash": "13327264194800145282",
           "deps": [
-            "npm:react-native"
+            "npm:@nx/expo",
+            "npm:@expo/metro-config",
+            "npm:metro-config",
+            "npm:react-native-svg-transformer"
           ]
         },
         {
-          "file": "ui-library-react-native/src/ScoreDisplayCard.tsx",
-          "hash": "8617879274599979811",
+          "file": "example-expo-react-native/package.json",
+          "hash": "2442456674418592210",
           "deps": [
-            "npm:react-native"
+            "npm:@testing-library/jest-native",
+            "npm:@testing-library/react-native",
+            "npm:metro-config",
+            "npm:react-native",
+            "npm:expo",
+            "npm:react-native-svg",
+            "npm:react-native-web"
           ]
         },
         {
-          "file": "ui-library-react-native/src/SportEventProvider.tsx",
-          "hash": "13671988393649833539",
+          "file": "example-expo-react-native/project.json",
+          "hash": "6712578868996555677"
+        },
+        {
+          "file": "example-expo-react-native/src/app/App.spec.tsx",
+          "hash": "5072730789784802033",
+          "deps": [
+            "npm:react",
+            "npm:@testing-library/react-native"
+          ]
+        },
+        {
+          "file": "example-expo-react-native/src/app/App.tsx",
+          "hash": "5645127282102994205",
           "deps": [
             "core-library",
-            "npm:react"
-          ]
-        },
-        {
-          "file": "ui-library-react-native/src/TimelineDisplay.tsx",
-          "hash": "5376981539924314543",
-          "deps": [
+            "ui-library-react-native",
+            "npm:react",
             "npm:react-native"
           ]
         },
         {
-          "file": "ui-library-react-native/src/index.ts",
-          "hash": "922409437402039604"
+          "file": "example-expo-react-native/src/components/BasketballCourt.tsx",
+          "hash": "1378148723454749351",
+          "deps": [
+            "core-library",
+            "npm:react",
+            "npm:react-native",
+            "ui-library-react-native"
+          ]
         },
         {
-          "file": "ui-library-react-native/test-setup.ts",
+          "file": "example-expo-react-native/test-setup.ts",
           "hash": "9919311210714806624",
           "deps": [
             "npm:@testing-library/jest-native"
           ]
         },
         {
-          "file": "ui-library-react-native/tsconfig.json",
-          "hash": "12894053802776272486"
+          "file": "example-expo-react-native/tsconfig.app.json",
+          "hash": "11819785145011170362"
         },
         {
-          "file": "ui-library-react-native/tsconfig.lib.json",
-          "hash": "10605994143068938498"
+          "file": "example-expo-react-native/tsconfig.json",
+          "hash": "9343647008721687335"
         },
         {
-          "file": "ui-library-react-native/tsconfig.spec.json",
+          "file": "example-expo-react-native/tsconfig.spec.json",
           "hash": "13369031804221838106"
+        },
+        {
+          "file": "example-expo-react-native/webpack.config.js",
+          "hash": "13839480306489668334",
+          "deps": [
+            "npm:tsconfig-paths-webpack-plugin",
+            [
+              "npm:@nx/webpack",
+              "dynamic"
+            ]
+          ]
+        }
+      ],
+      "ui-components-web": [
+        {
+          "file": "ui-components-web/LICENSE",
+          "hash": "9166610457620822902"
+        },
+        {
+          "file": "ui-components-web/project.json",
+          "hash": "5596866223631790933"
+        },
+        {
+          "file": "ui-components-web/src/components.d.ts",
+          "hash": "8740253890178631845"
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
+          "hash": "9663520868158654038",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.scss",
+          "hash": "13027103444035360129"
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
+          "hash": "1281587495833565775",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.tsx",
+          "hash": "947446126832191696",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/readme.md",
+          "hash": "4904437418275924086"
+        },
+        {
+          "file": "ui-components-web/src/index.ts",
+          "hash": "1595832445444187531"
+        },
+        {
+          "file": "ui-components-web/src/utils/utils.spec.ts",
+          "hash": "1631795040635553820"
+        },
+        {
+          "file": "ui-components-web/src/utils/utils.ts",
+          "hash": "6155896121786761435"
+        },
+        {
+          "file": "ui-components-web/stencil.config.ts",
+          "hash": "4195795114994466677",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/tsconfig.json",
+          "hash": "16011561984293723868"
+        },
+        {
+          "file": "ui-components-web/tsconfig.lib.json",
+          "hash": "16302667982367987405"
+        }
+      ],
+      "library-client": [
+        {
+          "file": "library-client/.eslintrc.json",
+          "hash": "13365499647183331872"
+        },
+        {
+          "file": "library-client/README.md",
+          "hash": "3131065715213361611"
+        },
+        {
+          "file": "library-client/jest.config.ts",
+          "hash": "8848747651314784684"
+        },
+        {
+          "file": "library-client/package.json",
+          "hash": "1802096670873638757",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "library-client/project.json",
+          "hash": "14021430279628584588"
+        },
+        {
+          "file": "library-client/src/index.ts",
+          "hash": "9236390187554257649"
+        },
+        {
+          "file": "library-client/src/lib/library-client.spec.ts",
+          "hash": "15489871656285694653"
+        },
+        {
+          "file": "library-client/src/lib/library-client.ts",
+          "hash": "13417152723109384743",
+          "deps": [
+            "npm:fast-json-patch"
+          ]
+        },
+        {
+          "file": "library-client/tsconfig.json",
+          "hash": "18330180151193889737"
+        },
+        {
+          "file": "library-client/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "library-client/tsconfig.spec.json",
+          "hash": "17313551537729802733"
         }
       ]
     }

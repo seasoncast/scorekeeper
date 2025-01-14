@@ -6430,9 +6430,9 @@
       "type": "npm",
       "name": "npm:@types/qs",
       "data": {
-        "version": "6.9.17",
+        "version": "6.9.18",
         "packageName": "@types/qs",
-        "hash": "sha512-rX4/bPcfmvxHDv0XjfJELTTr+iB+tn032nPILqHm5wbthUUUuVtNGGqzhya9XUxjTP8Fpr0qYgSZZKxGY++svQ=="
+        "hash": "sha512-kK7dgTYDyGqS+e2Q4aK9X3D7q234CIZ1Bv0q/7Z5IwRDoADNU81xXJK/YVyLbLTZCoIwUoDoffFeF+p/eIklAA=="
       }
     },
     "npm:@types/range-parser": {
@@ -10750,9 +10750,9 @@
       "type": "npm",
       "name": "npm:es-object-atoms",
       "data": {
-        "version": "1.0.0",
+        "version": "1.0.1",
         "packageName": "es-object-atoms",
-        "hash": "sha512-MZ4iQ6JwHOBQjahnjwaC1ZtIBH+2ohjamzAO3oaHcXYup7qxjF2fixyH+Q71voWHeOkI2q/TnJao/KfXYIZWbw=="
+        "hash": "sha512-BPOBuyUF9QIVhuNLhbToCLHP6+0MHwZ7xLBkPPCZqK4JmpJgGnv10035STzzQwFpqdzNFMB3irvDI63IagvDwA=="
       }
     },
     "npm:es-set-tostringtag": {
@@ -12940,6 +12940,15 @@
         "version": "0.5.5",
         "packageName": "image-size",
         "hash": "sha512-6TDAlDPZxUFCv+fuOkIoXT/V/f3Qbq8e37p+YOiYrUv3v9cc3/6x78VdfPgFVaB9dZYeLUfKgHRebpkm/oP2VQ=="
+      }
+    },
+    "npm:immutable-json-patch": {
+      "type": "npm",
+      "name": "npm:immutable-json-patch",
+      "data": {
+        "version": "6.0.1",
+        "packageName": "immutable-json-patch",
+        "hash": "sha512-BHL/cXMjwFZlTOffiWNdY8ZTvNyYLrutCnWxrcKPHr5FqpAb6vsO6WWSPnVSys3+DruFN6lhHJJPHi8uELQL5g=="
       }
     },
     "npm:immutable": {
@@ -18787,9 +18796,9 @@
       "type": "npm",
       "name": "npm:sass",
       "data": {
-        "version": "1.83.1",
+        "version": "1.83.4",
         "packageName": "sass",
-        "hash": "sha512-EVJbDaEs4Rr3F0glJzFSOvtg2/oy2V/YrGFPqPY24UqcLDWcI9ZY5sN+qyO3c/QCZwzgfirvhXvINiJCE/OLcA=="
+        "hash": "sha512-B1bozCeNQiOgDcLd33e2Cs2U60wZwjUUXzh900ZyQF5qUasvMdDZYbQ566LJu7cqR+sAHlAfO6RMkaID5s6qpA=="
       }
     },
     "npm:sax": {

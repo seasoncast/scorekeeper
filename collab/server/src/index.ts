@@ -1,3 +1,5 @@
+import * as fastJsonPatch from 'fast-json-patch';
+
 export interface Env {
   COLLAB_ROOM: DurableObjectNamespace;
 }
@@ -58,7 +60,7 @@ export class CollaborationRoom {
     ws.addEventListener('message', async (msg) => {
       try {
         const data: CollaborationMessage = JSON.parse(msg.data);
-        
+
         // Capture userId from first message
         if (!userId) {
           userId = data.userId;
@@ -68,13 +70,15 @@ export class CollaborationRoom {
           }
           this.connections.set(userId, ws);
           this.presence.set(userId, { userId });
-          
+
           // Send initial state and presence with cursor positions
-          const presenceWithCursors = Array.from(this.presence.values()).map(user => ({
-            userId: user.userId,
-            cursorPosition: user.cursorPosition,
-            lastActive: Date.now()
-          }));
+          const presenceWithCursors = Array.from(this.presence.values()).map(
+            (user) => ({
+              userId: user.userId,
+              cursorPosition: user.cursorPosition,
+              lastActive: Date.now(),
+            })
+          );
 
           const syncMessage: SyncMessage = {
             type: 'sync',
@@ -82,8 +86,8 @@ export class CollaborationRoom {
             timestamp: Date.now(),
             data: {
               state: this.state,
-              presence: presenceWithCursors
-            }
+              presence: presenceWithCursors,
+            },
           };
           ws.send(JSON.stringify(syncMessage));
 
@@ -100,7 +104,7 @@ export class CollaborationRoom {
             if (Array.isArray(data.data)) {
               this.diffTimeline.push(data.data);
               this.currentDocumentState = fastJsonPatch.applyPatch(
-                this.currentDocumentState, 
+                this.currentDocumentState,
                 data.data,
                 false,
                 false
