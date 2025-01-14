@@ -1,6 +1,482 @@
 {
   "targetsCache": {
-    "2869189999756230023": {
+    "targetsCache": {
+      "targetsCache": {
+        "targetsCache": {
+          "targetsCache": {
+            "targetsCache": {
+              "targetsCache": {
+                "targetsCache": {
+                  "7400652515244777404": {
+                    "start": {
+                      "executor": "@nx/expo:start"
+                    },
+                    "serve": {
+                      "command": "expo start --web",
+                      "options": {
+                        "cwd": "example-expo-react-native",
+                        "args": [
+                          "--clear"
+                        ]
+                      }
+                    },
+                    "run-ios": {
+                      "command": "expo run:ios",
+                      "options": {
+                        "cwd": "example-expo-react-native"
+                      }
+                    },
+                    "run-android": {
+                      "command": "expo run:android",
+                      "options": {
+                        "cwd": "example-expo-react-native"
+                      }
+                    },
+                    "export": {
+                      "command": "expo export",
+                      "options": {
+                        "cwd": "example-expo-react-native",
+                        "args": [
+                          "--clear"
+                        ]
+                      },
+                      "cache": true,
+                      "dependsOn": [
+                        "^export"
+                      ],
+                      "inputs": [
+                        "default",
+                        "^production",
+                        {
+                          "externalDependencies": [
+                            "expo"
+                          ]
+                        }
+                      ],
+                      "outputs": [
+                        "{workspaceRoot}/example-expo-react-native/dist"
+                      ]
+                    },
+                    "install": {
+                      "executor": "@nx/expo:install"
+                    },
+                    "prebuild": {
+                      "executor": "@nx/expo:prebuild"
+                    },
+                    "build": {
+                      "executor": "@nx/expo:build"
+                    },
+                    "submit": {
+                      "command": "eas submit",
+                      "options": {
+                        "cwd": "example-expo-react-native"
+                      }
+                    }
+                  }
+                },
+                "7400652515244777404": {
+                  "start": {
+                    "executor": "@nx/expo:start"
+                  },
+                  "serve": {
+                    "command": "expo start --web",
+                    "options": {
+                      "cwd": "example-expo-react-native",
+                      "args": [
+                        "--clear"
+                      ]
+                    }
+                  },
+                  "run-ios": {
+                    "command": "expo run:ios",
+                    "options": {
+                      "cwd": "example-expo-react-native"
+                    }
+                  },
+                  "run-android": {
+                    "command": "expo run:android",
+                    "options": {
+                      "cwd": "example-expo-react-native"
+                    }
+                  },
+                  "export": {
+                    "command": "expo export",
+                    "options": {
+                      "cwd": "example-expo-react-native",
+                      "args": [
+                        "--clear"
+                      ]
+                    },
+                    "cache": true,
+                    "dependsOn": [
+                      "^export"
+                    ],
+                    "inputs": [
+                      "default",
+                      "^production",
+                      {
+                        "externalDependencies": [
+                          "expo"
+                        ]
+                      }
+                    ],
+                    "outputs": [
+                      "{workspaceRoot}/example-expo-react-native/dist"
+                    ]
+                  },
+                  "install": {
+                    "executor": "@nx/expo:install"
+                  },
+                  "prebuild": {
+                    "executor": "@nx/expo:prebuild"
+                  },
+                  "build": {
+                    "executor": "@nx/expo:build"
+                  },
+                  "submit": {
+                    "command": "eas submit",
+                    "options": {
+                      "cwd": "example-expo-react-native"
+                    }
+                  }
+                }
+              },
+              "7400652515244777404": {
+                "start": {
+                  "executor": "@nx/expo:start"
+                },
+                "serve": {
+                  "command": "expo start --web",
+                  "options": {
+                    "cwd": "example-expo-react-native",
+                    "args": [
+                      "--clear"
+                    ]
+                  }
+                },
+                "run-ios": {
+                  "command": "expo run:ios",
+                  "options": {
+                    "cwd": "example-expo-react-native"
+                  }
+                },
+                "run-android": {
+                  "command": "expo run:android",
+                  "options": {
+                    "cwd": "example-expo-react-native"
+                  }
+                },
+                "export": {
+                  "command": "expo export",
+                  "options": {
+                    "cwd": "example-expo-react-native",
+                    "args": [
+                      "--clear"
+                    ]
+                  },
+                  "cache": true,
+                  "dependsOn": [
+                    "^export"
+                  ],
+                  "inputs": [
+                    "default",
+                    "^production",
+                    {
+                      "externalDependencies": [
+                        "expo"
+                      ]
+                    }
+                  ],
+                  "outputs": [
+                    "{workspaceRoot}/example-expo-react-native/dist"
+                  ]
+                },
+                "install": {
+                  "executor": "@nx/expo:install"
+                },
+                "prebuild": {
+                  "executor": "@nx/expo:prebuild"
+                },
+                "build": {
+                  "executor": "@nx/expo:build"
+                },
+                "submit": {
+                  "command": "eas submit",
+                  "options": {
+                    "cwd": "example-expo-react-native"
+                  }
+                }
+              }
+            },
+            "7400652515244777404": {
+              "start": {
+                "executor": "@nx/expo:start"
+              },
+              "serve": {
+                "command": "expo start --web",
+                "options": {
+                  "cwd": "example-expo-react-native",
+                  "args": [
+                    "--clear"
+                  ]
+                }
+              },
+              "run-ios": {
+                "command": "expo run:ios",
+                "options": {
+                  "cwd": "example-expo-react-native"
+                }
+              },
+              "run-android": {
+                "command": "expo run:android",
+                "options": {
+                  "cwd": "example-expo-react-native"
+                }
+              },
+              "export": {
+                "command": "expo export",
+                "options": {
+                  "cwd": "example-expo-react-native",
+                  "args": [
+                    "--clear"
+                  ]
+                },
+                "cache": true,
+                "dependsOn": [
+                  "^export"
+                ],
+                "inputs": [
+                  "default",
+                  "^production",
+                  {
+                    "externalDependencies": [
+                      "expo"
+                    ]
+                  }
+                ],
+                "outputs": [
+                  "{workspaceRoot}/example-expo-react-native/dist"
+                ]
+              },
+              "install": {
+                "executor": "@nx/expo:install"
+              },
+              "prebuild": {
+                "executor": "@nx/expo:prebuild"
+              },
+              "build": {
+                "executor": "@nx/expo:build"
+              },
+              "submit": {
+                "command": "eas submit",
+                "options": {
+                  "cwd": "example-expo-react-native"
+                }
+              }
+            }
+          },
+          "7400652515244777404": {
+            "start": {
+              "executor": "@nx/expo:start"
+            },
+            "serve": {
+              "command": "expo start --web",
+              "options": {
+                "cwd": "example-expo-react-native",
+                "args": [
+                  "--clear"
+                ]
+              }
+            },
+            "run-ios": {
+              "command": "expo run:ios",
+              "options": {
+                "cwd": "example-expo-react-native"
+              }
+            },
+            "run-android": {
+              "command": "expo run:android",
+              "options": {
+                "cwd": "example-expo-react-native"
+              }
+            },
+            "export": {
+              "command": "expo export",
+              "options": {
+                "cwd": "example-expo-react-native",
+                "args": [
+                  "--clear"
+                ]
+              },
+              "cache": true,
+              "dependsOn": [
+                "^export"
+              ],
+              "inputs": [
+                "default",
+                "^production",
+                {
+                  "externalDependencies": [
+                    "expo"
+                  ]
+                }
+              ],
+              "outputs": [
+                "{workspaceRoot}/example-expo-react-native/dist"
+              ]
+            },
+            "install": {
+              "executor": "@nx/expo:install"
+            },
+            "prebuild": {
+              "executor": "@nx/expo:prebuild"
+            },
+            "build": {
+              "executor": "@nx/expo:build"
+            },
+            "submit": {
+              "command": "eas submit",
+              "options": {
+                "cwd": "example-expo-react-native"
+              }
+            }
+          }
+        },
+        "7400652515244777404": {
+          "start": {
+            "executor": "@nx/expo:start"
+          },
+          "serve": {
+            "command": "expo start --web",
+            "options": {
+              "cwd": "example-expo-react-native",
+              "args": [
+                "--clear"
+              ]
+            }
+          },
+          "run-ios": {
+            "command": "expo run:ios",
+            "options": {
+              "cwd": "example-expo-react-native"
+            }
+          },
+          "run-android": {
+            "command": "expo run:android",
+            "options": {
+              "cwd": "example-expo-react-native"
+            }
+          },
+          "export": {
+            "command": "expo export",
+            "options": {
+              "cwd": "example-expo-react-native",
+              "args": [
+                "--clear"
+              ]
+            },
+            "cache": true,
+            "dependsOn": [
+              "^export"
+            ],
+            "inputs": [
+              "default",
+              "^production",
+              {
+                "externalDependencies": [
+                  "expo"
+                ]
+              }
+            ],
+            "outputs": [
+              "{workspaceRoot}/example-expo-react-native/dist"
+            ]
+          },
+          "install": {
+            "executor": "@nx/expo:install"
+          },
+          "prebuild": {
+            "executor": "@nx/expo:prebuild"
+          },
+          "build": {
+            "executor": "@nx/expo:build"
+          },
+          "submit": {
+            "command": "eas submit",
+            "options": {
+              "cwd": "example-expo-react-native"
+            }
+          }
+        }
+      },
+      "7400652515244777404": {
+        "start": {
+          "executor": "@nx/expo:start"
+        },
+        "serve": {
+          "command": "expo start --web",
+          "options": {
+            "cwd": "example-expo-react-native",
+            "args": [
+              "--clear"
+            ]
+          }
+        },
+        "run-ios": {
+          "command": "expo run:ios",
+          "options": {
+            "cwd": "example-expo-react-native"
+          }
+        },
+        "run-android": {
+          "command": "expo run:android",
+          "options": {
+            "cwd": "example-expo-react-native"
+          }
+        },
+        "export": {
+          "command": "expo export",
+          "options": {
+            "cwd": "example-expo-react-native",
+            "args": [
+              "--clear"
+            ]
+          },
+          "cache": true,
+          "dependsOn": [
+            "^export"
+          ],
+          "inputs": [
+            "default",
+            "^production",
+            {
+              "externalDependencies": [
+                "expo"
+              ]
+            }
+          ],
+          "outputs": [
+            "{workspaceRoot}/example-expo-react-native/dist"
+          ]
+        },
+        "install": {
+          "executor": "@nx/expo:install"
+        },
+        "prebuild": {
+          "executor": "@nx/expo:prebuild"
+        },
+        "build": {
+          "executor": "@nx/expo:build"
+        },
+        "submit": {
+          "command": "eas submit",
+          "options": {
+            "cwd": "example-expo-react-native"
+          }
+        }
+      }
+    },
+    "7400652515244777404": {
       "start": {
         "executor": "@nx/expo:start"
       },

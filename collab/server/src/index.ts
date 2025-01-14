@@ -47,32 +47,34 @@ export class CollaborationRoom {
     this.presence.set(userId, { userId });
 
     // Send initial state and presence
-    ws.send(JSON.stringify({
-      type: 'sync',
-      data: {
-        state: this.state,
-        presence: Array.from(this.presence.values())
-      }
-    }));
+    ws.send(
+      JSON.stringify({
+        type: 'sync',
+        data: {
+          state: this.state,
+          presence: Array.from(this.presence.values()),
+        },
+      })
+    );
 
     // Broadcast join
     this.broadcast({
       type: 'join',
       userId,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
 
     // Handle messages
     ws.addEventListener('message', async (msg) => {
       try {
         const data: CollaborationMessage = JSON.parse(msg.data);
-        
+
         switch (data.type) {
           case 'edit':
             this.state = { ...this.state, ...data.data };
             this.broadcast(data);
             break;
-            
+
           case 'cursor':
             const presence = this.presence.get(data.userId);
             if (presence) {
@@ -93,14 +95,14 @@ export class CollaborationRoom {
       this.broadcast({
         type: 'leave',
         userId,
-        timestamp: Date.now()
+        timestamp: Date.now(),
       });
     });
   }
 
   broadcast(message: CollaborationMessage) {
     const payload = JSON.stringify(message);
-    this.connections.forEach(ws => {
+    this.connections.forEach((ws) => {
       try {
         ws.send(payload);
       } catch (err) {
@@ -118,10 +120,10 @@ export default {
   ): Promise<Response> {
     const url = new URL(request.url);
     const roomId = url.searchParams.get('roomId') || 'default';
-    
+
     const id = env.COLLAB_ROOM.idFromName(roomId);
     const room = env.COLLAB_ROOM.get(id);
-    
+
     return room.fetch(request);
   },
 };

@@ -17,7 +17,7 @@
     "paths": {
       "@org/core-library": ["core-library/src/index.ts"],
       "@org/ui-library-react-native": ["ui-library-react-native/src/index.ts"],
-      "@seasoncast/score": ["library-client/src/index.ts"]
+      "@org/client-library": ["library-client/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

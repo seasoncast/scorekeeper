@@ -26,8 +26,8 @@
 </template>
 
 <script lang="ts">
+import { CollaborationClient } from '@org/client-library';
 import { defineComponent } from 'vue';
-import { CollaborationClient } from '@sportz/interactive';
 
 export default defineComponent({
   name: 'CollabView',
@@ -35,14 +35,17 @@ export default defineComponent({
     return {
       roomId: '',
       client: null as CollaborationClient | null,
-      otherUsers: [] as Array<{ userId: string; cursorPosition?: { x: number; y: number } }>,
+      otherUsers: [] as Array<{
+        userId: string;
+        cursorPosition?: { x: number; y: number };
+      }>,
       localCursor: { x: 0, y: 0 },
     };
   },
   methods: {
     async connectToRoom() {
       if (!this.roomId) return;
-      
+
       if (this.client) {
         this.client.disconnect();
       }
@@ -52,11 +55,13 @@ export default defineComponent({
 
       // Handle cursor updates from other users
       this.client.on('cursor', (message) => {
-        const userIndex = this.otherUsers.findIndex(u => u.userId === message.userId);
+        const userIndex = this.otherUsers.findIndex(
+          (u) => u.userId === message.userId
+        );
         if (userIndex === -1) {
           this.otherUsers.push({
             userId: message.userId,
-            cursorPosition: message.data
+            cursorPosition: message.data,
           });
         } else {
           this.otherUsers[userIndex].cursorPosition = message.data;
@@ -69,25 +74,29 @@ export default defineComponent({
       });
 
       this.client.on('leave', (message) => {
-        this.otherUsers = this.otherUsers.filter(u => u.userId !== message.userId);
+        this.otherUsers = this.otherUsers.filter(
+          (u) => u.userId !== message.userId
+        );
       });
     },
     handleMouseMove(event: MouseEvent) {
       if (!this.client) return;
-      
-      const rect = (this.$refs.collabArea as HTMLElement).getBoundingClientRect();
+
+      const rect = (
+        this.$refs.collabArea as HTMLElement
+      ).getBoundingClientRect();
       const x = event.clientX - rect.left;
       const y = event.clientY - rect.top;
-      
+
       this.localCursor = { x, y };
       this.client.sendCursorPosition({ x, y });
-    }
+    },
   },
   beforeUnmount() {
     if (this.client) {
       this.client.disconnect();
     }
-  }
+  },
 });
 </script>
 

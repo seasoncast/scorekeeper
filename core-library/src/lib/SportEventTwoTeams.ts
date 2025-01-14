@@ -1,8 +1,8 @@
 import SportEvent from './SportEvent';
 
 export default class SportEventTwoTeams extends SportEvent {
-  constructor() {
-    super();
+  constructor(scheduled_date: Date, sport_type: string) {
+    super({ scheduled_date, sport_type });
     this.team_max = 2;
     this.team_min = 2;
   }

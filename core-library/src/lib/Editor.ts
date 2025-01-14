@@ -1,4 +1,5 @@
 import IStats from '../types/IStats';
+import ITimelineEvent from '../types/ITimelineEvent';
 import SportEvent from './SportEvent';
 import Team from './Team';
 
@@ -23,10 +24,13 @@ export interface IActionArg {
 }
 
 export interface IAction {
-  name: string;
+  name?: string;
   description: string;
   args: IActionArg[];
   result: IResult[];
+  action_id?: string;
+
+  description_en?: string;
 }
 export interface IResult {
   requires?: string[];
@@ -54,10 +58,14 @@ export default class Editor {
     this.promptCallback = promptCallback;
   }
 
-  async parseAction(stats: IStats, action: IAction, passed_args: any): Promise<IStats> {
+  async parseAction(
+    stats: IStats,
+    action: IAction,
+    passed_args: any
+  ): Promise<ITimelineEvent> {
     // Handle prompts for missing arguments
     const args = { ...passed_args };
-    
+
     for (const arg of action.args) {
       if (!args[arg.id] && arg.prompt && this.promptCallback) {
         if (arg.prompt.required || !arg.optional) {
@@ -65,7 +73,7 @@ export default class Editor {
           const response = await this.promptCallback({
             type: promptType,
             title: arg.prompt.title,
-            options: arg.prompt.options
+            options: arg.prompt.options,
           });
           args[arg.id] = response;
         }
@@ -161,7 +169,7 @@ export default class Editor {
     return {
       description_en: action.description,
       time_ms: Date.now(),
-      action_id: action.action_id,
+      action_id: action.action_id || '',
     };
   }
 

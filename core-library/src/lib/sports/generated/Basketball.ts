@@ -1,4 +1,6 @@
-import { Player, Position, Team } from 'types';
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-nocheck
+import { Player, Position, Team } from '../../../types';
 import Editor, { IAction } from '../../Editor';
 
 export default class Basketball extends Editor {

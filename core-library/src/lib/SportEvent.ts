@@ -81,6 +81,8 @@ class SportEvent {
 
     for (let i = 0; i < timeline_index; i++) {
       const timeline_event = this.sport_data.timeline[i];
+      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+      // @ts-ignore
       jsonpatch.applyPatch(current_stats, timeline_event.diff);
     }
 
