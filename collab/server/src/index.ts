@@ -40,7 +40,10 @@ export class CollaborationRoom {
 
   async handleWebSocket(ws: WebSocket) {
     ws.accept();
-    const userId = crypto.randomUUID();
+    const userId = new URL(request.url).searchParams.get('userId');
+    if (!userId) {
+      return new Response('User ID required', { status: 400 });
+    }
 
     // Add new connection
     this.connections.set(userId, ws);

@@ -2,7 +2,7 @@ export type EventHandler = (data: any) => void;
 
 export class CollaborationClient {
   private ws: WebSocket | null = null;
-  private userId = '';
+  private userId = crypto.randomUUID();
   private roomId = '';
   private eventHandlers: Map<string, EventHandler[]> = new Map();
   private reconnectAttempts = 0;
@@ -15,7 +15,7 @@ export class CollaborationClient {
     this.roomId = roomId;
     console.debug(`[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`);
     return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(`${this.serverUrl}?roomId=${roomId}`);
+      this.ws = new WebSocket(`${this.serverUrl}?roomId=${roomId}&userId=${this.userId}`);
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
