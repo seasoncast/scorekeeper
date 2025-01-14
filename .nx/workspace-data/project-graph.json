@@ -677,7 +677,7 @@
               "{workspaceRoot}/jest.preset.js"
             ],
             "outputs": [
-              "{workspaceRoot}/coverage/collab/server"
+              "{workspaceRoot}/coverage/{projectRoot}"
             ],
             "metadata": {
               "technologies": [

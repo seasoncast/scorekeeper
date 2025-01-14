@@ -13,9 +13,13 @@ export class CollaborationClient {
 
   async connect(roomId: string): Promise<void> {
     this.roomId = roomId;
-    console.debug(`[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`);
+    console.debug(
+      `[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`
+    );
     return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(`${this.serverUrl}?roomId=${roomId}&userId=${this.userId}`);
+      this.ws = new WebSocket(
+        `${this.serverUrl}?roomId=${roomId}&userId=${this.userId}`
+      );
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
@@ -34,11 +38,15 @@ export class CollaborationClient {
       };
 
       this.ws.onclose = () => {
-        console.debug(`[CollabClient] Connection closed, reconnect attempts: ${this.reconnectAttempts}/${this.maxReconnectAttempts}`);
+        console.debug(
+          `[CollabClient] Connection closed, reconnect attempts: ${this.reconnectAttempts}/${this.maxReconnectAttempts}`
+        );
         if (this.reconnectAttempts < this.maxReconnectAttempts) {
           setTimeout(() => {
             this.reconnectAttempts++;
-            console.debug(`[CollabClient] Reconnecting (attempt ${this.reconnectAttempts})...`);
+            console.debug(
+              `[CollabClient] Reconnecting (attempt ${this.reconnectAttempts})...`
+            );
             this.connect(this.roomId);
           }, this.reconnectDelay);
         }
@@ -86,7 +94,7 @@ export class CollaborationClient {
   }
 
   private lastCursorUpdate = 0;
-  private cursorThrottleMs = 10;
+  private cursorThrottleMs = 100;
 
   sendCursorPosition(position: { x: number; y: number }): void {
     const now = Date.now();
