@@ -33,6 +33,7 @@
 <script lang="ts">
 import { CollaborationClient } from '@org/client-library';
 import { defineComponent } from 'vue';
+import * as fastJsonPatch from 'fast-json-patch';
 
 export default defineComponent({
   name: 'CollabView',
@@ -68,7 +69,14 @@ export default defineComponent({
 
       // Handle document edits
       this.client.on('edit', (message) => {
-        this.documentText = this.client.getDocumentState();
+        if (Array.isArray(message.data)) {
+          this.documentText = fastJsonPatch.applyPatch(
+            this.documentText,
+            message.data,
+            false,
+            false
+          ).newDocument;
+        }
       });
 
       // Handle cursor updates from other users
