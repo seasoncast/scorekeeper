@@ -9,7 +9,12 @@
       <button @click="connectToRoom">Join Room</button>
     </div>
 
-    <div class="collab-area" @mousemove="handleMouseMove" ref="collabArea">
+    <div class="collab-area" ref="collabArea">
+      <textarea
+        v-model="documentText"
+        @input="handleTextChange"
+        class="document-editor"
+      />
       <div
         v-for="user in otherUsers"
         :key="user.userId"
@@ -39,7 +44,7 @@ export default defineComponent({
         userId: string;
         cursorPosition?: { x: number; y: number };
       }>,
-      localCursor: { x: 0, y: 0 },
+      documentText: '',
     };
   },
   methods: {
@@ -55,9 +60,15 @@ export default defineComponent({
 
       // Handle initial sync with all users and their cursor positions
       this.client.on('sync', (message: SyncMessage) => {
+        this.documentText = message.data.state;
         this.otherUsers = message.data.presence.filter(
           user => user.userId !== this.client?.userId
         );
+      });
+
+      // Handle document edits
+      this.client.on('edit', (message) => {
+        this.documentText = message.data;
       });
 
       // Handle cursor updates from other users
@@ -88,25 +99,11 @@ export default defineComponent({
         );
       });
     },
-    handleMouseMove(event: MouseEvent) {
+    handleTextChange(event: InputEvent) {
       if (!this.client) return;
-
-      const rect = (
-        this.$refs.collabArea as HTMLElement
-      ).getBoundingClientRect();
-      const x = event.clientX - rect.left;
-      const y = event.clientY - rect.top;
-
-      this.localCursor = { x, y };
-      this.client.sendCursorPosition({ x, y });
       
-      // Update local cursor position immediately for smooth rendering
-      const userIndex = this.otherUsers.findIndex(
-        u => u.userId === this.client?.userId
-      );
-      if (userIndex !== -1) {
-        this.otherUsers[userIndex].cursorPosition = { x, y };
-      }
+      const newText = event.target.value;
+      this.client.sendEdit(newText);
     },
   },
   beforeUnmount() {
@@ -135,6 +132,18 @@ export default defineComponent({
   position: relative;
   background: white;
   overflow: hidden;
+  padding: 1rem;
+}
+
+.document-editor {
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  resize: none;
+  font-size: 1rem;
+  line-height: 1.5;
+  padding: 1rem;
 }
 
 .cursor {
