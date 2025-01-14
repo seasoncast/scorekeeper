@@ -13,27 +13,32 @@ export class CollaborationClient {
 
   async connect(roomId: string): Promise<void> {
     this.roomId = roomId;
+    console.debug(`[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`);
     return new Promise((resolve, reject) => {
       this.ws = new WebSocket(`${this.serverUrl}?roomId=${roomId}`);
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
+        console.debug(`[CollabClient] Connected to room ${roomId}`);
         resolve();
       };
 
       this.ws.onmessage = (event) => {
         try {
           const message = JSON.parse(event.data);
+          console.debug(`[CollabClient] Received message:`, message);
           this.handleMessage(message);
         } catch (error) {
-          console.error('Error parsing message:', error);
+          console.error('[CollabClient] Error parsing message:', error);
         }
       };
 
       this.ws.onclose = () => {
+        console.debug(`[CollabClient] Connection closed, reconnect attempts: ${this.reconnectAttempts}/${this.maxReconnectAttempts}`);
         if (this.reconnectAttempts < this.maxReconnectAttempts) {
           setTimeout(() => {
             this.reconnectAttempts++;
+            console.debug(`[CollabClient] Reconnecting (attempt ${this.reconnectAttempts})...`);
             this.connect(this.roomId);
           }, this.reconnectDelay);
         }
@@ -73,6 +78,7 @@ export class CollaborationClient {
   }
 
   sendEdit(editData: any): void {
+    console.debug(`[CollabClient] Sending edit:`, editData);
     this.sendMessage({
       type: 'edit',
       data: editData,
@@ -80,6 +86,7 @@ export class CollaborationClient {
   }
 
   sendCursorPosition(position: { x: number; y: number }): void {
+    console.debug(`[CollabClient] Sending cursor position:`, position);
     this.sendMessage({
       type: 'cursor',
       data: position,
@@ -88,13 +95,15 @@ export class CollaborationClient {
 
   private sendMessage(message: any): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-      this.ws.send(
-        JSON.stringify({
-          ...message,
-          userId: this.userId,
-          timestamp: Date.now(),
-        })
-      );
+      const fullMessage = {
+        ...message,
+        userId: this.userId,
+        timestamp: Date.now(),
+      };
+      console.debug(`[CollabClient] Sending message:`, fullMessage);
+      this.ws.send(JSON.stringify(fullMessage));
+    } else {
+      console.warn('[CollabClient] Cannot send message - WebSocket not open');
     }
   }
 
