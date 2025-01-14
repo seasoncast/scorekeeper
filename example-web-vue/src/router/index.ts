@@ -12,7 +12,7 @@ const router = createRouter({
     },
     {
       path: '/collab',
-      name: 'home',
+      name: 'collab',
       component: CollabView,
     },
   ],
