@@ -53,6 +53,13 @@ export default defineComponent({
       this.client = new CollaborationClient('ws://localhost:8787');
       await this.client.connect(this.roomId);
 
+      // Handle initial sync with all users and their cursor positions
+      this.client.on('sync', (message: SyncMessage) => {
+        this.otherUsers = message.data.presence.filter(
+          user => user.userId !== this.client?.userId
+        );
+      });
+
       // Handle cursor updates from other users
       this.client.on('cursor', (message) => {
         const userIndex = this.otherUsers.findIndex(
@@ -62,9 +69,11 @@ export default defineComponent({
           this.otherUsers.push({
             userId: message.userId,
             cursorPosition: message.data,
+            lastActive: Date.now()
           });
         } else {
           this.otherUsers[userIndex].cursorPosition = message.data;
+          this.otherUsers[userIndex].lastActive = Date.now();
         }
       });
 

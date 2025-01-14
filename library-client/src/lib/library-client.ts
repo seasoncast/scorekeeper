@@ -126,7 +126,21 @@ export class CollaborationClient {
   }
 }
 
+export interface CursorPosition {
+  x: number;
+  y: number;
+}
+
 export interface UserPresence {
   userId: string;
-  cursorPosition?: { x: number; y: number };
+  cursorPosition?: CursorPosition;
+  lastActive?: number;
+}
+
+export interface SyncMessage {
+  type: 'sync';
+  data: {
+    state: any;
+    presence: UserPresence[];
+  };
 }

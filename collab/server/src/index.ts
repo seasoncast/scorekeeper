@@ -15,6 +15,14 @@ interface CollaborationMessage {
   timestamp: number;
 }
 
+interface SyncMessage extends CollaborationMessage {
+  type: 'sync';
+  data: {
+    state: any;
+    presence: UserPresence[];
+  };
+}
+
 // Durable Object for managing collaboration rooms
 export class CollaborationRoom {
   private connections: Map<string, WebSocket> = new Map();
@@ -59,16 +67,23 @@ export class CollaborationRoom {
           this.connections.set(userId, ws);
           this.presence.set(userId, { userId });
           
-          // Send initial state and presence
-          ws.send(
-            JSON.stringify({
-              type: 'sync',
-              data: {
-                state: this.state,
-                presence: Array.from(this.presence.values()),
-              },
-            })
-          );
+          // Send initial state and presence with cursor positions
+          const presenceWithCursors = Array.from(this.presence.values()).map(user => ({
+            userId: user.userId,
+            cursorPosition: user.cursorPosition,
+            lastActive: Date.now()
+          }));
+
+          const syncMessage: SyncMessage = {
+            type: 'sync',
+            userId: data.userId,
+            timestamp: Date.now(),
+            data: {
+              state: this.state,
+              presence: presenceWithCursors
+            }
+          };
+          ws.send(JSON.stringify(syncMessage));
 
           // Broadcast join
           this.broadcast({
