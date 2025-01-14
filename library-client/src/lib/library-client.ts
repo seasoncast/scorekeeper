@@ -85,12 +85,19 @@ export class CollaborationClient {
     });
   }
 
+  private lastCursorUpdate = 0;
+  private cursorThrottleMs = 10;
+
   sendCursorPosition(position: { x: number; y: number }): void {
-    console.debug(`[CollabClient] Sending cursor position:`, position);
-    this.sendMessage({
-      type: 'cursor',
-      data: position,
-    });
+    const now = Date.now();
+    if (now - this.lastCursorUpdate >= this.cursorThrottleMs) {
+      console.debug(`[CollabClient] Sending cursor position:`, position);
+      this.sendMessage({
+        type: 'cursor',
+        data: position,
+      });
+      this.lastCursorUpdate = now;
+    }
   }
 
   private sendMessage(message: any): void {

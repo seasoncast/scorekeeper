@@ -99,6 +99,14 @@ export default defineComponent({
 
       this.localCursor = { x, y };
       this.client.sendCursorPosition({ x, y });
+      
+      // Update local cursor position immediately for smooth rendering
+      const userIndex = this.otherUsers.findIndex(
+        u => u.userId === this.client?.userId
+      );
+      if (userIndex !== -1) {
+        this.otherUsers[userIndex].cursorPosition = { x, y };
+      }
     },
   },
   beforeUnmount() {
