@@ -85,12 +85,41 @@ export class CollaborationClient {
     }
   }
 
-  sendEdit(editData: any): void {
-    console.debug(`[CollabClient] Sending edit:`, editData);
-    this.sendMessage({
-      type: 'edit',
-      data: editData,
-    });
+  private currentDocumentState: any = {};
+  private startingDocumentState: any = {};
+  private diffTimeline: Array<any> = [];
+
+  sendEdit(newState: any): void {
+    const diff = fastJsonPatch.compare(this.currentDocumentState, newState);
+    if (diff.length > 0) {
+      console.debug(`[CollabClient] Sending edit diff:`, diff);
+      this.diffTimeline.push(diff);
+      this.currentDocumentState = fastJsonPatch.applyPatch(
+        this.currentDocumentState, 
+        diff,
+        false,
+        false
+      ).newDocument;
+      
+      this.sendMessage({
+        type: 'edit',
+        data: diff,
+      });
+    }
+  }
+
+  getDocumentState(): any {
+    return this.currentDocumentState;
+  }
+
+  getDiffTimeline(): Array<any> {
+    return this.diffTimeline;
+  }
+
+  resetDocumentState(newState: any): void {
+    this.startingDocumentState = newState;
+    this.currentDocumentState = newState;
+    this.diffTimeline = [];
   }
 
   private lastCursorUpdate = 0;

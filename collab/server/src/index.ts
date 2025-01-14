@@ -26,7 +26,9 @@ interface SyncMessage extends CollaborationMessage {
 // Durable Object for managing collaboration rooms
 export class CollaborationRoom {
   private connections: Map<string, WebSocket> = new Map();
-  private state: any = {};
+  private startingDocumentState: any = {};
+  private currentDocumentState: any = {};
+  private diffTimeline: Array<any> = [];
   private presence: Map<string, UserPresence> = new Map();
 
   constructor(private state: DurableObjectState) {}
@@ -95,8 +97,16 @@ export class CollaborationRoom {
 
         switch (data.type) {
           case 'edit':
-            this.state = { ...this.state, ...data.data };
-            this.broadcast(data);
+            if (Array.isArray(data.data)) {
+              this.diffTimeline.push(data.data);
+              this.currentDocumentState = fastJsonPatch.applyPatch(
+                this.currentDocumentState, 
+                data.data,
+                false,
+                false
+              ).newDocument;
+              this.broadcast(data);
+            }
             break;
 
           case 'cursor':
