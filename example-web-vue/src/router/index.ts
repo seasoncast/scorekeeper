@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+import CollabView from '../views/CollabView.vue';
 import HomeView from '../views/ScoreView.vue';
 
 const router = createRouter({
@@ -8,6 +9,11 @@ const router = createRouter({
       path: '/',
       name: 'home',
       component: HomeView,
+    },
+    {
+      path: '/collab',
+      name: 'home',
+      component: CollabView,
     },
   ],
 });
