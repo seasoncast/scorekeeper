@@ -55,3 +55,6 @@ cache/
 example-rn-app-e2e/artifacts
 .aider*
 .env
+
+.nx
+
