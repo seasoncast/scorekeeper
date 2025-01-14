@@ -1,3 +1,4 @@
+import * as fastJsonPatch from 'fast-json-patch';
 export type EventHandler = (data: any) => void;
 
 export class CollaborationClient {
@@ -95,12 +96,12 @@ export class CollaborationClient {
       console.debug(`[CollabClient] Sending edit diff:`, diff);
       this.diffTimeline.push(diff);
       this.currentDocumentState = fastJsonPatch.applyPatch(
-        this.currentDocumentState, 
+        this.currentDocumentState,
         diff,
         false,
         false
       ).newDocument;
-      
+
       this.sendMessage({
         type: 'edit',
         data: diff,
