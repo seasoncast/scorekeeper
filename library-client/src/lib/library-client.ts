@@ -1,9 +1,9 @@
-type EventHandler = (data: any) => void;
+export type EventHandler = (data: any) => void;
 
 export class CollaborationClient {
   private ws: WebSocket | null = null;
-  private userId: string = '';
-  private roomId: string = '';
+  private userId = '';
+  private roomId = '';
   private eventHandlers: Map<string, EventHandler[]> = new Map();
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
@@ -63,7 +63,9 @@ export class CollaborationClient {
     if (!handler) {
       this.eventHandlers.delete(event);
     } else {
-      const handlers = this.eventHandlers.get(event)?.filter(h => h !== handler);
+      const handlers = this.eventHandlers
+        .get(event)
+        ?.filter((h) => h !== handler);
       if (handlers) {
         this.eventHandlers.set(event, handlers);
       }
@@ -73,30 +75,32 @@ export class CollaborationClient {
   sendEdit(editData: any): void {
     this.sendMessage({
       type: 'edit',
-      data: editData
+      data: editData,
     });
   }
 
   sendCursorPosition(position: { x: number; y: number }): void {
     this.sendMessage({
       type: 'cursor',
-      data: position
+      data: position,
     });
   }
 
   private sendMessage(message: any): void {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
-      this.ws.send(JSON.stringify({
-        ...message,
-        userId: this.userId,
-        timestamp: Date.now()
-      }));
+      this.ws.send(
+        JSON.stringify({
+          ...message,
+          userId: this.userId,
+          timestamp: Date.now(),
+        })
+      );
     }
   }
 
   private handleMessage(message: any): void {
     const handlers = this.eventHandlers.get(message.type) || [];
-    handlers.forEach(handler => handler(message));
+    handlers.forEach((handler) => handler(message));
   }
 
   getCurrentUsers(): Promise<UserPresence[]> {
