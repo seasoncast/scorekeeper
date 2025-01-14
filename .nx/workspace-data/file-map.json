@@ -55,44 +55,36 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "6603393952729308428"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16466317737724113701"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
       },
       {
         "file": ".vscode/extensions.json",
         "hash": "235626400633494639"
       },
       {
-        "file": ".editorconfig",
-        "hash": "5443105041930014821"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "18220756446302936918"
-      },
-      {
-        "file": "package-lock.json",
-        "hash": "18278736432110185859"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "migrations.json",
-        "hash": "17527757946522167007"
-      },
-      {
         "file": "LICENSE",
         "hash": "8753450313959232189"
-      },
-      {
-        "file": "tools/scripts/eas-build-post-install.mjs",
-        "hash": "18390423807559123090"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "8865097869854018350"
       },
       {
         "file": "README.md",
@@ -103,43 +95,213 @@
         "hash": "5546405625092116747"
       },
       {
-        "file": "tsconfig.base.json",
-        "hash": "2158205243400342746"
+        "file": "jest.config.ts",
+        "hash": "12333515226966617182"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "17527757946522167007"
       },
       {
         "file": "nx.json",
         "hash": "4949160431580471671"
       },
       {
+        "file": "package-lock.json",
+        "hash": "18278736432110185859"
+      },
+      {
         "file": "package.json",
         "hash": "5495666227406506013"
       },
       {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": ".eslintrc.json",
-        "hash": "6603393952729308428"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "12333515226966617182"
+        "file": "tools/scripts/eas-build-post-install.mjs",
+        "hash": "18390423807559123090"
       },
       {
         "file": "tools/scripts/eas-build-pre-install.mjs",
         "hash": "12536024410529632909"
       },
       {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
+        "file": "tsconfig.base.json",
+        "hash": "2158205243400342746"
       },
       {
-        "file": ".gitignore",
-        "hash": "16466317737724113701"
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "18220756446302936918"
       }
     ],
     "projectFileMap": {
+      "collab-server": [
+        {
+          "file": "collab/server/.eslintrc.json",
+          "hash": "13800677001662881425"
+        },
+        {
+          "file": "collab/server/.gitignore",
+          "hash": "14588693984379028876"
+        },
+        {
+          "file": "collab/server/package.json",
+          "hash": "16152018187976839072"
+        },
+        {
+          "file": "collab/server/project.json",
+          "hash": "17891843779328575966"
+        },
+        {
+          "file": "collab/server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "collab/server/src/index.integration.test.ts",
+          "hash": "1307357154446027025",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "collab/server/src/index.test.ts",
+          "hash": "17880542207054608048",
+          "deps": [
+            "npm:vitest"
+          ]
+        },
+        {
+          "file": "collab/server/src/index.ts",
+          "hash": "9949865500977471390"
+        },
+        {
+          "file": "collab/server/tsconfig.app.json",
+          "hash": "15012822469813263077"
+        },
+        {
+          "file": "collab/server/tsconfig.json",
+          "hash": "3490524966360018312"
+        },
+        {
+          "file": "collab/server/tsconfig.spec.json",
+          "hash": "15943385144407153049"
+        },
+        {
+          "file": "collab/server/vite.config.ts",
+          "hash": "16140041651382939885",
+          "deps": [
+            "npm:vite",
+            "npm:@nx/vite"
+          ]
+        },
+        {
+          "file": "collab/server/vitest.config.ts",
+          "hash": "12427814464596015357",
+          "deps": [
+            "npm:@cloudflare/vitest-pool-workers"
+          ]
+        },
+        {
+          "file": "collab/server/wrangler.toml",
+          "hash": "13368156808524675846"
+        }
+      ],
+      "example-web-vue": [
+        {
+          "file": "example-web-vue/.eslintrc.json",
+          "hash": "7309598769689397343"
+        },
+        {
+          "file": "example-web-vue/index.html",
+          "hash": "6633114284422498396"
+        },
+        {
+          "file": "example-web-vue/project.json",
+          "hash": "4233505831200696166"
+        },
+        {
+          "file": "example-web-vue/public/assets/basketball.jpeg",
+          "hash": "18395553210349704694"
+        },
+        {
+          "file": "example-web-vue/src/app/App.spec.ts",
+          "hash": "10611630957883797359",
+          "deps": [
+            "npm:@vue/test-utils"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/App.vue",
+          "hash": "13711524085917720759",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/NxWelcome.vue",
+          "hash": "14576822820710724813"
+        },
+        {
+          "file": "example-web-vue/src/main.ts",
+          "hash": "3088894322703592061",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/router/index.ts",
+          "hash": "14307912965442850989",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/styles.css",
+          "hash": "97131783897646283"
+        },
+        {
+          "file": "example-web-vue/src/views/AboutView.vue",
+          "hash": "16824834101219002222"
+        },
+        {
+          "file": "example-web-vue/src/views/CollabView.vue",
+          "hash": "3411456631519968141",
+          "deps": [
+            "library-client",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/views/ScoreView.vue",
+          "hash": "2820183634061954202",
+          "deps": [
+            "core-library",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/tsconfig.app.json",
+          "hash": "11088132585234755447"
+        },
+        {
+          "file": "example-web-vue/tsconfig.json",
+          "hash": "18037995839136760424"
+        },
+        {
+          "file": "example-web-vue/vite.config.ts",
+          "hash": "8104925680029115810",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
       "example-expo-react-native": [
         {
           "file": "example-expo-react-native/.babelrc.js",
@@ -280,247 +442,6 @@
           ]
         }
       ],
-      "example-web-vue": [
-        {
-          "file": "example-web-vue/.eslintrc.json",
-          "hash": "7309598769689397343"
-        },
-        {
-          "file": "example-web-vue/index.html",
-          "hash": "6633114284422498396"
-        },
-        {
-          "file": "example-web-vue/project.json",
-          "hash": "4233505831200696166"
-        },
-        {
-          "file": "example-web-vue/public/assets/basketball.jpeg",
-          "hash": "18395553210349704694"
-        },
-        {
-          "file": "example-web-vue/src/app/App.spec.ts",
-          "hash": "10611630957883797359",
-          "deps": [
-            "npm:@vue/test-utils"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/app/App.vue",
-          "hash": "13711524085917720759",
-          "deps": [
-            "npm:vue-router"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/app/NxWelcome.vue",
-          "hash": "14576822820710724813"
-        },
-        {
-          "file": "example-web-vue/src/main.ts",
-          "hash": "3088894322703592061",
-          "deps": [
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/router/index.ts",
-          "hash": "14307912965442850989",
-          "deps": [
-            "npm:vue-router"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/styles.css",
-          "hash": "97131783897646283"
-        },
-        {
-          "file": "example-web-vue/src/views/AboutView.vue",
-          "hash": "16824834101219002222"
-        },
-        {
-          "file": "example-web-vue/src/views/CollabView.vue",
-          "hash": "16507046905524148535",
-          "deps": [
-            "library-client",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/views/ScoreView.vue",
-          "hash": "2820183634061954202",
-          "deps": [
-            "core-library",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/tsconfig.app.json",
-          "hash": "11088132585234755447"
-        },
-        {
-          "file": "example-web-vue/tsconfig.json",
-          "hash": "18037995839136760424"
-        },
-        {
-          "file": "example-web-vue/vite.config.ts",
-          "hash": "8104925680029115810",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-vue",
-            "npm:@nx/vite"
-          ]
-        }
-      ],
-      "library-client": [
-        {
-          "file": "library-client/.eslintrc.json",
-          "hash": "13365499647183331872"
-        },
-        {
-          "file": "library-client/README.md",
-          "hash": "3131065715213361611"
-        },
-        {
-          "file": "library-client/jest.config.ts",
-          "hash": "8848747651314784684"
-        },
-        {
-          "file": "library-client/package.json",
-          "hash": "1802096670873638757",
-          "deps": [
-            "npm:tslib"
-          ]
-        },
-        {
-          "file": "library-client/project.json",
-          "hash": "14021430279628584588"
-        },
-        {
-          "file": "library-client/src/index.ts",
-          "hash": "9236390187554257649"
-        },
-        {
-          "file": "library-client/src/lib/library-client.spec.ts",
-          "hash": "15489871656285694653"
-        },
-        {
-          "file": "library-client/src/lib/library-client.ts",
-          "hash": "17502227244381879934"
-        },
-        {
-          "file": "library-client/tsconfig.json",
-          "hash": "18330180151193889737"
-        },
-        {
-          "file": "library-client/tsconfig.lib.json",
-          "hash": "14539327243516648733"
-        },
-        {
-          "file": "library-client/tsconfig.spec.json",
-          "hash": "17313551537729802733"
-        }
-      ],
-      "server": [
-        {
-          "file": "server/.eslintrc.json",
-          "hash": "11808533155536463924"
-        },
-        {
-          "file": "server/Dockerfile",
-          "hash": "18238071057681064488"
-        },
-        {
-          "file": "server/project.json",
-          "hash": "11052178839224093439"
-        },
-        {
-          "file": "server/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "server/src/main.ts",
-          "hash": "1769695778783855813"
-        },
-        {
-          "file": "server/tsconfig.app.json",
-          "hash": "1650782542565282680"
-        },
-        {
-          "file": "server/tsconfig.json",
-          "hash": "4276712839166217253"
-        }
-      ],
-      "collab-server": [
-        {
-          "file": "collab/server/.eslintrc.json",
-          "hash": "13800677001662881425"
-        },
-        {
-          "file": "collab/server/.gitignore",
-          "hash": "14588693984379028876"
-        },
-        {
-          "file": "collab/server/package.json",
-          "hash": "16152018187976839072"
-        },
-        {
-          "file": "collab/server/project.json",
-          "hash": "17891843779328575966"
-        },
-        {
-          "file": "collab/server/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "collab/server/src/index.integration.test.ts",
-          "hash": "1307357154446027025",
-          "deps": [
-            "npm:vitest"
-          ]
-        },
-        {
-          "file": "collab/server/src/index.test.ts",
-          "hash": "17880542207054608048",
-          "deps": [
-            "npm:vitest"
-          ]
-        },
-        {
-          "file": "collab/server/src/index.ts",
-          "hash": "17800632102917415036"
-        },
-        {
-          "file": "collab/server/tsconfig.app.json",
-          "hash": "15012822469813263077"
-        },
-        {
-          "file": "collab/server/tsconfig.json",
-          "hash": "3490524966360018312"
-        },
-        {
-          "file": "collab/server/tsconfig.spec.json",
-          "hash": "15943385144407153049"
-        },
-        {
-          "file": "collab/server/vite.config.ts",
-          "hash": "16140041651382939885",
-          "deps": [
-            "npm:vite",
-            "npm:@nx/vite"
-          ]
-        },
-        {
-          "file": "collab/server/vitest.config.ts",
-          "hash": "12427814464596015357",
-          "deps": [
-            "npm:@cloudflare/vitest-pool-workers"
-          ]
-        },
-        {
-          "file": "collab/server/wrangler.toml",
-          "hash": "13368156808524675846"
-        }
-      ],
       "core-library": [
         {
           "file": "core-library/.eslintrc.json",
@@ -645,74 +566,34 @@
           "hash": "12638394678519115349"
         }
       ],
-      "ui-components-web": [
+      "server": [
         {
-          "file": "ui-components-web/LICENSE",
-          "hash": "9166610457620822902"
+          "file": "server/.eslintrc.json",
+          "hash": "11808533155536463924"
         },
         {
-          "file": "ui-components-web/project.json",
-          "hash": "5596866223631790933"
+          "file": "server/Dockerfile",
+          "hash": "18238071057681064488"
         },
         {
-          "file": "ui-components-web/src/components.d.ts",
-          "hash": "8740253890178631845"
+          "file": "server/project.json",
+          "hash": "11052178839224093439"
         },
         {
-          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
-          "hash": "9663520868158654038",
-          "deps": [
-            "npm:@stencil/core"
-          ]
+          "file": "server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
         },
         {
-          "file": "ui-components-web/src/components/my-component/my-component.scss",
-          "hash": "13027103444035360129"
+          "file": "server/src/main.ts",
+          "hash": "1769695778783855813"
         },
         {
-          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
-          "hash": "1281587495833565775",
-          "deps": [
-            "npm:@stencil/core"
-          ]
+          "file": "server/tsconfig.app.json",
+          "hash": "1650782542565282680"
         },
         {
-          "file": "ui-components-web/src/components/my-component/my-component.tsx",
-          "hash": "947446126832191696",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/readme.md",
-          "hash": "4904437418275924086"
-        },
-        {
-          "file": "ui-components-web/src/index.ts",
-          "hash": "1595832445444187531"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.spec.ts",
-          "hash": "1631795040635553820"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.ts",
-          "hash": "6155896121786761435"
-        },
-        {
-          "file": "ui-components-web/stencil.config.ts",
-          "hash": "4195795114994466677",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/tsconfig.json",
-          "hash": "16011561984293723868"
-        },
-        {
-          "file": "ui-components-web/tsconfig.lib.json",
-          "hash": "16302667982367987405"
+          "file": "server/tsconfig.json",
+          "hash": "4276712839166217253"
         }
       ],
       "ui-library-react-native": [
@@ -793,6 +674,125 @@
         {
           "file": "ui-library-react-native/tsconfig.spec.json",
           "hash": "13369031804221838106"
+        }
+      ],
+      "ui-components-web": [
+        {
+          "file": "ui-components-web/LICENSE",
+          "hash": "9166610457620822902"
+        },
+        {
+          "file": "ui-components-web/project.json",
+          "hash": "5596866223631790933"
+        },
+        {
+          "file": "ui-components-web/src/components.d.ts",
+          "hash": "8740253890178631845"
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
+          "hash": "9663520868158654038",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.scss",
+          "hash": "13027103444035360129"
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
+          "hash": "1281587495833565775",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/my-component.tsx",
+          "hash": "947446126832191696",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/src/components/my-component/readme.md",
+          "hash": "4904437418275924086"
+        },
+        {
+          "file": "ui-components-web/src/index.ts",
+          "hash": "1595832445444187531"
+        },
+        {
+          "file": "ui-components-web/src/utils/utils.spec.ts",
+          "hash": "1631795040635553820"
+        },
+        {
+          "file": "ui-components-web/src/utils/utils.ts",
+          "hash": "6155896121786761435"
+        },
+        {
+          "file": "ui-components-web/stencil.config.ts",
+          "hash": "4195795114994466677",
+          "deps": [
+            "npm:@stencil/core"
+          ]
+        },
+        {
+          "file": "ui-components-web/tsconfig.json",
+          "hash": "16011561984293723868"
+        },
+        {
+          "file": "ui-components-web/tsconfig.lib.json",
+          "hash": "16302667982367987405"
+        }
+      ],
+      "library-client": [
+        {
+          "file": "library-client/.eslintrc.json",
+          "hash": "13365499647183331872"
+        },
+        {
+          "file": "library-client/README.md",
+          "hash": "3131065715213361611"
+        },
+        {
+          "file": "library-client/jest.config.ts",
+          "hash": "8848747651314784684"
+        },
+        {
+          "file": "library-client/package.json",
+          "hash": "1802096670873638757",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "library-client/project.json",
+          "hash": "14021430279628584588"
+        },
+        {
+          "file": "library-client/src/index.ts",
+          "hash": "9236390187554257649"
+        },
+        {
+          "file": "library-client/src/lib/library-client.spec.ts",
+          "hash": "15489871656285694653"
+        },
+        {
+          "file": "library-client/src/lib/library-client.ts",
+          "hash": "6287037781461931406"
+        },
+        {
+          "file": "library-client/tsconfig.json",
+          "hash": "18330180151193889737"
+        },
+        {
+          "file": "library-client/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "library-client/tsconfig.spec.json",
+          "hash": "17313551537729802733"
         }
       ]
     }

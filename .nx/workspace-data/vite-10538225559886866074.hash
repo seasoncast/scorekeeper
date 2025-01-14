@@ -1,5 +1,5 @@
 {
-  "15406851698568868396collab/server/vitest.config.ts": {
+  "1296716839693938560collab/server/vitest.config.ts": {
     "targets": {
       "typecheck": {
         "cache": true,
@@ -68,7 +68,7 @@
     },
     "metadata": {}
   },
-  "15406851698568868396collab/server/vite.config.ts": {
+  "1296716839693938560collab/server/vite.config.ts": {
     "targets": {
       "typecheck": {
         "cache": true,
@@ -137,7 +137,7 @@
     },
     "metadata": {}
   },
-  "15793790959087906999example-web-vue/vite.config.ts": {
+  "17732915101326310660example-web-vue/vite.config.ts": {
     "targets": {
       "build": {
         "command": "vite build",

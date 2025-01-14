@@ -1,7 +1,7 @@
 {
-  "18008360679210544110": {},
+  "18037659094349526284": {},
   "16171469306069349721": {},
-  "10313624953226720550": {
+  "13528348340665944250": {
     "collab/server": {
       "targets": {
         "eslint:lint": {
@@ -127,7 +127,7 @@
       }
     }
   },
-  "12135840711477531801": {
+  "362758922704953273": {
     "example-web-vue": {
       "targets": {
         "eslint:lint": {
@@ -169,7 +169,7 @@
       }
     }
   },
-  "2888150188046746797": {
+  "9240678856279182769": {
     "library-client": {
       "targets": {
         "eslint:lint": {
@@ -261,180 +261,6 @@
           "cache": true,
           "options": {
             "cwd": "ui-library-react-native"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "yarn eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "14858887956014074708": {},
-  "1238126528048563691": {
-    "example-web-vue": {
-      "targets": {
-        "eslint:lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "example-web-vue"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "yarn eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "11712207622587658640": {},
-  "12703320675047221740": {},
-  "6459081736058948213": {},
-  "12389246100684013299": {
-    "collab/server": {
-      "targets": {
-        "eslint:lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "collab/server"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "yarn eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "16463828903803547741": {},
-  "18260104457542159093": {
-    "collab/server": {
-      "targets": {
-        "eslint:lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "collab/server"
-          },
-          "inputs": [
-            "default",
-            "^default",
-            "{workspaceRoot}/.eslintrc.json",
-            "{projectRoot}/.eslintrc.json",
-            "{workspaceRoot}/tools/eslint-rules/**/*",
-            {
-              "externalDependencies": [
-                "eslint"
-              ]
-            }
-          ],
-          "outputs": [
-            "{options.outputFile}"
-          ],
-          "metadata": {
-            "technologies": [
-              "eslint"
-            ],
-            "description": "Runs ESLint on project",
-            "help": {
-              "command": "yarn eslint --help",
-              "example": {
-                "options": {
-                  "max-warnings": 0
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  },
-  "11633914691111448275": {},
-  "10214480229736590082": {
-    "library-client": {
-      "targets": {
-        "eslint:lint": {
-          "command": "eslint .",
-          "cache": true,
-          "options": {
-            "cwd": "library-client"
           },
           "inputs": [
             "default",
