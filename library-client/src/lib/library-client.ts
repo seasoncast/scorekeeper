@@ -154,7 +154,18 @@ export class CollaborationClient {
 
   private handleMessage(message: any): void {
     const handlers = this.eventHandlers.get(message.type) || [];
-    handlers.forEach((handler) => handler(message));
+    handlers.forEach((handler) => {
+      if (message.type === 'edit' && Array.isArray(message.data)) {
+        this.currentDocumentState = fastJsonPatch.applyPatch(
+          this.currentDocumentState,
+          message.data,
+          false,
+          false
+        ).newDocument;
+        this.diffTimeline.push(message.data);
+      }
+      handler(message);
+    });
   }
 
   getCurrentUsers(): Promise<UserPresence[]> {

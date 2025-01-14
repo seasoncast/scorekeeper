@@ -68,7 +68,7 @@ export default defineComponent({
 
       // Handle document edits
       this.client.on('edit', (message) => {
-        this.documentText = message.data;
+        this.documentText = this.client.getDocumentState();
       });
 
       // Handle cursor updates from other users
