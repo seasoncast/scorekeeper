@@ -40,37 +40,43 @@ export class CollaborationRoom {
 
   async handleWebSocket(ws: WebSocket) {
     ws.accept();
-    const userId = new URL(request.url).searchParams.get('userId');
-    if (!userId) {
-      return new Response('User ID required', { status: 400 });
-    }
+    let userId: string | null = null;
 
-    // Add new connection
-    this.connections.set(userId, ws);
-    this.presence.set(userId, { userId });
-
-    // Send initial state and presence
-    ws.send(
-      JSON.stringify({
-        type: 'sync',
-        data: {
-          state: this.state,
-          presence: Array.from(this.presence.values()),
-        },
-      })
-    );
-
-    // Broadcast join
-    this.broadcast({
-      type: 'join',
-      userId,
-      timestamp: Date.now(),
-    });
+    // Wait for first message to get userId
 
     // Handle messages
     ws.addEventListener('message', async (msg) => {
       try {
         const data: CollaborationMessage = JSON.parse(msg.data);
+        
+        // Capture userId from first message
+        if (!userId) {
+          userId = data.userId;
+          if (!userId) {
+            ws.close(4000, 'User ID required');
+            return;
+          }
+          this.connections.set(userId, ws);
+          this.presence.set(userId, { userId });
+          
+          // Send initial state and presence
+          ws.send(
+            JSON.stringify({
+              type: 'sync',
+              data: {
+                state: this.state,
+                presence: Array.from(this.presence.values()),
+              },
+            })
+          );
+
+          // Broadcast join
+          this.broadcast({
+            type: 'join',
+            userId,
+            timestamp: Date.now(),
+          });
+        }
 
         switch (data.type) {
           case 'edit':
