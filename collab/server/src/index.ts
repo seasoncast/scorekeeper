@@ -28,12 +28,17 @@ interface SyncMessage extends CollaborationMessage {
 // Durable Object for managing collaboration rooms
 export class CollaborationRoom {
   private connections: Map<string, WebSocket> = new Map();
-  private startingDocumentState: any = {};
   private currentDocumentState: any = {};
   private diffTimeline: Array<any> = [];
   private presence: Map<string, UserPresence> = new Map();
 
-  constructor(private state: DurableObjectState) {}
+  constructor(private state: DurableObjectState) {
+    // Initialize state from storage
+    this.state.blockConcurrencyWhile(async () => {
+      const storedState = await this.state.storage.get<any>('documentState');
+      this.currentDocumentState = storedState || { text: '' };
+    });
+  }
 
   async fetch(request: Request) {
     const upgradeHeader = request.headers.get('Upgrade');
@@ -85,7 +90,7 @@ export class CollaborationRoom {
             userId: data.userId,
             timestamp: Date.now(),
             data: {
-              state: this.state,
+              state: this.currentDocumentState,
               presence: presenceWithCursors,
             },
           };
@@ -103,12 +108,16 @@ export class CollaborationRoom {
           case 'edit':
             if (Array.isArray(data.data)) {
               this.diffTimeline.push(data.data);
-              this.currentDocumentState = fastJsonPatch.applyPatch(
+              const newState = fastJsonPatch.applyPatch(
                 this.currentDocumentState,
                 data.data,
                 false,
                 false
               ).newDocument;
+              
+              // Persist the new state
+              await this.state.storage.put('documentState', newState);
+              this.currentDocumentState = newState;
               this.broadcast(data);
             }
             break;
