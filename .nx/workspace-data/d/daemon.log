@@ -269,3 +269,524 @@
 [NX Daemon Server] - 2025-01-14T07:05:01.258Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
 [NX Daemon Server] - 2025-01-14T07:05:01.258Z - Time taken for 'total execution time for createProjectGraph()' 29.629000000000815ms
 [NX Daemon Server] - 2025-01-14T07:05:09.154Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T07:05:09.386Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T07:05:09.465Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T07:05:26.768Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T07:07:23.925Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:16:11.833Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:16:32.423Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:16:33.122Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:16:33.242Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:18.638Z - Established a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-14T08:17:18.638Z - Closed a connection. Number of open connections: 4
+[NX Daemon Server] - 2025-01-14T08:17:18.638Z - Established a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-14T08:17:18.639Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2025-01-14T08:17:18.640Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2025-01-14T08:17:18.641Z - Time taken for 'total for creating and serializing project graph' 0.2854999992996454ms
+[NX Daemon Server] - 2025-01-14T08:17:18.642Z - Done responding to the client project-graph
+[NX Daemon Server] - 2025-01-14T08:17:18.642Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 1. Response time: 2.
+[NX Daemon Server] - 2025-01-14T08:17:18.687Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2025-01-14T08:17:18.687Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2025-01-14T08:17:18.687Z - Handled HASH_TASKS. Handling time: 12. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:17:18.693Z - [REQUEST]: Responding to the client. handleGetEstimatedTaskTimings
+[NX Daemon Server] - 2025-01-14T08:17:18.693Z - Done responding to the client handleGetEstimatedTaskTimings
+[NX Daemon Server] - 2025-01-14T08:17:18.693Z - Handled GET_ESTIMATED_TASK_TIMINGS. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:17:19.836Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:41.104Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:41.848Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:43.945Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:53.582Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:17:53.635Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:18:04.412Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:18:28.252Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:18:52.094Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:22:21.837Z - [WATCHER]: example-web-vue/src/views/CollabView.vue was modified
+[NX Daemon Server] - 2025-01-14T08:22:21.837Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T08:22:21.938Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2025-01-14T08:22:21.938Z - [REQUEST]: example-web-vue/src/views/CollabView.vue
+[NX Daemon Server] - 2025-01-14T08:22:21.938Z - [REQUEST]: 
+[NX Daemon Server] - 2025-01-14T08:22:21.947Z - [REQUEST]: Responding to the client. handleGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.947Z - Done responding to the client handleGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.947Z - Handled GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.947Z - Time taken for 'hash changed files from watcher' 0.1582080004736781ms
+[NX Daemon Server] - 2025-01-14T08:22:21.949Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.949Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.949Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.950Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.950Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.950Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.950Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.951Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.951Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-14T08:22:21.951Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.951Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.951Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.952Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.952Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.952Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.953Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.953Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.953Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.959Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.959Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.959Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.960Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.960Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.960Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.960Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.960Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.961Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+[NX Daemon Server] - 2025-01-14T08:22:21.961Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.961Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.961Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-14T08:22:21.962Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.962Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.962Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-14T08:22:21.969Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.969Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.969Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-14T08:22:21.970Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.970Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-14T08:22:21.970Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-14T08:22:21.977Z - Time taken for 'build-project-configs' 32.66312499996275ms
+[NX Daemon Server] - 2025-01-14T08:22:21.980Z - Time taken for '@nx/vite/plugin:createDependencies' 6.036040999926627ms
+[NX Daemon Server] - 2025-01-14T08:22:22.014Z - [SYNC]: collect registered sync generators
+[NX Daemon Server] - 2025-01-14T08:22:22.014Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX Daemon Server] - 2025-01-14T08:22:22.014Z - Time taken for 'total execution time for createProjectGraph()' 36.27979099936783ms
+[NX Daemon Server] - 2025-01-14T08:24:51.101Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T10:05:23.091Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-14T11:30:00.317Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-14T14:32:38.336Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-14T17:36:00.368Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-14T20:46:30.406Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-14T23:55:00.423Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T03:04:59.450Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T06:04:59.689Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T09:16:53.557Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T12:19:07.805Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T15:29:39.670Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T18:39:40.629Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T21:39:40.844Z - There are 5 open connections. Reset inactivity timer.
+[NX Daemon Server] - 2025-01-15T22:40:03.563Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T22:40:28.074Z - Closed a connection. Number of open connections: 4
+[NX Daemon Server] - 2025-01-15T22:40:29.804Z - Established a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-15T22:40:29.804Z - Established a connection. Number of open connections: 6
+[NX Daemon Server] - 2025-01-15T22:40:29.805Z - Closed a connection. Number of open connections: 5
+[NX Daemon Server] - 2025-01-15T22:40:29.813Z - [REQUEST]: Client Request for Project Graph Received
+[NX Daemon Server] - 2025-01-15T22:40:29.816Z - [REQUEST]: Responding to the client. project-graph
+[NX Daemon Server] - 2025-01-15T22:40:29.821Z - Time taken for 'total for creating and serializing project graph' 2.740334004163742ms
+[NX Daemon Server] - 2025-01-15T22:40:29.823Z - Done responding to the client project-graph
+[NX Daemon Server] - 2025-01-15T22:40:29.823Z - Handled REQUEST_PROJECT_GRAPH. Handling time: 4. Response time: 7.
+[NX Daemon Server] - 2025-01-15T22:40:29.894Z - [REQUEST]: Responding to the client. handleHashTasks
+[NX Daemon Server] - 2025-01-15T22:40:29.894Z - Done responding to the client handleHashTasks
+[NX Daemon Server] - 2025-01-15T22:40:29.894Z - Handled HASH_TASKS. Handling time: 30. Response time: 0.
+[NX Daemon Server] - 2025-01-15T22:40:29.901Z - [REQUEST]: Responding to the client. handleGetEstimatedTaskTimings
+[NX Daemon Server] - 2025-01-15T22:40:29.901Z - Done responding to the client handleGetEstimatedTaskTimings
+[NX Daemon Server] - 2025-01-15T22:40:29.901Z - Handled GET_ESTIMATED_TASK_TIMINGS. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T22:40:41.528Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:28:21.252Z - [WATCHER]: example-web-vue/src/views/CollabView.vue was modified
+[NX Daemon Server] - 2025-01-15T23:28:21.254Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:28:21.355Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2025-01-15T23:28:21.355Z - [REQUEST]: example-web-vue/src/views/CollabView.vue
+[NX Daemon Server] - 2025-01-15T23:28:21.355Z - [REQUEST]: 
+[NX Daemon Server] - 2025-01-15T23:28:21.367Z - Time taken for 'hash changed files from watcher' 0.6770829856395721ms
+[NX Daemon Server] - 2025-01-15T23:28:21.394Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.394Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.394Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.399Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.399Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.399Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - [REQUEST]: Responding to the client. handleGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - Done responding to the client handleGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - Handled GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.404Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.408Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.409Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.409Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-15T23:28:21.409Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.409Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.409Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.410Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.410Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.410Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.434Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.434Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.434Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.435Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.435Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.435Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - [REQUEST]: Responding to the client. handleHashGlob
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.436Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.437Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.437Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.437Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-15T23:28:21.448Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.449Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.449Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-15T23:28:21.449Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.449Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:28:21.449Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:28:21.460Z - Time taken for 'build-project-configs' 95.12733301520348ms
+[NX Daemon Server] - 2025-01-15T23:28:21.465Z - Time taken for '@nx/vite/plugin:createDependencies' 9.682541996240616ms
+[NX Daemon Server] - 2025-01-15T23:28:21.532Z - [SYNC]: collect registered sync generators
+[NX Daemon Server] - 2025-01-15T23:28:21.532Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX Daemon Server] - 2025-01-15T23:28:21.532Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX Daemon Server] - 2025-01-15T23:28:21.532Z - Time taken for 'total execution time for createProjectGraph()' 67.11041700839996ms
+[NX Daemon Server] - 2025-01-15T23:29:29.309Z - [WATCHER]: example-web-vue/src/views/CollabView.vue was modified
+[NX Daemon Server] - 2025-01-15T23:29:29.310Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:29:29.510Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2025-01-15T23:29:29.510Z - [REQUEST]: example-web-vue/src/views/CollabView.vue
+[NX Daemon Server] - 2025-01-15T23:29:29.510Z - [REQUEST]: 
+[NX Daemon Server] - 2025-01-15T23:29:29.517Z - [REQUEST]: Responding to the client. handleGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.517Z - Done responding to the client handleGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.517Z - Handled GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.518Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.518Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.518Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.518Z - Time taken for 'hash changed files from watcher' 0.09854200482368469ms
+[NX Daemon Server] - 2025-01-15T23:29:29.519Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.519Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.519Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.520Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.521Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.521Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.521Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.522Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.522Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.522Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-15T23:29:29.524Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.525Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.525Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-15T23:29:29.525Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.525Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.525Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.526Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.526Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.526Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.527Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-15T23:29:29.532Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.532Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.532Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.533Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.533Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:29:29.533Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:29:29.540Z - Time taken for 'build-project-configs' 24.430666983127594ms
+[NX Daemon Server] - 2025-01-15T23:29:29.543Z - Time taken for '@nx/vite/plugin:createDependencies' 5.875374972820282ms
+[NX Daemon Server] - 2025-01-15T23:29:29.574Z - [SYNC]: collect registered sync generators
+[NX Daemon Server] - 2025-01-15T23:29:29.574Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX Daemon Server] - 2025-01-15T23:29:29.574Z - Time taken for 'total execution time for createProjectGraph()' 30.387791991233826ms
+[NX Daemon Server] - 2025-01-15T23:29:39.686Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:34:25.800Z - [WATCHER]: collab/server/src/index.ts was modified
+[NX Daemon Server] - 2025-01-15T23:34:25.801Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:34:25.996Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:34:26.202Z - [REQUEST]: Updated workspace context based on watched changes, recomputing project graph...
+[NX Daemon Server] - 2025-01-15T23:34:26.202Z - [REQUEST]: collab/server/src/index.ts
+[NX Daemon Server] - 2025-01-15T23:34:26.202Z - [REQUEST]: 
+[NX Daemon Server] - 2025-01-15T23:34:26.211Z - [REQUEST]: Responding to the client. handleGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.211Z - Done responding to the client handleGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.211Z - Handled GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.211Z - Time taken for 'hash changed files from watcher' 0.2571659982204437ms
+[NX Daemon Server] - 2025-01-15T23:34:26.213Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.213Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.213Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.217Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.217Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.217Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.217Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.218Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.218Z - Handled HASH_GLOB. Handling time: 0. Response time: 1.
+[NX Daemon Server] - 2025-01-15T23:34:26.218Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.218Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.218Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.219Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.219Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.219Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.220Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.222Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.223Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.223Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.223Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.224Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.224Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.224Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - Handled HASH_GLOB. Handling time: 1. Response time: 0.
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - [REQUEST]: Responding to the client. handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - Done responding to the client handleHashGlob
+[NX Daemon Server] - 2025-01-15T23:34:26.225Z - Handled HASH_GLOB. Handling time: 0. Response time: 0.
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] first parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+
+[Nx Vite TsPaths] Found tsconfig at /Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json
+
+[Nx Vite TsPaths] fallback parsed tsconfig:  {
+  resultType: 'success',
+  configFileAbsolutePath: '/Users/maxsmith/Documents/GitHub/scorekeeper/tsconfig.base.json',
+  baseUrl: '.',
+  absoluteBaseUrl: '/Users/maxsmith/Documents/GitHub/scorekeeper',
+  paths: {
+    '@org/core-library': [ 'core-library/src/index.ts' ],
+    '@org/ui-library-react-native': [ 'ui-library-react-native/src/index.ts' ],
+    '@org/client-library': [ 'library-client/src/index.ts' ]
+  },
+  addMatchAll: true
+}
+[NX Daemon Server] - 2025-01-15T23:34:26.238Z - Time taken for 'build-project-configs' 31.071458995342255ms
+[NX Daemon Server] - 2025-01-15T23:34:26.241Z - Time taken for '@nx/vite/plugin:createDependencies' 6.447625011205673ms
+[NX Daemon Server] - 2025-01-15T23:34:26.269Z - [SYNC]: collect registered sync generators
+[NX Daemon Server] - 2025-01-15T23:34:26.269Z - [SYNC]: project graph hash is the same, not collecting task sync generators
+[NX Daemon Server] - 2025-01-15T23:34:26.269Z - [SYNC]: nx.json hash is the same, not collecting global sync generators
+[NX Daemon Server] - 2025-01-15T23:34:26.269Z - Time taken for 'total execution time for createProjectGraph()' 28.564916998147964ms
+[NX Daemon Server] - 2025-01-15T23:34:27.003Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:34:27.886Z - [WATCHER]: Processing file changes in outputs
+[NX Daemon Server] - 2025-01-15T23:34:29.526Z - [WATCHER]: Processing file changes in outputs

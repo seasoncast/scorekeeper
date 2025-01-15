@@ -55,117 +55,87 @@
   "fileMap": {
     "nonProjectFiles": [
       {
-        "file": "tsconfig.base.json",
-        "hash": "2158205243400342746"
-      },
-      {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
-      },
-      {
-        "file": "jest.preset.js",
-        "hash": "9430166341120122740"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "9974665799350968562"
-      },
-      {
-        "file": ".eslintrc.json",
-        "hash": "6603393952729308428"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "8865097869854018350"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
-      },
-      {
-        "file": "package.json",
-        "hash": "13063584758104179516"
-      },
-      {
-        "file": ".gitignore",
-        "hash": "16651001040734071701"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "235626400633494639"
-      },
-      {
-        "file": "tools/scripts/eas-build-post-install.mjs",
-        "hash": "18390423807559123090"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "12333515226966617182"
+        "file": "babel.config.json",
+        "hash": "5546405625092116747"
       },
       {
         "file": "README.md",
         "hash": "14473342048778074289"
       },
       {
-        "file": "LICENSE",
-        "hash": "8753450313959232189"
+        "file": "tools/scripts/eas-build-pre-install.mjs",
+        "hash": "12536024410529632909"
+      },
+      {
+        "file": "tsconfig.base.json",
+        "hash": "2158205243400342746"
       },
       {
         "file": "nx.json",
         "hash": "4949160431580471671"
       },
       {
-        "file": "migrations.json",
-        "hash": "17527757946522167007"
-      },
-      {
-        "file": "tools/scripts/eas-build-pre-install.mjs",
-        "hash": "12536024410529632909"
-      },
-      {
-        "file": "babel.config.json",
-        "hash": "5546405625092116747"
+        "file": "tools/scripts/eas-build-post-install.mjs",
+        "hash": "18390423807559123090"
       },
       {
         "file": ".editorconfig",
         "hash": "5443105041930014821"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "6603393952729308428"
+      },
+      {
+        "file": "migrations.json",
+        "hash": "17527757946522167007"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": "yarn.lock",
+        "hash": "9974665799350968562"
+      },
+      {
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16651001040734071701"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": "jest.config.ts",
+        "hash": "12333515226966617182"
+      },
+      {
+        "file": "jest.preset.js",
+        "hash": "9430166341120122740"
+      },
+      {
+        "file": "package.json",
+        "hash": "13063584758104179516"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "8753450313959232189"
       }
     ],
     "projectFileMap": {
-      "server": [
-        {
-          "file": "server/.eslintrc.json",
-          "hash": "11808533155536463924"
-        },
-        {
-          "file": "server/Dockerfile",
-          "hash": "18238071057681064488"
-        },
-        {
-          "file": "server/project.json",
-          "hash": "11052178839224093439"
-        },
-        {
-          "file": "server/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
-        },
-        {
-          "file": "server/src/main.ts",
-          "hash": "1769695778783855813"
-        },
-        {
-          "file": "server/tsconfig.app.json",
-          "hash": "1650782542565282680"
-        },
-        {
-          "file": "server/tsconfig.json",
-          "hash": "4276712839166217253"
-        }
-      ],
       "ui-library-react-native": [
         {
           "file": "ui-library-react-native/.babelrc.js",
@@ -320,128 +290,74 @@
           "hash": "13368156808524675846"
         }
       ],
-      "core-library": [
+      "ui-components-web": [
         {
-          "file": "core-library/.eslintrc.json",
-          "hash": "13365499647183331872"
+          "file": "ui-components-web/LICENSE",
+          "hash": "9166610457620822902"
         },
         {
-          "file": "core-library/README.md",
-          "hash": "8311859849718860314"
+          "file": "ui-components-web/project.json",
+          "hash": "5596866223631790933"
         },
         {
-          "file": "core-library/TODO.txt",
-          "hash": "15280950173335383035"
+          "file": "ui-components-web/src/components.d.ts",
+          "hash": "8740253890178631845"
         },
         {
-          "file": "core-library/package.json",
-          "hash": "14762337203112669009",
+          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
+          "hash": "9663520868158654038",
           "deps": [
-            "npm:tslib"
+            "npm:@stencil/core"
           ]
         },
         {
-          "file": "core-library/project.json",
-          "hash": "16474548100610547615"
+          "file": "ui-components-web/src/components/my-component/my-component.scss",
+          "hash": "13027103444035360129"
         },
         {
-          "file": "core-library/scripts/generateTypescript.js",
-          "hash": "12676614788817994793"
-        },
-        {
-          "file": "core-library/src/index.ts",
-          "hash": "8598392863294926297"
-        },
-        {
-          "file": "core-library/src/lib/Editor.ts",
-          "hash": "4895678998203589375"
-        },
-        {
-          "file": "core-library/src/lib/Factory.ts",
-          "hash": "17711690063108567143"
-        },
-        {
-          "file": "core-library/src/lib/Player.ts",
-          "hash": "12106645448161297824"
-        },
-        {
-          "file": "core-library/src/lib/SportEvent.ts",
-          "hash": "11494856475841492844",
+          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
+          "hash": "1281587495833565775",
           "deps": [
-            "npm:fast-json-patch"
+            "npm:@stencil/core"
           ]
         },
         {
-          "file": "core-library/src/lib/SportEventTwoTeams.ts",
-          "hash": "222159987939212094"
+          "file": "ui-components-web/src/components/my-component/my-component.tsx",
+          "hash": "947446126832191696",
+          "deps": [
+            "npm:@stencil/core"
+          ]
         },
         {
-          "file": "core-library/src/lib/Team.ts",
-          "hash": "847735029780808470"
+          "file": "ui-components-web/src/components/my-component/readme.md",
+          "hash": "4904437418275924086"
         },
         {
-          "file": "core-library/src/lib/sports/Basketball.json",
-          "hash": "12860404844246513554"
+          "file": "ui-components-web/src/index.ts",
+          "hash": "1595832445444187531"
         },
         {
-          "file": "core-library/src/lib/sports/Volleyball.json",
-          "hash": "4496607828323459074"
+          "file": "ui-components-web/src/utils/utils.spec.ts",
+          "hash": "1631795040635553820"
         },
         {
-          "file": "core-library/src/lib/sports/Vollyball.ts",
-          "hash": "15506147570055399439"
+          "file": "ui-components-web/src/utils/utils.ts",
+          "hash": "6155896121786761435"
         },
         {
-          "file": "core-library/src/lib/sports/generated/Basketball.ts",
-          "hash": "12239132469760267043"
+          "file": "ui-components-web/stencil.config.ts",
+          "hash": "4195795114994466677",
+          "deps": [
+            "npm:@stencil/core"
+          ]
         },
         {
-          "file": "core-library/src/lib/sports/generated/Volleyball.ts",
-          "hash": "11224320041659215587"
+          "file": "ui-components-web/tsconfig.json",
+          "hash": "16011561984293723868"
         },
         {
-          "file": "core-library/src/lib/sports/generated/index.ts",
-          "hash": "3201018195019419564"
-        },
-        {
-          "file": "core-library/src/types/ISportConfig.ts",
-          "hash": "4615883751499845783"
-        },
-        {
-          "file": "core-library/src/types/ISportEvent.ts",
-          "hash": "7639745330119044601"
-        },
-        {
-          "file": "core-library/src/types/IStats.ts",
-          "hash": "14416213877666476642"
-        },
-        {
-          "file": "core-library/src/types/ITimelineEvent.ts",
-          "hash": "10440066413213706630"
-        },
-        {
-          "file": "core-library/src/types/Player.ts",
-          "hash": "11940295808387328247"
-        },
-        {
-          "file": "core-library/src/types/Position.ts",
-          "hash": "16470869833747932715"
-        },
-        {
-          "file": "core-library/src/types/Team.ts",
-          "hash": "7733442781023572414"
-        },
-        {
-          "file": "core-library/src/types/index.ts",
-          "hash": "1939966254967941577"
-        },
-        {
-          "file": "core-library/tsconfig.json",
-          "hash": "14391392062619267752"
-        },
-        {
-          "file": "core-library/tsconfig.lib.json",
-          "hash": "12638394678519115349"
+          "file": "ui-components-web/tsconfig.lib.json",
+          "hash": "16302667982367987405"
         }
       ],
       "example-web-vue": [
@@ -503,9 +419,10 @@
         },
         {
           "file": "example-web-vue/src/views/CollabView.vue",
-          "hash": "16999743131065052796",
+          "hash": "11302116349296299376",
           "deps": [
             "library-client",
+            "npm:fast-json-patch",
             "npm:vue"
           ]
         },
@@ -675,76 +592,6 @@
           ]
         }
       ],
-      "ui-components-web": [
-        {
-          "file": "ui-components-web/LICENSE",
-          "hash": "9166610457620822902"
-        },
-        {
-          "file": "ui-components-web/project.json",
-          "hash": "5596866223631790933"
-        },
-        {
-          "file": "ui-components-web/src/components.d.ts",
-          "hash": "8740253890178631845"
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.e2e.ts",
-          "hash": "9663520868158654038",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.scss",
-          "hash": "13027103444035360129"
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.spec.ts",
-          "hash": "1281587495833565775",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/my-component.tsx",
-          "hash": "947446126832191696",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/src/components/my-component/readme.md",
-          "hash": "4904437418275924086"
-        },
-        {
-          "file": "ui-components-web/src/index.ts",
-          "hash": "1595832445444187531"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.spec.ts",
-          "hash": "1631795040635553820"
-        },
-        {
-          "file": "ui-components-web/src/utils/utils.ts",
-          "hash": "6155896121786761435"
-        },
-        {
-          "file": "ui-components-web/stencil.config.ts",
-          "hash": "4195795114994466677",
-          "deps": [
-            "npm:@stencil/core"
-          ]
-        },
-        {
-          "file": "ui-components-web/tsconfig.json",
-          "hash": "16011561984293723868"
-        },
-        {
-          "file": "ui-components-web/tsconfig.lib.json",
-          "hash": "16302667982367987405"
-        }
-      ],
       "library-client": [
         {
           "file": "library-client/.eslintrc.json",
@@ -795,6 +642,160 @@
         {
           "file": "library-client/tsconfig.spec.json",
           "hash": "17313551537729802733"
+        }
+      ],
+      "core-library": [
+        {
+          "file": "core-library/.eslintrc.json",
+          "hash": "13365499647183331872"
+        },
+        {
+          "file": "core-library/README.md",
+          "hash": "8311859849718860314"
+        },
+        {
+          "file": "core-library/TODO.txt",
+          "hash": "15280950173335383035"
+        },
+        {
+          "file": "core-library/package.json",
+          "hash": "14762337203112669009",
+          "deps": [
+            "npm:tslib"
+          ]
+        },
+        {
+          "file": "core-library/project.json",
+          "hash": "16474548100610547615"
+        },
+        {
+          "file": "core-library/scripts/generateTypescript.js",
+          "hash": "12676614788817994793"
+        },
+        {
+          "file": "core-library/src/index.ts",
+          "hash": "8598392863294926297"
+        },
+        {
+          "file": "core-library/src/lib/Editor.ts",
+          "hash": "4895678998203589375"
+        },
+        {
+          "file": "core-library/src/lib/Factory.ts",
+          "hash": "17711690063108567143"
+        },
+        {
+          "file": "core-library/src/lib/Player.ts",
+          "hash": "12106645448161297824"
+        },
+        {
+          "file": "core-library/src/lib/SportEvent.ts",
+          "hash": "11494856475841492844",
+          "deps": [
+            "npm:fast-json-patch"
+          ]
+        },
+        {
+          "file": "core-library/src/lib/SportEventTwoTeams.ts",
+          "hash": "222159987939212094"
+        },
+        {
+          "file": "core-library/src/lib/Team.ts",
+          "hash": "847735029780808470"
+        },
+        {
+          "file": "core-library/src/lib/sports/Basketball.json",
+          "hash": "12860404844246513554"
+        },
+        {
+          "file": "core-library/src/lib/sports/Volleyball.json",
+          "hash": "4496607828323459074"
+        },
+        {
+          "file": "core-library/src/lib/sports/Vollyball.ts",
+          "hash": "15506147570055399439"
+        },
+        {
+          "file": "core-library/src/lib/sports/generated/Basketball.ts",
+          "hash": "12239132469760267043"
+        },
+        {
+          "file": "core-library/src/lib/sports/generated/Volleyball.ts",
+          "hash": "11224320041659215587"
+        },
+        {
+          "file": "core-library/src/lib/sports/generated/index.ts",
+          "hash": "3201018195019419564"
+        },
+        {
+          "file": "core-library/src/types/ISportConfig.ts",
+          "hash": "4615883751499845783"
+        },
+        {
+          "file": "core-library/src/types/ISportEvent.ts",
+          "hash": "7639745330119044601"
+        },
+        {
+          "file": "core-library/src/types/IStats.ts",
+          "hash": "14416213877666476642"
+        },
+        {
+          "file": "core-library/src/types/ITimelineEvent.ts",
+          "hash": "10440066413213706630"
+        },
+        {
+          "file": "core-library/src/types/Player.ts",
+          "hash": "11940295808387328247"
+        },
+        {
+          "file": "core-library/src/types/Position.ts",
+          "hash": "16470869833747932715"
+        },
+        {
+          "file": "core-library/src/types/Team.ts",
+          "hash": "7733442781023572414"
+        },
+        {
+          "file": "core-library/src/types/index.ts",
+          "hash": "1939966254967941577"
+        },
+        {
+          "file": "core-library/tsconfig.json",
+          "hash": "14391392062619267752"
+        },
+        {
+          "file": "core-library/tsconfig.lib.json",
+          "hash": "12638394678519115349"
+        }
+      ],
+      "server": [
+        {
+          "file": "server/.eslintrc.json",
+          "hash": "11808533155536463924"
+        },
+        {
+          "file": "server/Dockerfile",
+          "hash": "18238071057681064488"
+        },
+        {
+          "file": "server/project.json",
+          "hash": "11052178839224093439"
+        },
+        {
+          "file": "server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
+        },
+        {
+          "file": "server/src/main.ts",
+          "hash": "1769695778783855813"
+        },
+        {
+          "file": "server/tsconfig.app.json",
+          "hash": "1650782542565282680"
+        },
+        {
+          "file": "server/tsconfig.json",
+          "hash": "4276712839166217253"
         }
       ]
     }

@@ -23109,6 +23109,11 @@
       },
       {
         "source": "example-web-vue",
+        "target": "npm:fast-json-patch",
+        "type": "static"
+      },
+      {
+        "source": "example-web-vue",
         "target": "core-library",
         "type": "static"
       },

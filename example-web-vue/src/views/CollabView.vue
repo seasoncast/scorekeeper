@@ -32,8 +32,9 @@
 
 <script lang="ts">
 import { CollaborationClient } from '@org/client-library';
-import { defineComponent } from 'vue';
 import * as fastJsonPatch from 'fast-json-patch';
+import { SyncMessage } from 'library-client/src/lib/library-client';
+import { defineComponent } from 'vue';
 
 export default defineComponent({
   name: 'CollabView',
@@ -45,7 +46,9 @@ export default defineComponent({
         userId: string;
         cursorPosition?: { x: number; y: number };
       }>,
-      documentText: '',
+      document: {
+        text: '',
+      },
     };
   },
   methods: {
@@ -61,17 +64,17 @@ export default defineComponent({
 
       // Handle initial sync with all users and their cursor positions
       this.client.on('sync', (message: SyncMessage) => {
-        this.documentText = message.data.state;
+        this.document = message.data.state;
         this.otherUsers = message.data.presence.filter(
-          user => user.userId !== this.client?.userId
+          (user) => user.userId !== this.client?.userId
         );
       });
 
       // Handle document edits
       this.client.on('edit', (message) => {
         if (Array.isArray(message.data)) {
-          this.documentText = fastJsonPatch.applyPatch(
-            this.documentText,
+          this.document.text = fastJsonPatch.applyPatch(
+            this.document.text,
             message.data,
             false,
             false
@@ -88,7 +91,7 @@ export default defineComponent({
           this.otherUsers.push({
             userId: message.userId,
             cursorPosition: message.data,
-            lastActive: Date.now()
+            lastActive: Date.now(),
           });
         } else {
           this.otherUsers[userIndex].cursorPosition = message.data;
@@ -109,7 +112,7 @@ export default defineComponent({
     },
     handleTextChange(event: InputEvent) {
       if (!this.client) return;
-      
+
       const newText = event.target.value;
       this.client.sendEdit(newText);
     },
