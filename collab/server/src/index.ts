@@ -29,12 +29,17 @@ interface SyncMessage extends CollaborationMessage {
 export class CollaborationRoom {
   private connections: Map<string, WebSocket> = new Map();
   private currentDocumentState: any = {};
-  private diffTimeline: Array<any> = [];
   private presence: Map<string, UserPresence> = new Map();
+  private timelineKey: string;
 
   constructor(private state: DurableObjectState) {
     // Initialize state from storage
     this.state.blockConcurrencyWhile(async () => {
+      // Get roomId from storage name
+      const roomId = this.state.id.toString();
+      this.timelineKey = `${roomId}-timeline`;
+      
+      // Load document state
       const storedState = await this.state.storage.get<any>('documentState');
       this.currentDocumentState = storedState || { text: '' };
     });
@@ -106,7 +111,23 @@ export class CollaborationRoom {
         switch (data.type) {
           case 'edit':
             if (Array.isArray(data.data)) {
-              this.diffTimeline.push(data.data);
+              // Generate unique edit ID
+              const editId = crypto.randomUUID();
+              
+              // Store the edit
+              await this.state.storage.put(`${this.timelineKey}-${editId}`, {
+                editId,
+                userId: data.userId,
+                timestamp: Date.now(),
+                patch: data.data
+              });
+              
+              // Add to timeline
+              const timeline = await this.state.storage.get<string[]>(this.timelineKey) || [];
+              timeline.push(editId);
+              await this.state.storage.put(this.timelineKey, timeline);
+              
+              // Apply patch
               const newState = fastJsonPatch.applyPatch(
                 this.currentDocumentState,
                 data.data,
@@ -117,7 +138,12 @@ export class CollaborationRoom {
               // Persist the new state
               await this.state.storage.put('documentState', newState);
               this.currentDocumentState = newState;
-              this.broadcast(data);
+              
+              // Broadcast with editId
+              this.broadcast({
+                ...data,
+                editId
+              });
             }
             break;
 
