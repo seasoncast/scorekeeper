@@ -1,46 +1,13 @@
 import * as fastJsonPatch from 'fast-json-patch';
-
-export interface Env {
-  COLLAB_ROOM: DurableObjectNamespace;
-}
-
-// Types for collaboration messages
-interface UserPresence {
-  userId: string;
-  cursorPosition?: { x: number; y: number };
-}
-
-interface CollaborationMessage {
-  type: 'join' | 'leave' | 'edit' | 'cursor' | 'sync' | 'timeline';
-  userId: string;
-  data?: any;
-  timestamp: number;
-  editId?: string;
-}
-
-interface TimelineRequest {
-  order: 'latest' | 'first';
-  count: number;
-}
-
-interface TimelineResponse {
-  edits: Edit[];
-}
-
-interface Edit {
-  editId: string;
-  userId: string;
-  timestamp: number;
-  patch: any[];
-}
-
-interface SyncMessage extends CollaborationMessage {
-  type: 'sync';
-  data: {
-    state: any;
-    presence: UserPresence[];
-  };
-}
+import {
+  Env,
+  UserPresence,
+  CollaborationMessage,
+  TimelineRequest,
+  TimelineResponse,
+  Edit,
+  SyncMessage
+} from './types';
 
 // Durable Object for managing collaboration rooms
 export class CollaborationRoom {
