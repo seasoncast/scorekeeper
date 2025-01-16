@@ -99,11 +99,10 @@ export class CollaborationClient {
   private startingDocumentState: any = {};
   private diffTimeline: Array<any> = [];
 
-  sendEdit(newState: any): void {
-    const diff = fastJsonPatch.compare(this.currentDocumentState, newState);
+  pushTimeline(diff: any[], meta?: Record<string, any>): void {
     if (diff.length > 0) {
-      console.debug(`[CollabClient] Sending edit diff:`, diff);
-      this.diffTimeline.push(diff);
+      console.debug(`[CollabClient] Pushing timeline entry:`, { diff, meta });
+      this.diffTimeline.push({ diff, meta });
       this.currentDocumentState = fastJsonPatch.applyPatch(
         this.currentDocumentState,
         diff,
@@ -112,10 +111,18 @@ export class CollaborationClient {
       ).newDocument;
 
       this.sendMessage({
-        type: 'edit',
-        data: diff,
+        type: 'update',
+        data: {
+          diff,
+          meta
+        },
       });
     }
+  }
+
+  sendEdit(newState: any, meta?: Record<string, any>): void {
+    const diff = fastJsonPatch.compare(this.currentDocumentState, newState);
+    this.pushTimeline(diff, meta);
   }
 
   getDocumentState(): any {

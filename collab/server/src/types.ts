@@ -29,6 +29,7 @@ export interface Edit {
   userId: string;
   timestamp: number;
   patch: any[];
+  meta?: Record<string, any>;
 }
 
 export interface SyncMessage extends CollaborationMessage {

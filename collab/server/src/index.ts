@@ -93,17 +93,19 @@ export class CollaborationRoom {
         }
 
         switch (data.type) {
-          case 'edit':
-            if (Array.isArray(data.data)) {
+          case 'update':
+            if (data.data && Array.isArray(data.data.diff)) {
+              const { diff, meta } = data.data;
               // Generate unique edit ID
               const editId = crypto.randomUUID();
               
-              // Store the edit
+              // Store the edit with optional meta
               await this.state.storage.put(`${this.timelineKey}-${editId}`, {
                 editId,
                 userId: data.userId,
                 timestamp: Date.now(),
-                patch: data.data
+                patch: diff,
+                meta
               });
               
               // Add to timeline
@@ -123,10 +125,16 @@ export class CollaborationRoom {
               await this.state.storage.put('documentState', newState);
               this.currentDocumentState = newState;
               
-              // Broadcast with editId
+              // Broadcast update with editId
               this.broadcast({
-                ...data,
-                editId
+                type: 'update',
+                userId: data.userId,
+                timestamp: Date.now(),
+                editId,
+                data: {
+                  diff,
+                  meta
+                }
               });
             }
             break;
