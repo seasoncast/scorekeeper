@@ -25,6 +25,15 @@ export class CollaborationClient {
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
         console.debug(`[CollabClient] Connected to room ${roomId}`);
+        
+        // Send join message
+        this.sendMessage({
+          type: 'join',
+          data: {
+            roomId: roomId
+          }
+        });
+        
         resolve();
       };
 
