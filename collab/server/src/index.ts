@@ -11,11 +11,20 @@ interface UserPresence {
 }
 
 interface CollaborationMessage {
-  type: 'join' | 'leave' | 'edit' | 'cursor' | 'sync';
+  type: 'join' | 'leave' | 'edit' | 'cursor' | 'sync' | 'timeline';
   userId: string;
   data?: any;
   timestamp: number;
   editId?: string;
+}
+
+interface TimelineRequest {
+  order: 'latest' | 'first';
+  count: number;
+}
+
+interface TimelineResponse {
+  edits: Edit[];
 }
 
 interface Edit {
@@ -152,6 +161,35 @@ export class CollaborationRoom {
                 ...data,
                 editId
               });
+            }
+            break;
+
+          case 'timeline':
+            if (data.data) {
+              const { order, count } = data.data as TimelineRequest;
+              const timeline = await this.state.storage.get<string[]>(this.timelineKey) || [];
+              
+              // Get the requested edit IDs
+              const editIds = order === 'latest' 
+                ? timeline.slice(-count)
+                : timeline.slice(0, count);
+              
+              // Fetch the edit objects
+              const edits = await Promise.all(
+                editIds.map(id => 
+                  this.state.storage.get<Edit>(`${this.timelineKey}-${id}`)
+                )
+              );
+
+              // Send response
+              ws.send(JSON.stringify({
+                type: 'timeline',
+                userId: data.userId,
+                timestamp: Date.now(),
+                data: {
+                  edits: edits.filter(Boolean) as Edit[]
+                }
+              }));
             }
             break;
 

@@ -177,6 +177,22 @@ export class CollaborationClient {
     });
   }
 
+  getTimeline(request: TimelineRequest): Promise<TimelineResponse> {
+    return new Promise((resolve) => {
+      const handler = (message: any) => {
+        if (message.type === 'timeline') {
+          this.off('timeline', handler);
+          resolve(message);
+        }
+      };
+      this.on('timeline', handler);
+      this.sendMessage({
+        type: 'timeline',
+        data: request
+      });
+    });
+  }
+
   getCurrentUsers(): Promise<UserPresence[]> {
     return new Promise((resolve) => {
       const handler = (message: any) => {
@@ -208,4 +224,23 @@ export interface SyncMessage {
     state: any;
     presence: UserPresence[];
   };
+}
+
+export interface TimelineRequest {
+  order: 'latest' | 'first';
+  count: number;
+}
+
+export interface TimelineResponse {
+  type: 'timeline';
+  data: {
+    edits: Edit[];
+  };
+}
+
+export interface Edit {
+  editId: string;
+  userId: string;
+  timestamp: number;
+  patch: any[];
 }

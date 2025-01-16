@@ -111,6 +111,12 @@ export default defineComponent({
           (u) => u.userId !== message.userId
         );
       });
+
+      // Example usage of timeline
+      this.client.getTimeline({ order: 'latest', count: 10 })
+        .then(response => {
+          console.log('Last 10 edits:', response.data.edits);
+        });
     },
     handleTextChange(event: InputEvent) {
       if (!this.client) return;
