@@ -25,15 +25,15 @@ export class CollaborationClient {
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
         console.debug(`[CollabClient] Connected to room ${roomId}`);
-        
+
         // Send join message
         this.sendMessage({
           type: 'join',
           data: {
-            roomId: roomId
-          }
+            roomId: roomId,
+          },
         });
-        
+
         resolve();
       };
 
@@ -99,8 +99,8 @@ export class CollaborationClient {
   private startingDocumentState: any = {};
   private diffTimeline: Array<any> = [];
 
-  pushTimeline(diff: any[], meta?: Record<string, any>): void {
-    if (diff.length > 0) {
+  pushTimeline(diff?: any[], meta?: Record<string, any>): void {
+    if (diff && diff.length > 0) {
       console.debug(`[CollabClient] Pushing timeline entry:`, { diff, meta });
       this.diffTimeline.push({ diff, meta });
       this.currentDocumentState = fastJsonPatch.applyPatch(
@@ -109,15 +109,14 @@ export class CollaborationClient {
         false,
         false
       ).newDocument;
-
-      this.sendMessage({
-        type: 'update',
-        data: {
-          diff,
-          meta
-        },
-      });
     }
+    this.sendMessage({
+      type: 'update',
+      data: {
+        diff,
+        meta,
+      },
+    });
   }
 
   sendEdit(newState: any, meta?: Record<string, any>): void {
@@ -195,7 +194,7 @@ export class CollaborationClient {
       this.on('timeline', handler);
       this.sendMessage({
         type: 'timeline',
-        data: request
+        data: request,
       });
     });
   }
