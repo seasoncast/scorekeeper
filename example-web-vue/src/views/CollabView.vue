@@ -11,7 +11,7 @@
 
     <div class="collab-area" ref="collabArea">
       <textarea
-        v-model="documentText"
+        v-model="document.text"
         @input="handleTextChange"
         class="document-editor"
       />
@@ -73,12 +73,14 @@ export default defineComponent({
       // Handle document edits
       this.client.on('edit', (message) => {
         if (Array.isArray(message.data)) {
-          this.document.text = fastJsonPatch.applyPatch(
-            this.document.text,
+          const newDoc = fastJsonPatch.applyPatch(
+            this.document,
             message.data,
             false,
             false
           ).newDocument;
+          console.log('newDoc', newDoc);
+          this.document = newDoc;
         }
       });
 
@@ -114,7 +116,8 @@ export default defineComponent({
       if (!this.client) return;
 
       const newText = event.target.value;
-      this.client.sendEdit(newText);
+      this.document.text = newText;
+      this.client.sendEdit(this.document);
     },
   },
   beforeUnmount() {

@@ -60,7 +60,6 @@ export class CollaborationRoom {
     let userId: string | null = null;
 
     // Wait for first message to get userId
-
     // Handle messages
     ws.addEventListener('message', async (msg) => {
       try {
@@ -114,7 +113,7 @@ export class CollaborationRoom {
                 false,
                 false
               ).newDocument;
-              
+
               // Persist the new state
               await this.state.storage.put('documentState', newState);
               this.currentDocumentState = newState;
