@@ -15,6 +15,14 @@ interface CollaborationMessage {
   userId: string;
   data?: any;
   timestamp: number;
+  editId?: string;
+}
+
+interface Edit {
+  editId: string;
+  userId: string;
+  timestamp: number;
+  patch: any[];
 }
 
 interface SyncMessage extends CollaborationMessage {
