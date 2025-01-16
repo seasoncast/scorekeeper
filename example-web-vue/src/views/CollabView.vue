@@ -1,5 +1,18 @@
 <template>
   <div class="collab-view">
+    <div class="timeline">
+      <h3>Recent Edits</h3>
+      <ul>
+        <li v-for="edit in timeline" :key="edit.editId" class="timeline-item">
+          <div class="timeline-user">{{ edit.userId.slice(0, 2) }}</div>
+          <div class="timeline-details">
+            <div class="timeline-time">{{ new Date(edit.timestamp).toLocaleTimeString() }}</div>
+            <div class="timeline-patch">{{ edit.patch.length }} changes</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    
     <div class="controls">
       <input
         v-model="roomId"
@@ -49,9 +62,16 @@ export default defineComponent({
       document: {
         text: '',
       },
+      timeline: [] as Edit[],
     };
   },
   methods: {
+    async loadTimeline() {
+      if (!this.client) return;
+      const response = await this.client.getTimeline({ order: 'latest', count: 5 });
+      this.timeline = response.data.edits;
+    },
+    
     async connectToRoom() {
       if (!this.roomId) return;
 
@@ -112,11 +132,8 @@ export default defineComponent({
         );
       });
 
-      // Example usage of timeline
-      this.client.getTimeline({ order: 'latest', count: 10 })
-        .then(response => {
-          console.log('Last 10 edits:', response.data.edits);
-        });
+      // Load timeline
+      this.loadTimeline();
     },
     handleTextChange(event: InputEvent) {
       if (!this.client) return;
@@ -124,6 +141,9 @@ export default defineComponent({
       const newText = event.target.value;
       this.document.text = newText;
       this.client.sendEdit(this.document);
+      
+      // Refresh timeline after edit
+      this.loadTimeline();
     },
   },
   beforeUnmount() {
@@ -135,6 +155,50 @@ export default defineComponent({
 </script>
 
 <style scoped>
+.timeline {
+  padding: 1rem;
+  background: #f8f9fa;
+  border-bottom: 1px solid #ddd;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.timeline h3 {
+  margin: 0 0 1rem 0;
+}
+
+.timeline-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.timeline-user {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #007bff;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.timeline-details {
+  flex: 1;
+}
+
+.timeline-time {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.timeline-patch {
+  font-size: 0.9rem;
+}
+
 .collab-view {
   display: flex;
   flex-direction: column;
