@@ -1,4 +1,4 @@
-import { CollaborationClient } from '@org/client-library';
+import { CollaborationClient } from '@collab/client';
 import ISportEvent from '../types/ISportEvent';
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
@@ -10,25 +10,27 @@ class SportEvent {
   public team_min?: number;
   public callback_change?: (sport_data: ISportEvent) => void;
   private collabClient?: CollaborationClient;
+  private roomId: string;
 
   public constructor({
     scheduled_date,
     sport_type,
-    collabClient,
+    roomId = 'default-room',
   }: {
     scheduled_date: Date;
     sport_type: string;
-    collabClient?: CollaborationClient;
+    roomId?: string;
   });
   public constructor({
     id,
-    collabClient,
+    roomId = 'default-room',
   }: {
     id: string;
-    collabClient?: CollaborationClient;
+    roomId?: string;
   });
   constructor(args: any) {
-    this.collabClient = args.collabClient;
+    this.roomId = args.roomId;
+    this.initializeCollabClient();
     this.sport_data = {
       id: args.id ? args.id : 'id_unknown',
       scheduled_date: args.scheduled_date ? args.scheduled_date : new Date(),
@@ -66,6 +68,16 @@ class SportEvent {
     this.sport_data.stats_inital.team_data.push(team_data);
   }
 
+  private async initializeCollabClient() {
+    try {
+      this.collabClient = new CollaborationClient('ws://localhost:8787');
+      await this.collabClient.connect(this.roomId);
+      console.log(`Connected to collaboration room: ${this.roomId}`);
+    } catch (error) {
+      console.error('Failed to initialize collaboration client:', error);
+    }
+  }
+
   public updateStats(changer_callback: (stats: IStats) => ITimelineEvent) {
     const current_stats = JSON.parse(JSON.stringify(this.sport_data.stats));
     const timeline_event = changer_callback(current_stats);
@@ -73,7 +85,7 @@ class SportEvent {
     // Update local state
     this.sport_data.stats = current_stats;
 
-    // If using collaboration, send the update
+    // If collaboration client is initialized, send the update
     if (this.collabClient) {
       const diff = this.collabClient.compare(
         this.sport_data.stats,
