@@ -1,24 +1,28 @@
-import * as jsonpatch from 'fast-json-patch';
 import ISportEvent from '../types/ISportEvent';
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
 import Team from './Team';
+import { CollaborationClient } from '@collab/client';
 
 class SportEvent {
   public sport_data: ISportEvent;
   public team_max?: number;
   public team_min?: number;
   public callback_change?: (sport_data: ISportEvent) => void;
+  private collabClient?: CollaborationClient;
 
   public constructor({
     scheduled_date,
     sport_type,
+    collabClient,
   }: {
     scheduled_date: Date;
     sport_type: string;
+    collabClient?: CollaborationClient;
   });
-  public constructor({ id }: { id: string });
+  public constructor({ id, collabClient }: { id: string; collabClient?: CollaborationClient });
   constructor(args: any) {
+    this.collabClient = args.collabClient;
     this.sport_data = {
       id: args.id ? args.id : 'id_unknown',
       scheduled_date: args.scheduled_date ? args.scheduled_date : new Date(),
@@ -33,7 +37,6 @@ class SportEvent {
         player_data: [],
       },
 
-      timeline: [],
     };
   }
   public setCallbackChange(callback_change: (sport_data: ISportEvent) => void) {
@@ -60,46 +63,21 @@ class SportEvent {
 
   public updateStats(changer_callback: (stats: IStats) => ITimelineEvent) {
     const current_stats = JSON.parse(JSON.stringify(this.sport_data.stats));
-
-    const timeline_inital = changer_callback(current_stats);
-
-    const patches = jsonpatch.compare(this.sport_data.stats, current_stats);
+    const timeline_event = changer_callback(current_stats);
+    
+    // Update local state
     this.sport_data.stats = current_stats;
-
-    this.sport_data.timeline.push({
-      diff: patches,
-      ...timeline_inital,
-    });
+    
+    // If using collaboration, send the update
+    if (this.collabClient) {
+      const diff = this.collabClient.compare(this.sport_data.stats, current_stats);
+      this.collabClient.pushTimeline(diff, {
+        ...timeline_event,
+        type: 'stats_update'
+      });
+    }
+    
     this.callback_change?.(this.sport_data);
-  }
-
-  // build stats to a index in the timeline by applying the diff from the start_data to the current_data
-  public buildStatsToTimeline(timeline_index: number) {
-    const current_stats = JSON.parse(
-      JSON.stringify(this.sport_data.stats_inital)
-    );
-
-    for (let i = 0; i < timeline_index; i++) {
-      const timeline_event = this.sport_data.timeline[i];
-      // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-      // @ts-ignore
-      jsonpatch.applyPatch(current_stats, timeline_event.diff);
-    }
-
-    console.log('current_stats', current_stats);
-    return current_stats;
-  }
-
-  public undoLastTimelineEvent(): boolean {
-    if (this.sport_data.timeline.length === 0) {
-      return false;
-    }
-    const before_last_event = this.buildStatsToTimeline(
-      this.sport_data.timeline.length - 1
-    );
-    this.sport_data.timeline.pop();
-    this.sport_data.stats = before_last_event;
-    return true;
   }
 
   public getTeamAtIndex(team_index: number): Team | null {
