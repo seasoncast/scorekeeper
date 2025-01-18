@@ -6,6 +6,7 @@ export class CollaborationClient {
   private userId = crypto.randomUUID();
   private roomId = '';
   private eventHandlers: Map<string, EventHandler[]> = new Map();
+  private updateHandlers: ((newDocument: any) => void)[] = [];
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 1000;
@@ -95,6 +96,14 @@ export class CollaborationClient {
     }
   }
 
+  onUpdate(callback: (newDocument: any) => void): void {
+    this.updateHandlers.push(callback);
+  }
+
+  offUpdate(callback: (newDocument: any) => void): void {
+    this.updateHandlers = this.updateHandlers.filter((h) => h !== callback);
+  }
+
   private currentDocumentState: any = {};
   private startingDocumentState: any = {};
   private diffTimeline: Array<any> = [];
@@ -171,13 +180,17 @@ export class CollaborationClient {
     const handlers = this.eventHandlers.get(message.type) || [];
     handlers.forEach((handler) => {
       if (message.type === 'edit' && Array.isArray(message.data)) {
-        this.currentDocumentState = fastJsonPatch.applyPatch(
+        const result = fastJsonPatch.applyPatch(
           this.currentDocumentState,
           message.data,
           false,
           false
-        ).newDocument;
+        );
+        this.currentDocumentState = result.newDocument;
         this.diffTimeline.push(message.data);
+        
+        // Call update handlers with new document state
+        this.updateHandlers.forEach((handler) => handler(this.currentDocumentState));
       }
       handler(message);
     });
