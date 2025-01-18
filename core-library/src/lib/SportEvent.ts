@@ -67,6 +67,12 @@ class SportEvent {
       this.collabClient = new CollaborationClient('ws://localhost:8787');
       await this.collabClient.connect(this.roomId);
       console.log(`Connected to collaboration room: ${this.roomId}`);
+      
+      // Set up update handler
+      this.collabClient.onUpdate((newDocument) => {
+        this.sport_data.stats = newDocument;
+        this.callback_change?.(this.sport_data);
+      });
     } catch (error) {
       console.error('Failed to initialize collaboration client:', error);
     }
@@ -76,18 +82,17 @@ class SportEvent {
     const current_stats = JSON.parse(JSON.stringify(this.sport_data.stats));
     const timeline_event = changer_callback(current_stats);
 
-    // Update local state
-    this.sport_data.stats = current_stats;
-
     // If collaboration client is initialized, send the update
     if (this.collabClient) {
-      this.collabClient.sendEdit(this.sport_data.stats, {
+      this.collabClient.sendEdit(current_stats, {
         ...timeline_event,
         type: 'stats_update',
       });
+    } else {
+      // Fallback to local update if no collab client
+      this.sport_data.stats = current_stats;
+      this.callback_change?.(this.sport_data);
     }
-
-    this.callback_change?.(this.sport_data);
   }
 
   public getTeamAtIndex(team_index: number): Team | null {
