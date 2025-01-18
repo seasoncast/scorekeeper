@@ -188,14 +188,22 @@ export class CollaborationClient {
         );
         this.currentDocumentState = result.newDocument;
         this.diffTimeline.push(message.data);
-        
+
         // Call update handlers with new document state
-        this.updateHandlers.forEach((handler) => handler(this.currentDocumentState));
+        this.updateHandlers.forEach((handler) =>
+          handler(this.currentDocumentState)
+        );
       } else if (message.type === 'sync' && message.data?.state) {
         // Update local state with sync data
+        console.debug(
+          `[CollabClient] Syncing document state:`,
+          message.data.state
+        );
         this.currentDocumentState = message.data.state;
         // Call update handlers with new document state
-        this.updateHandlers.forEach((handler) => handler(this.currentDocumentState));
+        this.updateHandlers.forEach((handler) =>
+          handler(this.currentDocumentState)
+        );
       }
       handler(message);
     });
