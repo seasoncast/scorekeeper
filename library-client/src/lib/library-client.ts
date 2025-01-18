@@ -191,6 +191,11 @@ export class CollaborationClient {
         
         // Call update handlers with new document state
         this.updateHandlers.forEach((handler) => handler(this.currentDocumentState));
+      } else if (message.type === 'sync' && message.data?.state) {
+        // Update local state with sync data
+        this.currentDocumentState = message.data.state;
+        // Call update handlers with new document state
+        this.updateHandlers.forEach((handler) => handler(this.currentDocumentState));
       }
       handler(message);
     });
