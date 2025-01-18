@@ -1,12 +1,11 @@
 import * as fastJsonPatch from 'fast-json-patch';
 import {
-  Env,
-  UserPresence,
   CollaborationMessage,
-  TimelineRequest,
-  TimelineResponse,
   Edit,
-  SyncMessage
+  Env,
+  SyncMessage,
+  TimelineRequest,
+  UserPresence,
 } from './types';
 
 // Durable Object for managing collaboration rooms
@@ -22,10 +21,10 @@ export class CollaborationRoom {
       // Get roomId from storage name
       const roomId = this.state.id.toString();
       this.timelineKey = `${roomId}-timeline`;
-      
+
       // Load document state
       const storedState = await this.state.storage.get<any>('documentState');
-      this.currentDocumentState = storedState || { text: '' };
+      this.currentDocumentState = storedState || undefined;
     });
   }
 
@@ -98,25 +97,27 @@ export class CollaborationRoom {
               const { diff, meta } = data.data;
               // Generate unique edit ID
               const editId = crypto.randomUUID();
-              
+
               // Store the edit with optional meta
               await this.state.storage.put(`${this.timelineKey}-${editId}`, {
                 editId,
                 userId: data.userId,
                 timestamp: Date.now(),
                 patch: diff,
-                meta
+                meta,
               });
-              
+
               // Add to timeline
-              const timeline = await this.state.storage.get<string[]>(this.timelineKey) || [];
+              const timeline =
+                (await this.state.storage.get<string[]>(this.timelineKey)) ||
+                [];
               timeline.push(editId);
               await this.state.storage.put(this.timelineKey, timeline);
-              
+
               // Apply patch
               const newState = fastJsonPatch.applyPatch(
-                this.currentDocumentState,
-                data.data,
+                this.currentDocumentState || {},
+                diff,
                 false,
                 false
               ).newDocument;
@@ -124,7 +125,7 @@ export class CollaborationRoom {
               // Persist the new state
               await this.state.storage.put('documentState', newState);
               this.currentDocumentState = newState;
-              
+              console.log('Updated document state:', newState);
               // Broadcast update with editId
               this.broadcast({
                 type: 'update',
@@ -133,8 +134,8 @@ export class CollaborationRoom {
                 editId,
                 data: {
                   diff,
-                  meta
-                }
+                  meta,
+                },
               });
             }
             break;
@@ -142,29 +143,34 @@ export class CollaborationRoom {
           case 'timeline':
             if (data.data) {
               const { order, count } = data.data as TimelineRequest;
-              const timeline = await this.state.storage.get<string[]>(this.timelineKey) || [];
-              
+              const timeline =
+                (await this.state.storage.get<string[]>(this.timelineKey)) ||
+                [];
+
               // Get the requested edit IDs
-              const editIds = order === 'latest' 
-                ? timeline.slice(-count)
-                : timeline.slice(0, count);
-              
+              const editIds =
+                order === 'latest'
+                  ? timeline.slice(-count)
+                  : timeline.slice(0, count);
+
               // Fetch the edit objects
               const edits = await Promise.all(
-                editIds.map(id => 
+                editIds.map((id) =>
                   this.state.storage.get<Edit>(`${this.timelineKey}-${id}`)
                 )
               );
 
               // Send response
-              ws.send(JSON.stringify({
-                type: 'timeline',
-                userId: data.userId,
-                timestamp: Date.now(),
-                data: {
-                  edits: edits.filter(Boolean) as Edit[]
-                }
-              }));
+              ws.send(
+                JSON.stringify({
+                  type: 'timeline',
+                  userId: data.userId,
+                  timestamp: Date.now(),
+                  data: {
+                    edits: edits.filter(Boolean) as Edit[],
+                  },
+                })
+              );
             }
             break;
 

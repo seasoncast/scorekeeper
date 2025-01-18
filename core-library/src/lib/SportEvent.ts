@@ -1,4 +1,4 @@
-import { CollaborationClient } from '@collab/client';
+import { CollaborationClient } from '@org/client-library';
 import ISportEvent from '../types/ISportEvent';
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
@@ -10,26 +10,20 @@ class SportEvent {
   public team_min?: number;
   public callback_change?: (sport_data: ISportEvent) => void;
   private collabClient?: CollaborationClient;
-  private roomId: string;
+  private roomId: string = 'default-room';
 
   public constructor({
     scheduled_date,
     sport_type,
-    roomId = 'default-room',
+    roomId,
   }: {
     scheduled_date: Date;
     sport_type: string;
     roomId?: string;
   });
-  public constructor({
-    id,
-    roomId = 'default-room',
-  }: {
-    id: string;
-    roomId?: string;
-  });
+  public constructor({ id, roomId }: { id: string; roomId?: string });
   constructor(args: any) {
-    this.roomId = args.roomId;
+    this.roomId = args.roomId ? args.roomId : this.roomId;
     this.initializeCollabClient();
     this.sport_data = {
       id: args.id ? args.id : 'id_unknown',
@@ -87,11 +81,7 @@ class SportEvent {
 
     // If collaboration client is initialized, send the update
     if (this.collabClient) {
-      const diff = this.collabClient.compare(
-        this.sport_data.stats,
-        current_stats
-      );
-      this.collabClient.pushTimeline(diff, {
+      this.collabClient.sendEdit(this.sport_data.stats, {
         ...timeline_event,
         type: 'stats_update',
       });
