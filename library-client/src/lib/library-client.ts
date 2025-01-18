@@ -6,7 +6,6 @@ export class CollaborationClient {
   private userId = crypto.randomUUID();
   private roomId = '';
   private eventHandlers: Map<string, EventHandler[]> = new Map();
-  private updateHandlers: ((newDocument: any) => void)[] = [];
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 1000;
@@ -97,11 +96,24 @@ export class CollaborationClient {
   }
 
   onUpdate(callback: (newDocument: any) => void): void {
-    this.updateHandlers.push(callback);
-  }
-
-  offUpdate(callback: (newDocument: any) => void): void {
-    this.updateHandlers = this.updateHandlers.filter((h) => h !== callback);
+    // Handle both edit and sync messages
+    this.on('edit', (message) => {
+      if (Array.isArray(message.data)) {
+        const result = fastJsonPatch.applyPatch(
+          this.currentDocumentState,
+          message.data,
+          false,
+          false
+        );
+        callback(result.newDocument);
+      }
+    });
+    
+    this.on('sync', (message) => {
+      if (message.data?.state) {
+        callback(message.data.state);
+      }
+    });
   }
 
   private currentDocumentState: any = {};
@@ -188,22 +200,12 @@ export class CollaborationClient {
         );
         this.currentDocumentState = result.newDocument;
         this.diffTimeline.push(message.data);
-
-        // Call update handlers with new document state
-        this.updateHandlers.forEach((handler) =>
-          handler(this.currentDocumentState)
-        );
       } else if (message.type === 'sync' && message.data?.state) {
-        // Update local state with sync data
         console.debug(
           `[CollabClient] Syncing document state:`,
           message.data.state
         );
         this.currentDocumentState = message.data.state;
-        // Call update handlers with new document state
-        this.updateHandlers.forEach((handler) =>
-          handler(this.currentDocumentState)
-        );
       }
       handler(message);
     });
