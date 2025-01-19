@@ -35,11 +35,12 @@ const state = reactive({
   sportEvent,
   addScore,
   stats: reactive(sportEvent.getStats()), // Make stats deeply reactive
+  timeline: [] as any[]
 });
 
 // Update reactive stats when sportEvent changes
 sportEvent.setCallbackChange((newData) => {
-  // Update each property individually to maintain reactivity
+  // Update stats
   Object.keys(newData.stats).forEach((key) => {
     if (Array.isArray(newData.stats[key])) {
       state.stats[key] = [...newData.stats[key]];
@@ -47,6 +48,11 @@ sportEvent.setCallbackChange((newData) => {
       state.stats[key] = { ...newData.stats[key] };
     }
   });
+  
+  // Update timeline if it exists
+  if (newData.timeline) {
+    state.timeline = newData.timeline;
+  }
 });
 
 //  draw on shotTracker canvas a image of a basketball court
@@ -123,5 +129,12 @@ const drawShotsOnCourt = () => {
     </div>
 
     <button @click="undoScore">Undo Last Timeline</button>
+    
+    <h2>Timeline</h2>
+    <ul>
+      <li v-for="(event, index) in state.timeline" :key="index">
+        {{ event.description_en || event.type }} - {{ new Date(event.timestamp).toLocaleTimeString() }}
+      </li>
+    </ul>
   </main>
 </template>

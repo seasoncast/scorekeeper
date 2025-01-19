@@ -80,6 +80,14 @@ class SportEvent {
       });
       await this.collabClient.connect(this.roomId);
       console.log(`Connected to collaboration room: ${this.roomId}`);
+      
+      // Get timeline after connecting
+      const timeline = await this.collabClient.getTimeline({
+        order: 'latest',
+        count: 10
+      });
+      this.sport_data.timeline = timeline.data.edits;
+      this.callback_change?.(this.sport_data);
     } catch (error) {
       console.error('Failed to initialize collaboration client:', error);
     }
