@@ -95,7 +95,7 @@ export class CollaborationClient {
     }
   }
 
-  onUpdate(callback: (newDocument: any) => void): void {
+  onUpdate(callback: (newDocument: any, timelineEntry?: any) => void): void {
     // Handle both edit and sync messages
     this.on('edit', (message) => {
       if (Array.isArray(message.data)) {
@@ -105,7 +105,14 @@ export class CollaborationClient {
           false,
           false
         );
-        callback(result.newDocument);
+        const timelineEntry = {
+          diff: message.data,
+          meta: message.meta,
+          timestamp: message.timestamp,
+          editId: message.editId
+        };
+        this.timeline.push(timelineEntry);
+        callback(result.newDocument, timelineEntry);
       }
     });
     
@@ -118,12 +125,18 @@ export class CollaborationClient {
 
   private currentDocumentState: any = {};
   private startingDocumentState: any = {};
-  private diffTimeline: Array<any> = [];
+  private timeline: Array<any> = [];
 
   pushTimeline(diff?: any[], meta?: Record<string, any>): void {
     if (diff && diff.length > 0) {
-      console.debug(`[CollabClient] Pushing timeline entry:`, { diff, meta });
-      this.diffTimeline.push({ diff, meta });
+      const timelineEntry = {
+        diff,
+        meta,
+        timestamp: Date.now(),
+        editId: crypto.randomUUID()
+      };
+      console.debug(`[CollabClient] Pushing timeline entry:`, timelineEntry);
+      this.timeline.push(timelineEntry);
       this.currentDocumentState = fastJsonPatch.applyPatch(
         this.currentDocumentState,
         diff,
@@ -149,8 +162,21 @@ export class CollaborationClient {
     return this.currentDocumentState;
   }
 
-  getDiffTimeline(): Array<any> {
-    return this.diffTimeline;
+  getTimeline(request: TimelineRequest): Promise<TimelineResponse> {
+    // Sort timeline entries by timestamp
+    const sortedTimeline = this.timeline.sort((a, b) => a.timestamp - b.timestamp);
+    
+    // Get the requested count of entries
+    const entries = request.order === 'latest' 
+      ? sortedTimeline.slice(-request.count)
+      : sortedTimeline.slice(0, request.count);
+
+    return Promise.resolve({
+      type: 'timeline',
+      data: {
+        edits: entries
+      }
+    });
   }
 
   resetDocumentState(newState: any): void {
