@@ -38,6 +38,16 @@ const state = reactive({
   timeline: [] as any[]
 });
 
+// Fetch timeline on mount
+onMounted(async () => {
+  drawCourt();
+  const timeline = await sportEvent.getTimeline({
+    order: 'latest',
+    count: 10
+  });
+  state.timeline = timeline;
+});
+
 // Update reactive stats when sportEvent changes
 sportEvent.setCallbackChange((newData) => {
   // Update stats

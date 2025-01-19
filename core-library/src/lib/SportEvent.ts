@@ -124,6 +124,14 @@ class SportEvent {
   public getStats(): IStats {
     return this.sport_data.stats;
   }
+
+  public async getTimeline(request: TimelineRequest): Promise<any[]> {
+    if (!this.collabClient) {
+      throw new Error('Collaboration client not initialized');
+    }
+    const timeline = await this.collabClient.getTimeline(request);
+    return timeline.data.edits;
+  }
 }
 
 export default SportEvent;
