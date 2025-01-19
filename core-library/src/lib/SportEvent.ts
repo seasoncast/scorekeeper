@@ -67,8 +67,9 @@ class SportEvent {
       this.collabClient = new CollaborationClient('ws://localhost:8787');
       // Set up update handler
       this.collabClient.onUpdate((newDocument) => {
-        this.sport_data.stats = newDocument.stats;
-        console.log('Received updateda:', this.sport_data);
+        // Update stats properties individually to maintain reactivity
+        Object.assign(this.sport_data.stats, newDocument.stats);
+        console.log('Received update:', this.sport_data);
         this.callback_change?.(this.sport_data);
       });
       await this.collabClient.connect(this.roomId);

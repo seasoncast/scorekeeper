@@ -34,6 +34,12 @@ const state = reactive({
   editor: editorBasketball,
   sportEvent,
   addScore,
+  stats: sportEvent.getStats(), // Add stats to reactive state
+});
+
+// Update reactive stats when sportEvent changes
+sportEvent.setCallbackChange((newData) => {
+  Object.assign(state.stats, newData.stats);
 });
 
 //  draw on shotTracker canvas a image of a basketball court
@@ -104,7 +110,7 @@ const drawShotsOnCourt = () => {
       ref="shotTracker"
     ></canvas>
     <p>All Event Data {{ state.sportEvent.sport_data }}</p>
-    <div v-for="team in state.sportEvent.getStats().team_data" :key="team.id">
+    <div v-for="team in state.stats.team_data" :key="team.id">
       <p>{{ team.name }}: {{ team.score }}</p>
       <button @click="addScore(team.id, 1)">Increment</button>
     </div>
