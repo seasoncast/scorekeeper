@@ -35,7 +35,7 @@ const state = reactive({
   sportEvent,
   addScore,
   stats: reactive(sportEvent.getStats()), // Make stats deeply reactive
-  timeline: [] as any[]
+  timeline: [] as any[],
 });
 
 // Fetch timeline on mount
@@ -43,7 +43,7 @@ onMounted(async () => {
   drawCourt();
   const timeline = await sportEvent.getTimeline({
     order: 'latest',
-    count: 10
+    count: 10,
   });
   state.timeline = timeline;
 });
@@ -58,11 +58,11 @@ sportEvent.setCallbackChange((newData) => {
       state.stats[key] = { ...newData.stats[key] };
     }
   });
-  
-  // Update timeline if it exists
-  if (newData.timeline) {
-    state.timeline = newData.timeline;
-  }
+
+  // // Update timeline if it exists
+  // if (newData.timeline) {
+  //   state.timeline = newData.timeline;
+  // }
 });
 
 //  draw on shotTracker canvas a image of a basketball court
@@ -139,11 +139,12 @@ const drawShotsOnCourt = () => {
     </div>
 
     <button @click="undoScore">Undo Last Timeline</button>
-    
+
     <h2>Timeline</h2>
     <ul>
       <li v-for="(event, index) in state.timeline" :key="index">
-        {{ event.description_en || event.type }} - {{ new Date(event.timestamp).toLocaleTimeString() }}
+        {{ event.description_en || event.type }} -
+        {{ new Date(event.timestamp).toLocaleTimeString() }}
       </li>
     </ul>
   </main>

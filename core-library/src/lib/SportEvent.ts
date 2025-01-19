@@ -1,4 +1,5 @@
 import { CollaborationClient } from '@org/client-library';
+import { TimelineRequest } from 'library-client/src/lib/library-client';
 import ISportEvent from '../types/ISportEvent';
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
@@ -69,10 +70,11 @@ class SportEvent {
       this.collabClient.onUpdate((newDocument) => {
         // Update stats properties individually to maintain reactivity
         Object.keys(newDocument.stats).forEach((key) => {
-          if (Array.isArray(newDocument.stats[key])) {
-            this.sport_data.stats[key] = [...newDocument.stats[key]];
+          const statKey = key as keyof IStats;
+          if (Array.isArray(newDocument.stats[statKey])) {
+            this.sport_data.stats[statKey] = [...newDocument.stats[statKey]];
           } else {
-            this.sport_data.stats[key] = { ...newDocument.stats[key] };
+            this.sport_data.stats[statKey] = { ...newDocument.stats[statKey] };
           }
         });
         console.log('Received update:', this.sport_data);
@@ -80,13 +82,12 @@ class SportEvent {
       });
       await this.collabClient.connect(this.roomId);
       console.log(`Connected to collaboration room: ${this.roomId}`);
-      
+
       // Get timeline after connecting
-      const timeline = await this.collabClient.getTimeline({
+      await this.collabClient.syncTimeline({
         order: 'latest',
-        count: 10
+        count: 10,
       });
-      this.sport_data.timeline = timeline.data.edits;
       this.callback_change?.(this.sport_data);
     } catch (error) {
       console.error('Failed to initialize collaboration client:', error);

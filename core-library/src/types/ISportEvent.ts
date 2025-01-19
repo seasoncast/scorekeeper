@@ -1,5 +1,4 @@
 import IStats from './IStats';
-import ITimelineEvent from './ITimelineEvent';
 
 export default interface ISportEvent {
   id: string;
@@ -21,6 +20,4 @@ export default interface ISportEvent {
   // };
 
   stats_inital: IStats;
-
-  timeline: ITimelineEvent[];
 }

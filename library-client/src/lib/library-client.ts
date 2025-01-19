@@ -109,13 +109,13 @@ export class CollaborationClient {
           diff: message.data,
           meta: message.meta,
           timestamp: message.timestamp,
-          editId: message.editId
+          editId: message.editId,
         };
         this.timeline.push(timelineEntry);
         callback(result.newDocument, timelineEntry);
       }
     });
-    
+
     this.on('sync', (message) => {
       if (message.data?.state) {
         callback(message.data.state);
@@ -133,7 +133,7 @@ export class CollaborationClient {
         diff,
         meta,
         timestamp: Date.now(),
-        editId: crypto.randomUUID()
+        editId: crypto.randomUUID(),
       };
       console.debug(`[CollabClient] Pushing timeline entry:`, timelineEntry);
       this.timeline.push(timelineEntry);
@@ -164,25 +164,28 @@ export class CollaborationClient {
 
   getTimeline(request: TimelineRequest): Promise<TimelineResponse> {
     // Sort timeline entries by timestamp
-    const sortedTimeline = this.timeline.sort((a, b) => a.timestamp - b.timestamp);
-    
+    const sortedTimeline = this.timeline.sort(
+      (a, b) => a.timestamp - b.timestamp
+    );
+
     // Get the requested count of entries
-    const entries = request.order === 'latest' 
-      ? sortedTimeline.slice(-request.count)
-      : sortedTimeline.slice(0, request.count);
+    const entries =
+      request.order === 'latest'
+        ? sortedTimeline.slice(-request.count)
+        : sortedTimeline.slice(0, request.count);
 
     return Promise.resolve({
       type: 'timeline',
       data: {
-        edits: entries
-      }
+        edits: entries,
+      },
     });
   }
 
   resetDocumentState(newState: any): void {
     this.startingDocumentState = newState;
     this.currentDocumentState = newState;
-    this.diffTimeline = [];
+    this.timeline = [];
   }
 
   private lastCursorUpdate = 0;
@@ -225,7 +228,7 @@ export class CollaborationClient {
           false
         );
         this.currentDocumentState = result.newDocument;
-        this.diffTimeline.push(message.data);
+        this.timeline.push(message.data);
       } else if (message.type === 'sync' && message.data?.state) {
         console.debug(
           `[CollabClient] Syncing document state:`,
@@ -237,7 +240,7 @@ export class CollaborationClient {
     });
   }
 
-  getTimeline(request: TimelineRequest): Promise<TimelineResponse> {
+  syncTimeline(request: TimelineRequest): Promise<TimelineResponse> {
     return new Promise((resolve) => {
       const handler = (message: any) => {
         if (message.type === 'timeline') {
