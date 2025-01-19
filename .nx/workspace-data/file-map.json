@@ -55,6 +55,38 @@
   "fileMap": {
     "nonProjectFiles": [
       {
+        "file": ".editorconfig",
+        "hash": "5443105041930014821"
+      },
+      {
+        "file": ".eslintignore",
+        "hash": "7663861978715868291"
+      },
+      {
+        "file": ".eslintrc.json",
+        "hash": "6603393952729308428"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "16651001040734071701"
+      },
+      {
+        "file": ".prettierignore",
+        "hash": "8865097869854018350"
+      },
+      {
+        "file": ".prettierrc",
+        "hash": "16267754514737964994"
+      },
+      {
+        "file": ".vscode/extensions.json",
+        "hash": "235626400633494639"
+      },
+      {
+        "file": "LICENSE",
+        "hash": "8753450313959232189"
+      },
+      {
         "file": "README.md",
         "hash": "14473342048778074289"
       },
@@ -63,169 +95,75 @@
         "hash": "5546405625092116747"
       },
       {
-        "file": "nx.json",
-        "hash": "4949160431580471671"
-      },
-      {
-        "file": "yarn.lock",
-        "hash": "9974665799350968562"
-      },
-      {
-        "file": "tsconfig.base.json",
-        "hash": "2158205243400342746"
-      },
-      {
-        "file": ".eslintrc.json",
-        "hash": "6603393952729308428"
-      },
-      {
-        "file": "LICENSE",
-        "hash": "8753450313959232189"
+        "file": "jest.config.ts",
+        "hash": "12333515226966617182"
       },
       {
         "file": "jest.preset.js",
         "hash": "9430166341120122740"
       },
       {
+        "file": "migrations.json",
+        "hash": "17527757946522167007"
+      },
+      {
+        "file": "nx.json",
+        "hash": "4949160431580471671"
+      },
+      {
         "file": "package.json",
         "hash": "13063584758104179516"
-      },
-      {
-        "file": ".prettierignore",
-        "hash": "8865097869854018350"
-      },
-      {
-        "file": ".vscode/extensions.json",
-        "hash": "235626400633494639"
-      },
-      {
-        "file": ".prettierrc",
-        "hash": "16267754514737964994"
-      },
-      {
-        "file": "vitest.workspace.ts",
-        "hash": "7870362608836821141"
-      },
-      {
-        "file": "tools/scripts/eas-build-pre-install.mjs",
-        "hash": "12536024410529632909"
-      },
-      {
-        "file": "jest.config.ts",
-        "hash": "12333515226966617182"
       },
       {
         "file": "tools/scripts/eas-build-post-install.mjs",
         "hash": "18390423807559123090"
       },
       {
-        "file": ".editorconfig",
-        "hash": "5443105041930014821"
+        "file": "tools/scripts/eas-build-pre-install.mjs",
+        "hash": "12536024410529632909"
       },
       {
-        "file": "migrations.json",
-        "hash": "17527757946522167007"
+        "file": "tsconfig.base.json",
+        "hash": "2158205243400342746"
       },
       {
-        "file": ".eslintignore",
-        "hash": "7663861978715868291"
+        "file": "vitest.workspace.ts",
+        "hash": "7870362608836821141"
       },
       {
-        "file": ".gitignore",
-        "hash": "16651001040734071701"
+        "file": "yarn.lock",
+        "hash": "9974665799350968562"
       }
     ],
     "projectFileMap": {
-      "example-web-vue": [
+      "server": [
         {
-          "file": "example-web-vue/.eslintrc.json",
-          "hash": "7309598769689397343"
+          "file": "server/.eslintrc.json",
+          "hash": "11808533155536463924"
         },
         {
-          "file": "example-web-vue/index.html",
-          "hash": "6633114284422498396"
+          "file": "server/Dockerfile",
+          "hash": "18238071057681064488"
         },
         {
-          "file": "example-web-vue/project.json",
-          "hash": "4233505831200696166"
+          "file": "server/project.json",
+          "hash": "11052178839224093439"
         },
         {
-          "file": "example-web-vue/public/assets/basketball.jpeg",
-          "hash": "18395553210349704694"
+          "file": "server/src/assets/.gitkeep",
+          "hash": "3244421341483603138"
         },
         {
-          "file": "example-web-vue/src/app/App.spec.ts",
-          "hash": "10611630957883797359",
-          "deps": [
-            "npm:@vue/test-utils"
-          ]
+          "file": "server/src/main.ts",
+          "hash": "1769695778783855813"
         },
         {
-          "file": "example-web-vue/src/app/App.vue",
-          "hash": "13711524085917720759",
-          "deps": [
-            "npm:vue-router"
-          ]
+          "file": "server/tsconfig.app.json",
+          "hash": "1650782542565282680"
         },
         {
-          "file": "example-web-vue/src/app/NxWelcome.vue",
-          "hash": "14576822820710724813"
-        },
-        {
-          "file": "example-web-vue/src/main.ts",
-          "hash": "3088894322703592061",
-          "deps": [
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/router/index.ts",
-          "hash": "14307912965442850989",
-          "deps": [
-            "npm:vue-router"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/styles.css",
-          "hash": "97131783897646283"
-        },
-        {
-          "file": "example-web-vue/src/views/AboutView.vue",
-          "hash": "16824834101219002222"
-        },
-        {
-          "file": "example-web-vue/src/views/CollabView.vue",
-          "hash": "11891249579975649715",
-          "deps": [
-            "library-client",
-            "npm:fast-json-patch",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/src/views/ScoreView.vue",
-          "hash": "8059635394532691776",
-          "deps": [
-            "core-library",
-            "npm:vue"
-          ]
-        },
-        {
-          "file": "example-web-vue/tsconfig.app.json",
-          "hash": "11088132585234755447"
-        },
-        {
-          "file": "example-web-vue/tsconfig.json",
-          "hash": "18037995839136760424"
-        },
-        {
-          "file": "example-web-vue/vite.config.ts",
-          "hash": "8104925680029115810",
-          "deps": [
-            "npm:vite",
-            "npm:@vitejs/plugin-vue",
-            "npm:@nx/vite"
-          ]
+          "file": "server/tsconfig.json",
+          "hash": "4276712839166217253"
         }
       ],
       "ui-library-react-native": [
@@ -386,58 +324,6 @@
           "hash": "13368156808524675846"
         }
       ],
-      "library-client": [
-        {
-          "file": "library-client/.eslintrc.json",
-          "hash": "13365499647183331872"
-        },
-        {
-          "file": "library-client/README.md",
-          "hash": "3131065715213361611"
-        },
-        {
-          "file": "library-client/jest.config.ts",
-          "hash": "8848747651314784684"
-        },
-        {
-          "file": "library-client/package.json",
-          "hash": "1802096670873638757",
-          "deps": [
-            "npm:tslib"
-          ]
-        },
-        {
-          "file": "library-client/project.json",
-          "hash": "14021430279628584588"
-        },
-        {
-          "file": "library-client/src/index.ts",
-          "hash": "9236390187554257649"
-        },
-        {
-          "file": "library-client/src/lib/library-client.spec.ts",
-          "hash": "15489871656285694653"
-        },
-        {
-          "file": "library-client/src/lib/library-client.ts",
-          "hash": "7674300654717263635",
-          "deps": [
-            "npm:fast-json-patch"
-          ]
-        },
-        {
-          "file": "library-client/tsconfig.json",
-          "hash": "18330180151193889737"
-        },
-        {
-          "file": "library-client/tsconfig.lib.json",
-          "hash": "14539327243516648733"
-        },
-        {
-          "file": "library-client/tsconfig.spec.json",
-          "hash": "17313551537729802733"
-        }
-      ],
       "example-expo-react-native": [
         {
           "file": "example-expo-react-native/.babelrc.js",
@@ -578,34 +464,56 @@
           ]
         }
       ],
-      "server": [
+      "library-client": [
         {
-          "file": "server/.eslintrc.json",
-          "hash": "11808533155536463924"
+          "file": "library-client/.eslintrc.json",
+          "hash": "13365499647183331872"
         },
         {
-          "file": "server/Dockerfile",
-          "hash": "18238071057681064488"
+          "file": "library-client/README.md",
+          "hash": "3131065715213361611"
         },
         {
-          "file": "server/project.json",
-          "hash": "11052178839224093439"
+          "file": "library-client/jest.config.ts",
+          "hash": "8848747651314784684"
         },
         {
-          "file": "server/src/assets/.gitkeep",
-          "hash": "3244421341483603138"
+          "file": "library-client/package.json",
+          "hash": "1802096670873638757",
+          "deps": [
+            "npm:tslib"
+          ]
         },
         {
-          "file": "server/src/main.ts",
-          "hash": "1769695778783855813"
+          "file": "library-client/project.json",
+          "hash": "14021430279628584588"
         },
         {
-          "file": "server/tsconfig.app.json",
-          "hash": "1650782542565282680"
+          "file": "library-client/src/index.ts",
+          "hash": "9236390187554257649"
         },
         {
-          "file": "server/tsconfig.json",
-          "hash": "4276712839166217253"
+          "file": "library-client/src/lib/library-client.spec.ts",
+          "hash": "15489871656285694653"
+        },
+        {
+          "file": "library-client/src/lib/library-client.ts",
+          "hash": "7674300654717263635",
+          "deps": [
+            "npm:fast-json-patch"
+          ]
+        },
+        {
+          "file": "library-client/tsconfig.json",
+          "hash": "18330180151193889737"
+        },
+        {
+          "file": "library-client/tsconfig.lib.json",
+          "hash": "14539327243516648733"
+        },
+        {
+          "file": "library-client/tsconfig.spec.json",
+          "hash": "17313551537729802733"
         }
       ],
       "ui-components-web": [
@@ -678,6 +586,98 @@
           "hash": "16302667982367987405"
         }
       ],
+      "example-web-vue": [
+        {
+          "file": "example-web-vue/.eslintrc.json",
+          "hash": "7309598769689397343"
+        },
+        {
+          "file": "example-web-vue/index.html",
+          "hash": "6633114284422498396"
+        },
+        {
+          "file": "example-web-vue/project.json",
+          "hash": "4233505831200696166"
+        },
+        {
+          "file": "example-web-vue/public/assets/basketball.jpeg",
+          "hash": "18395553210349704694"
+        },
+        {
+          "file": "example-web-vue/src/app/App.spec.ts",
+          "hash": "10611630957883797359",
+          "deps": [
+            "npm:@vue/test-utils"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/App.vue",
+          "hash": "13711524085917720759",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/app/NxWelcome.vue",
+          "hash": "14576822820710724813"
+        },
+        {
+          "file": "example-web-vue/src/main.ts",
+          "hash": "3088894322703592061",
+          "deps": [
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/router/index.ts",
+          "hash": "14307912965442850989",
+          "deps": [
+            "npm:vue-router"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/styles.css",
+          "hash": "97131783897646283"
+        },
+        {
+          "file": "example-web-vue/src/views/AboutView.vue",
+          "hash": "16824834101219002222"
+        },
+        {
+          "file": "example-web-vue/src/views/CollabView.vue",
+          "hash": "11891249579975649715",
+          "deps": [
+            "library-client",
+            "npm:fast-json-patch",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/src/views/ScoreView.vue",
+          "hash": "5759250020835600818",
+          "deps": [
+            "core-library",
+            "npm:vue"
+          ]
+        },
+        {
+          "file": "example-web-vue/tsconfig.app.json",
+          "hash": "11088132585234755447"
+        },
+        {
+          "file": "example-web-vue/tsconfig.json",
+          "hash": "18037995839136760424"
+        },
+        {
+          "file": "example-web-vue/vite.config.ts",
+          "hash": "8104925680029115810",
+          "deps": [
+            "npm:vite",
+            "npm:@vitejs/plugin-vue",
+            "npm:@nx/vite"
+          ]
+        }
+      ],
       "core-library": [
         {
           "file": "core-library/.eslintrc.json",
@@ -712,7 +712,7 @@
         },
         {
           "file": "core-library/src/lib/Editor.ts",
-          "hash": "4895678998203589375"
+          "hash": "3841051340465476430"
         },
         {
           "file": "core-library/src/lib/Factory.ts",
@@ -724,7 +724,7 @@
         },
         {
           "file": "core-library/src/lib/SportEvent.ts",
-          "hash": "12713312510934286000",
+          "hash": "2525983730450926375",
           "deps": [
             "library-client"
           ]

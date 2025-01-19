@@ -16,7 +16,7 @@ const sportEvent = new SportEvent({
 const editorBasketball = new Basketball(sportEvent);
 
 const addScore = (team: Team, score: number) => {
-  state.editor.addScore(team, score);
+  state.editor.addScore(team.id, score);
 };
 
 const missedFG = () => {
@@ -40,11 +40,11 @@ const state = reactive({
 // Update reactive stats when sportEvent changes
 sportEvent.setCallbackChange((newData) => {
   // Update each property individually to maintain reactivity
-  Object.keys(newData.stats).forEach(key => {
+  Object.keys(newData.stats).forEach((key) => {
     if (Array.isArray(newData.stats[key])) {
       state.stats[key] = [...newData.stats[key]];
     } else {
-      state.stats[key] = {...newData.stats[key]};
+      state.stats[key] = { ...newData.stats[key] };
     }
   });
 });
@@ -119,7 +119,7 @@ const drawShotsOnCourt = () => {
     <p>All Event Data {{ state.sportEvent.sport_data }}</p>
     <div v-for="team in state.stats.team_data" :key="team.id">
       <p>{{ team.name }}: {{ team.score }}</p>
-      <button @click="addScore(team.id, 1)">Increment</button>
+      <button @click="addScore(team, 1)">Increment</button>
     </div>
 
     <button @click="undoScore">Undo Last Timeline</button>

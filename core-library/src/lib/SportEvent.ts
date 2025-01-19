@@ -68,11 +68,11 @@ class SportEvent {
       // Set up update handler
       this.collabClient.onUpdate((newDocument) => {
         // Update stats properties individually to maintain reactivity
-        Object.keys(newDocument.stats).forEach(key => {
+        Object.keys(newDocument.stats).forEach((key) => {
           if (Array.isArray(newDocument.stats[key])) {
             this.sport_data.stats[key] = [...newDocument.stats[key]];
           } else {
-            this.sport_data.stats[key] = {...newDocument.stats[key]};
+            this.sport_data.stats[key] = { ...newDocument.stats[key] };
           }
         });
         console.log('Received update:', this.sport_data);
@@ -89,16 +89,14 @@ class SportEvent {
     const current_stats = JSON.parse(JSON.stringify(this.sport_data.stats));
     const timeline_event = changer_callback(current_stats);
 
+    this.sport_data.stats = current_stats;
+    this.callback_change?.(this.sport_data);
     // If collaboration client is initialized, send the update
     if (this.collabClient) {
       this.collabClient.sendEdit(this.sport_data, {
         ...timeline_event,
         type: 'stats_update',
       });
-    } else {
-      // Fallback to local update if no collab client
-      this.sport_data.stats = current_stats;
-      this.callback_change?.(this.sport_data);
     }
   }
 

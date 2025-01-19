@@ -1,7 +1,6 @@
 import IStats from '../types/IStats';
 import ITimelineEvent from '../types/ITimelineEvent';
 import SportEvent from './SportEvent';
-import Team from './Team';
 
 export interface IPromptOptions {
   type: 'text' | 'select';
@@ -209,10 +208,10 @@ export default class Editor {
       }
     }
   }
-  public addScore(team: Team, score: number) {
+  public addScore(team_id: string, score: number) {
     this.sportEvent.updateStats((stats) => {
       const team_data = stats.team_data.find(
-        (team_data) => team_data['id'] === team.id
+        (team_data) => team_data['id'] === team_id
       );
       if (!team_data) {
         throw new Error('Team not found');
@@ -220,9 +219,9 @@ export default class Editor {
       team_data['score'] += score;
       return {
         type: 'score',
-        team_id: team.id,
+        team_id: team_id,
 
-        description_en: `${team.name} scored ${score} points`,
+        description_en: `${team_data.name} scored ${score} points`,
         time_ms: Date.now(),
         action_id: 'local-1',
       };
