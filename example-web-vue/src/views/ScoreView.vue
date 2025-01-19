@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { Basketball, Player, SportEvent, Team } from '@org/core-library';
+import { Basketball, SportEvent, Team } from '@org/core-library';
 import { onMounted, reactive, ref } from 'vue';
 const score = ref(0);
-const Team1 = new Team('Team 1');
-const player1 = new Player('Player 1');
-Team1.addPlayer(player1);
-const Team2 = new Team('Team 2');
+// const Team1 = new Team('Team 1');
+// const player1 = new Player('Player 1');
+// Team1.addPlayer(player1);
+// const Team2 = new Team('Team 2');
 const sportEvent = new SportEvent({
   sport_type: 'basketball',
   scheduled_date: new Date('2021-01-01'),
 });
-sportEvent.addTeam(Team1);
-sportEvent.addTeam(Team2);
+// sportEvent.addTeam(Team1);
+// sportEvent.addTeam(Team2);
 
 const editorBasketball = new Basketball(sportEvent);
 
@@ -106,8 +106,7 @@ const drawShotsOnCourt = () => {
     <p>All Event Data {{ state.sportEvent.sport_data }}</p>
     <div v-for="team in state.sportEvent.getStats().team_data" :key="team.id">
       <p>{{ team.name }}: {{ team.score }}</p>
-      <button @click="addScore(Team1, 1)">Increment</button>
-      <button @click="missedFG()">Missed FG</button>
+      <button @click="addScore(team.id, 1)">Increment</button>
     </div>
 
     <button @click="undoScore">Undo Last Timeline</button>

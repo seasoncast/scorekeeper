@@ -23180,7 +23180,7 @@
       },
       {
         "source": "core-library",
-        "target": "npm:fast-json-patch",
+        "target": "library-client",
         "type": "static"
       }
     ],

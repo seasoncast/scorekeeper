@@ -10,7 +10,7 @@ class SportEvent {
   public team_min?: number;
   public callback_change?: (sport_data: ISportEvent) => void;
   private collabClient?: CollaborationClient;
-  private roomId: string = 'default-room';
+  private roomId: string = 'default-room2';
 
   public constructor({
     scheduled_date,
@@ -65,14 +65,14 @@ class SportEvent {
   private async initializeCollabClient() {
     try {
       this.collabClient = new CollaborationClient('ws://localhost:8787');
-      await this.collabClient.connect(this.roomId);
-      console.log(`Connected to collaboration room: ${this.roomId}`);
-      
       // Set up update handler
       this.collabClient.onUpdate((newDocument) => {
-        this.sport_data.stats = newDocument;
+        this.sport_data.stats = newDocument.stats;
+        console.log('Received updateda:', this.sport_data);
         this.callback_change?.(this.sport_data);
       });
+      await this.collabClient.connect(this.roomId);
+      console.log(`Connected to collaboration room: ${this.roomId}`);
     } catch (error) {
       console.error('Failed to initialize collaboration client:', error);
     }
@@ -84,7 +84,7 @@ class SportEvent {
 
     // If collaboration client is initialized, send the update
     if (this.collabClient) {
-      this.collabClient.sendEdit(current_stats, {
+      this.collabClient.sendEdit(this.sport_data, {
         ...timeline_event,
         type: 'stats_update',
       });
