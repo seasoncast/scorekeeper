@@ -34,12 +34,19 @@ const state = reactive({
   editor: editorBasketball,
   sportEvent,
   addScore,
-  stats: sportEvent.getStats(), // Add stats to reactive state
+  stats: reactive(sportEvent.getStats()), // Make stats deeply reactive
 });
 
 // Update reactive stats when sportEvent changes
 sportEvent.setCallbackChange((newData) => {
-  Object.assign(state.stats, newData.stats);
+  // Update each property individually to maintain reactivity
+  Object.keys(newData.stats).forEach(key => {
+    if (Array.isArray(newData.stats[key])) {
+      state.stats[key] = [...newData.stats[key]];
+    } else {
+      state.stats[key] = {...newData.stats[key]};
+    }
+  });
 });
 
 //  draw on shotTracker canvas a image of a basketball court

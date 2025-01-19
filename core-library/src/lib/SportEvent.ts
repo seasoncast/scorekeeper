@@ -68,7 +68,13 @@ class SportEvent {
       // Set up update handler
       this.collabClient.onUpdate((newDocument) => {
         // Update stats properties individually to maintain reactivity
-        Object.assign(this.sport_data.stats, newDocument.stats);
+        Object.keys(newDocument.stats).forEach(key => {
+          if (Array.isArray(newDocument.stats[key])) {
+            this.sport_data.stats[key] = [...newDocument.stats[key]];
+          } else {
+            this.sport_data.stats[key] = {...newDocument.stats[key]};
+          }
+        });
         console.log('Received update:', this.sport_data);
         this.callback_change?.(this.sport_data);
       });
