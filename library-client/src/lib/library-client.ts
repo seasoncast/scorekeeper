@@ -1,9 +1,14 @@
 import * as fastJsonPatch from 'fast-json-patch';
 export type EventHandler = (data: any) => void;
 
+export interface UserInfo {
+  userId: string;
+  token: string;
+}
+
 export class CollaborationClient {
   private ws: WebSocket | null = null;
-  private userId = crypto.randomUUID();
+  private userInfo: UserInfo | null = null;
   private roomId = '';
   private eventHandlers: Map<string, EventHandler[]> = new Map();
   private reconnectAttempts = 0;
@@ -12,14 +17,69 @@ export class CollaborationClient {
 
   constructor(private serverUrl: string) {}
 
+  async login(): Promise<UserInfo> {
+    try {
+      const response = await fetch(`${this.serverUrl}/user/login/anonymous`, {
+        method: 'POST',
+      });
+      
+      if (!response.ok) {
+        throw new Error('Login failed');
+      }
+
+      const { token } = await response.json();
+      const payload = this.verifyToken(token);
+      if (!payload) {
+        throw new Error('Invalid token received');
+      }
+
+      this.userInfo = {
+        userId: payload.userId,
+        token,
+      };
+
+      return this.userInfo;
+    } catch (error) {
+      console.error('Login error:', error);
+      throw error;
+    }
+  }
+
+  private verifyToken(token: string): { userId: string } | null {
+    try {
+      const [header, payload, signature] = token.split('.');
+      const decodedPayload = JSON.parse(
+        atob(payload.replace(/-/g, '+').replace(/_/g, '/'))
+      ) as { userId: string };
+      return decodedPayload;
+    } catch (err) {
+      return null;
+    }
+  }
+
   async connect(roomId: string): Promise<void> {
     this.roomId = roomId;
+    
+    // Ensure we're logged in
+    if (!this.userInfo) {
+      try {
+        await this.login();
+      } catch (error) {
+        throw new Error('Failed to login: ' + error.message);
+      }
+    }
+
     console.debug(
       `[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`
     );
     return new Promise((resolve, reject) => {
       this.ws = new WebSocket(
-        `${this.serverUrl}?roomId=${roomId}&userId=${this.userId}`
+        `${this.serverUrl}?roomId=${roomId}`,
+        {
+          headers: {
+            Authorization: `Bearer ${this.userInfo!.token}`
+          }
+        }
       );
 
       this.ws.onopen = () => {
@@ -279,6 +339,11 @@ export interface UserPresence {
   userId: string;
   cursorPosition?: CursorPosition;
   lastActive?: number;
+}
+
+export interface UserInfo {
+  userId: string;
+  token: string;
 }
 
 export interface SyncMessage {
