@@ -76,11 +76,7 @@ export class CollaborationClient {
       `[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`
     );
     return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(`ws://${this.serverUrl}?roomId=${roomId}`, {
-        headers: {
-          Authorization: `Bearer ${this.userInfo!.token}`,
-        },
-      });
+      this.ws = new WebSocket(`ws://${this.serverUrl}?roomId=${roomId}`);
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
@@ -267,7 +263,7 @@ export class CollaborationClient {
     if (this.ws && this.ws.readyState === WebSocket.OPEN) {
       const fullMessage = {
         ...message,
-        userId: this.userId,
+        token: this.userInfo!.token,
         timestamp: Date.now(),
       };
       console.debug(`[CollabClient] Sending message:`, fullMessage);

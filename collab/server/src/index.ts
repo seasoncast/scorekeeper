@@ -35,20 +35,8 @@ export class CollaborationRoom {
       return new Response('Expected WebSocket upgrade', { status: 426 });
     }
 
-    // Verify JWT token
-    const authHeader = request.headers.get('Authorization');
-    if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      return new Response('Unauthorized', { status: 401 });
-    }
-
-    const token = authHeader.slice(7);
-    const payload = AuthService.verifyToken(token);
-    if (!payload) {
-      return new Response('Invalid token', { status: 401 });
-    }
-
     const [client, server] = Object.values(new WebSocketPair());
-    await this.handleWebSocket(server, payload.userId);
+    await this.handleWebSocket(server);
 
     return new Response(null, {
       status: 101,
@@ -56,12 +44,11 @@ export class CollaborationRoom {
     });
   }
 
-  async handleWebSocket(ws: WebSocket, userId: string) {
+  async handleWebSocket(ws: WebSocket) {
     ws.accept();
 
-    // Store connection and presence
-    this.connections.set(userId, ws);
-    this.presence.set(userId, { userId });
+    let userId: string | null = null;
+    let token: string | null = null;
 
     // Send initial state and presence with cursor positions
     const presenceWithCursors = Array.from(this.presence.values()).map(
@@ -95,13 +82,22 @@ export class CollaborationRoom {
       try {
         const data: CollaborationMessage = JSON.parse(msg.data);
 
-        // Capture userId from first message
+        // Verify token on every message
+        if (!data.token) {
+          ws.close(4001, 'Token required');
+          return;
+        }
+
+        const payload = AuthService.verifyToken(data.token);
+        if (!payload) {
+          ws.close(4002, 'Invalid token');
+          return;
+        }
+
+        // First message sets up the user
         if (!userId) {
-          userId = data.userId;
-          if (!userId) {
-            ws.close(4000, 'User ID required');
-            return;
-          }
+          userId = payload.userId;
+          token = data.token;
           this.connections.set(userId, ws);
           this.presence.set(userId, { userId });
 
@@ -116,7 +112,6 @@ export class CollaborationRoom {
 
           const syncMessage: SyncMessage = {
             type: 'sync',
-            userId: data.userId,
             timestamp: Date.now(),
             data: {
               state: this.currentDocumentState,
@@ -133,6 +128,12 @@ export class CollaborationRoom {
           });
         }
 
+        // Verify token matches established user
+        if (userId !== payload.userId) {
+          ws.close(4003, 'Token user mismatch');
+          return;
+        }
+
         switch (data.type) {
           case 'update':
             if (data.data && Array.isArray(data.data.diff)) {
@@ -143,7 +144,7 @@ export class CollaborationRoom {
               // Store the edit with optional meta
               await this.state.storage.put(`${this.timelineKey}-${editId}`, {
                 editId,
-                userId: data.userId,
+                userId,
                 timestamp: Date.now(),
                 patch: diff,
                 meta,
@@ -171,7 +172,7 @@ export class CollaborationRoom {
               // Broadcast update with editId
               this.broadcast({
                 type: 'update',
-                userId: data.userId,
+                userId,
                 timestamp: Date.now(),
                 editId,
                 data: {
@@ -206,7 +207,7 @@ export class CollaborationRoom {
               ws.send(
                 JSON.stringify({
                   type: 'timeline',
-                  userId: data.userId,
+                  userId,
                   timestamp: Date.now(),
                   data: {
                     edits: edits.filter(Boolean) as Edit[],
