@@ -65,7 +65,7 @@ class SportEvent {
 
   private async initializeCollabClient() {
     try {
-      this.collabClient = new CollaborationClient('ws://localhost:8787');
+      this.collabClient = new CollaborationClient('localhost:8787');
       // Set up update handler
       this.collabClient.onUpdate((newDocument) => {
         // Update stats properties individually to maintain reactivity

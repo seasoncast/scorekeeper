@@ -19,10 +19,13 @@ export class CollaborationClient {
 
   async login(): Promise<UserInfo> {
     try {
-      const response = await fetch(`${this.serverUrl}/user/login/anonymous`, {
-        method: 'POST',
-      });
-      
+      const response = await fetch(
+        `http://${this.serverUrl}/user/login/anonymous`,
+        {
+          method: 'POST',
+        }
+      );
+
       if (!response.ok) {
         throw new Error('Login failed');
       }
@@ -59,7 +62,7 @@ export class CollaborationClient {
 
   async connect(roomId: string): Promise<void> {
     this.roomId = roomId;
-    
+
     // Ensure we're logged in
     if (!this.userInfo) {
       try {
@@ -73,14 +76,11 @@ export class CollaborationClient {
       `[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`
     );
     return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(
-        `${this.serverUrl}?roomId=${roomId}`,
-        {
-          headers: {
-            Authorization: `Bearer ${this.userInfo!.token}`
-          }
-        }
-      );
+      this.ws = new WebSocket(`ws://${this.serverUrl}?roomId=${roomId}`, {
+        headers: {
+          Authorization: `Bearer ${this.userInfo!.token}`,
+        },
+      });
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;

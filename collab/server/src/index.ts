@@ -265,7 +265,10 @@ export default {
       const userId = crypto.randomUUID();
       const token = await AuthService.generateToken(userId);
       return new Response(JSON.stringify({ token }), {
-        headers: { 'Content-Type': 'application/json' },
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Origin': '*',
+        },
       });
     }
 

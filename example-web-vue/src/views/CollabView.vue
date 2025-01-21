@@ -6,13 +6,15 @@
         <li v-for="edit in timeline" :key="edit.editId" class="timeline-item">
           <div class="timeline-user">{{ edit.userId.slice(0, 2) }}</div>
           <div class="timeline-details">
-            <div class="timeline-time">{{ new Date(edit.timestamp).toLocaleTimeString() }}</div>
+            <div class="timeline-time">
+              {{ new Date(edit.timestamp).toLocaleTimeString() }}
+            </div>
             <div class="timeline-patch">{{ edit.patch.length }} changes</div>
           </div>
         </li>
       </ul>
     </div>
-    
+
     <div class="controls">
       <input
         v-model="roomId"
@@ -68,10 +70,13 @@ export default defineComponent({
   methods: {
     async loadTimeline() {
       if (!this.client) return;
-      const response = await this.client.getTimeline({ order: 'latest', count: 5 });
+      const response = await this.client.getTimeline({
+        order: 'latest',
+        count: 5,
+      });
       this.timeline = response.data.edits;
     },
-    
+
     async connectToRoom() {
       if (!this.roomId) return;
 
@@ -79,7 +84,7 @@ export default defineComponent({
         this.client.disconnect();
       }
 
-      this.client = new CollaborationClient('ws://localhost:8787');
+      this.client = new CollaborationClient('localhost:8787');
       await this.client.connect(this.roomId);
 
       // Handle initial sync with all users and their cursor positions
@@ -141,7 +146,7 @@ export default defineComponent({
       const newText = event.target.value;
       this.document.text = newText;
       this.client.sendEdit(this.document);
-      
+
       // Refresh timeline after edit
       this.loadTimeline();
     },
