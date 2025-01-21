@@ -1,4 +1,5 @@
 import * as fastJsonPatch from 'fast-json-patch';
+import { AuthService } from './auth';
 import {
   CollaborationMessage,
   Edit,
@@ -34,8 +35,20 @@ export class CollaborationRoom {
       return new Response('Expected WebSocket upgrade', { status: 426 });
     }
 
+    // Verify JWT token
+    const authHeader = request.headers.get('Authorization');
+    if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      return new Response('Unauthorized', { status: 401 });
+    }
+
+    const token = authHeader.slice(7);
+    const payload = AuthService.verifyToken(token);
+    if (!payload) {
+      return new Response('Invalid token', { status: 401 });
+    }
+
     const [client, server] = Object.values(new WebSocketPair());
-    await this.handleWebSocket(server);
+    await this.handleWebSocket(server, payload.userId);
 
     return new Response(null, {
       status: 101,
@@ -43,11 +56,40 @@ export class CollaborationRoom {
     });
   }
 
-  async handleWebSocket(ws: WebSocket) {
+  async handleWebSocket(ws: WebSocket, userId: string) {
     ws.accept();
-    let userId: string | null = null;
 
-    // Wait for first message to get userId
+    // Store connection and presence
+    this.connections.set(userId, ws);
+    this.presence.set(userId, { userId });
+
+    // Send initial state and presence with cursor positions
+    const presenceWithCursors = Array.from(this.presence.values()).map(
+      (user) => ({
+        userId: user.userId,
+        cursorPosition: user.cursorPosition,
+        lastActive: Date.now(),
+      })
+    );
+
+    const syncMessage: SyncMessage = {
+      type: 'sync',
+      userId,
+      timestamp: Date.now(),
+      data: {
+        state: this.currentDocumentState,
+        presence: presenceWithCursors,
+      },
+    };
+    ws.send(JSON.stringify(syncMessage));
+
+    // Broadcast join
+    this.broadcast({
+      type: 'join',
+      userId,
+      timestamp: Date.now(),
+    });
+
     // Handle messages
     ws.addEventListener('message', async (msg) => {
       try {
@@ -218,8 +260,16 @@ export default {
     ctx: ExecutionContext
   ): Promise<Response> {
     const url = new URL(request.url);
-    const roomId = url.searchParams.get('roomId') || 'default';
 
+    if (url.pathname === '/user/login/anonymous') {
+      const userId = crypto.randomUUID();
+      const token = await AuthService.generateToken(userId);
+      return new Response(JSON.stringify({ token }), {
+        headers: { 'Content-Type': 'application/json' },
+      });
+    }
+
+    const roomId = url.searchParams.get('roomId') || 'default';
     const id = env.COLLAB_ROOM.idFromName(roomId);
     const room = env.COLLAB_ROOM.get(id);
 
