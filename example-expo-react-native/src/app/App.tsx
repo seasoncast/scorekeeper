@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import { Basketball, Player, SportEvent, Team } from '@org/core-library';
+import { Basketball, SportEvent } from '@org/core-library';
 import { ScoreDisplayCard, SportEventProvider, TimelineDisplay } from '@org/ui-library-react-native';
 import React, { useEffect, useRef, useState } from 'react';
 import {
@@ -24,13 +24,13 @@ export const App = () => {
   
 
   const setupEvent = () => {
-const Team1 = new Team('Team 1');
-const player1 = new Player('Player 1');
-Team1.addPlayer(player1);
-const Team2 = new Team('Team 2');
+// const Team1 = new Team('Team 1');
+// const player1 = new Player('Player 1');
+// Team1.addPlayer(player1);
+// const Team2 = new Team('Team 2');
 
-sportEvent.addTeam(Team1);
-sportEvent.addTeam(Team2);
+// sportEvent.addTeam(Team1);
+// sportEvent.addTeam(Team2);
 
 
   };
@@ -63,7 +63,7 @@ sportEvent.addTeam(Team2);
             
             <TouchableOpacity
               onPress={() => {
-                editorBasketball?.addScore(sportEvent.getTeamAtIndex(0)!, 2);
+                editorBasketball?.addScore(sportEvent.getTeamAtIndex(0)!.id, 2);
               }}><Text>Team 1 +2</Text>
             </TouchableOpacity>
             <TimelineDisplay />

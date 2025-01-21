@@ -52,6 +52,9 @@ export const BasketballCourt: React.FC = () => {
     });
   }
 
+ 
+  
+
   return (
     <View style={styles.courtContainer}>
       <TouchableOpacity onPress={handleCourtPress}>
@@ -63,7 +66,9 @@ export const BasketballCourt: React.FC = () => {
             height: COURT_HEIGHT,
           }}
         >
-          {shots.map((shot, index) => (
+          {sportEventData.stats.team_data?.map((team_data, index) => (
+            <>
+          {team_data.shot_position?.map((shot, index) => (
             <View
               key={index}
               style={{
@@ -76,6 +81,8 @@ export const BasketballCourt: React.FC = () => {
                 backgroundColor: 'blue',
               }}
             />
+          ))}
+          </>
           ))}
         </ImageBackground>
       </TouchableOpacity>
