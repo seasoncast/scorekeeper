@@ -14,13 +14,28 @@ export class CollaborationClient {
   private reconnectAttempts = 0;
   private maxReconnectAttempts = 5;
   private reconnectDelay = 1000;
+  private serverUrl = 'localhost:8787';
 
-  constructor(private serverUrl: string) {}
+  private protocol = {
+    ws: 'ws',
+    http: 'http',
+  };
+
+  constructor({ appId, isDev }: { appId: string; isDev?: boolean }) {
+    this.serverUrl = isDev
+      ? 'localhost:8787'
+      : 'collab-server.innerjar.workers.dev';
+
+    this.protocol = {
+      ws: isDev ? 'ws' : 'wss',
+      http: isDev ? 'http' : 'https',
+    };
+  }
 
   async login(): Promise<UserInfo> {
     try {
       const response = await fetch(
-        `http://${this.serverUrl}/user/login/anonymous`,
+        `${this.protocol.http}://${this.serverUrl}/user/login/anonymous`,
         {
           method: 'POST',
         }
@@ -76,7 +91,9 @@ export class CollaborationClient {
       `[CollabClient] Connecting to room ${roomId} at ${this.serverUrl}`
     );
     return new Promise((resolve, reject) => {
-      this.ws = new WebSocket(`ws://${this.serverUrl}?roomId=${roomId}`);
+      this.ws = new WebSocket(
+        `${this.protocol.ws}://${this.serverUrl}?roomId=${roomId}`
+      );
 
       this.ws.onopen = () => {
         this.reconnectAttempts = 0;
